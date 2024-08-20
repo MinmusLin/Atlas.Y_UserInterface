@@ -28,7 +28,7 @@ defineProps<ButtonProps>();
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.25s;
   font-size: 25px;
 }
 
