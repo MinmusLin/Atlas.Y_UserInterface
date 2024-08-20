@@ -5,6 +5,8 @@ import ViteFonts from 'unplugin-fonts/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import {defineConfig} from 'vite'
 import {fileURLToPath, URL} from 'node:url'
+import AutoImport from 'unplugin-auto-import/vite'
+import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
@@ -16,7 +18,12 @@ export default defineConfig({
         Vuetify({
             autoImport: true
         }),
-        Components(),
+        AutoImport({
+            resolvers: [ElementPlusResolver()]
+        }),
+        Components({
+            resolvers: [ElementPlusResolver()]
+        }),
         ViteFonts({
             google: {
                 families: [{
