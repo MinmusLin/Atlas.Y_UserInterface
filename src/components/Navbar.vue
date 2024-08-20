@@ -10,7 +10,7 @@
           <component :is='menu.icon' class='icon-size'/>
           <span v-show='!isCollapsed' style='margin-left: 6px; font-size: 14px'>{{ menu.title }}</span>
           <span class='icon-toggle' v-show='!isCollapsed'>
-            <component :is='isActive(menu.id) ? ArrowUpBold : ArrowDownBold'/>
+            <ArrowUpBold :style='rotateStyle(menu.id)'/>
           </span>
         </div>
         <transition name='slide' @enter='enter' @after-enter='afterEnter' @leave='leave'>
@@ -32,7 +32,7 @@
 <script setup lang='ts'>
 import {ref, watch} from 'vue'
 import {useRouter} from 'vue-router'
-import {PriceTag, Orange, Document, User, ChatDotSquare, ArrowUpBold, ArrowDownBold} from '@element-plus/icons-vue'
+import {PriceTag, Orange, Document, User, ChatDotSquare, ArrowUpBold} from '@element-plus/icons-vue'
 
 const activeIndices = ref<Set<number>>(new Set())
 const isCollapsed = ref<boolean>(true)
@@ -120,7 +120,7 @@ function enter(el: Element, done: () => void) {
   const element = el as HTMLElement
   element.style.height = '0'
   element.style.opacity = '0'
-  element.style.transition = 'height 0.2s ease, opacity 0.2s ease'
+  element.style.transition = 'height 0.25s ease, opacity 0.25s ease'
   requestAnimationFrame(() => {
     element.style.height = element.scrollHeight + 'px'
     element.style.opacity = '1'
@@ -141,7 +141,7 @@ function leave(el: Element, done: () => void) {
   const element = el as HTMLElement
   element.style.height = element.scrollHeight + 'px'
   element.style.opacity = '1'
-  element.style.transition = 'height 0.2s ease, opacity 0.2s ease'
+  element.style.transition = 'height 0.25s ease, opacity 0.25s ease'
   requestAnimationFrame(() => {
     element.style.height = '0'
     element.style.opacity = '0'
@@ -152,6 +152,13 @@ function leave(el: Element, done: () => void) {
     element.addEventListener('transitionend', transitionEnd)
   })
 }
+
+function rotateStyle(index: number) {
+  return {
+    transform: isActive(index) ? 'rotate(0deg)' : 'rotate(180deg)',
+    transition: 'transform 0.25s ease'
+  }
+}
 </script>
 
 <style scoped>
@@ -159,8 +166,9 @@ function leave(el: Element, done: () => void) {
   width: 250px;
   background-color: #5182F8;
   color: white;
-  transition: width 0.2s ease;
+  transition: width 0.25s ease;
   overflow: hidden;
+  user-select: none;
 }
 
 .nav-logo {
@@ -179,7 +187,7 @@ function leave(el: Element, done: () => void) {
 
 .icon-size {
   width: 23px;
-  transition: opacity 0.3s ease;
+  flex-shrink: 0;
 }
 
 .menu ul {
@@ -193,8 +201,10 @@ function leave(el: Element, done: () => void) {
   height: 33px;
   padding-left: 5px;
   margin: 20px 0 0;
-  transition: background-color 0.3s ease, border-radius 0.3s ease, width 0.2s ease;
+  transition: background-color 0.25s ease, border-radius 0.25s ease;
   white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .menu-title.highlighted {
@@ -211,13 +221,14 @@ function leave(el: Element, done: () => void) {
   margin-left: auto;
   width: 16px;
   height: 18px;
-  transition: opacity 0.3s ease;
+  margin-right: 8px;
 }
 
 .sub-menu ul {
   padding: 0 0 0 32px;
   margin-top: 20px;
   background-color: #5182F8;
+  overflow: hidden;
 }
 
 .sub-menu ul li {
@@ -226,7 +237,8 @@ function leave(el: Element, done: () => void) {
   margin-top: 20px;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s ease, border-radius 0.3s ease;
+  transition: background-color 0.25s ease, border-radius 0.25s ease;
+  cursor: pointer;
 }
 
 .sub-menu ul li:first-child {
@@ -243,7 +255,7 @@ function leave(el: Element, done: () => void) {
 }
 
 .sub-menu ul li:not(.highlighted):hover {
-  background-color: #85A7FA;
+  background-color: #749BF9;
   border-radius: 5px;
 }
 
