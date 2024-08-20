@@ -43,28 +43,28 @@ const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px
 
 const tableData = ref([
   {
-    time: 'December, 20 2024 22:00',
-    sequenceOrFasta: 'ABC.fasta',
-    pdb: '3txf.p',
-    subcellularPosition: 'cell nucleus111'
+    time: 'January, 1 2024 22:01',
+    sequenceOrFasta: 'ABC.DEF',
+    pdb: 'pdb1.pdb',
+    subcellularPosition: 'cell nucleus 1'
   },
   {
-    time: 'July, 20 2024 22:00',
-    sequenceOrFasta: 'ABC.fastaa',
-    pdb: '3tx.pd',
-    subcellularPosition: 'cell nucleus11'
+    time: 'February, 2 2024 22:02',
+    sequenceOrFasta: 'GHI.JKL',
+    pdb: 'pdb2.pdb',
+    subcellularPosition: 'cell nucleus 2'
   },
   {
-    time: 'October, 20 2024 22:00',
-    sequenceOrFasta: 'ABC.fastaaa',
-    pdb: '3txf.pdb',
-    subcellularPosition: 'cell nucleus1'
+    time: 'Wednesday, 3 2024 22:03',
+    sequenceOrFasta: 'MNO.PQR',
+    pdb: 'pdb3.pdb',
+    subcellularPosition: 'cell nucleus 3'
   },
   {
-    time: 'June, 20 2024 22:00',
-    sequenceOrFasta: 'ABC.fastaaaa',
-    pdb: '3txf.pdbb',
-    subcellularPosition: 'cell nucleus'
+    time: 'April, 4 2024 22:04',
+    sequenceOrFasta: 'STU.VWX',
+    pdb: 'pdb4.pdb',
+    subcellularPosition: 'cell nucleus 4'
   }
 ])
 </script>
