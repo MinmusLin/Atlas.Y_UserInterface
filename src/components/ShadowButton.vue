@@ -25,11 +25,9 @@ defineProps<ButtonProps>();
   background-color: #2F62D7;
   color: white;
   font-weight: bold;
-  border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: box-shadow 0.25s;
-  font-size: 25px;
 }
 
 .start-button:hover {
