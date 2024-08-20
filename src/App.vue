@@ -16,7 +16,6 @@ import Navbar from '@/components/Navbar.vue'
 <style scoped>
 .main-container {
   display: flex;
-  height: 100vh;
 }
 
 .content-container {
@@ -24,6 +23,7 @@ import Navbar from '@/components/Navbar.vue'
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .router-view-container {
@@ -32,5 +32,6 @@ import Navbar from '@/components/Navbar.vue'
   border: 1px solid black;
   padding: 20px;
   box-sizing: border-box;
+  margin: auto 0;
 }
 </style>
