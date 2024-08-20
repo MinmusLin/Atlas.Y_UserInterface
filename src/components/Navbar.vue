@@ -226,9 +226,9 @@ function rotateStyle(index: number) {
 
 .sub-menu ul {
   padding: 0 0 0 32px;
-  margin-top: 20px;
   background-color: #5182F8;
   overflow: hidden;
+  transition: margin-top 0.25s ease;
 }
 
 .sub-menu ul li {
@@ -239,10 +239,6 @@ function rotateStyle(index: number) {
   align-items: center;
   transition: background-color 0.25s ease, border-radius 0.25s ease;
   cursor: pointer;
-}
-
-.sub-menu ul li:first-child {
-  margin-top: 0;
 }
 
 .sub-menu ul li:last-child {
