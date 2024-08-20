@@ -1,8 +1,8 @@
 <template>
   <nav class='menu' :class="{ 'collapsed': isCollapsed }" @mouseenter='isCollapsed=false' @mouseleave='collapseMenu'>
-    <div>
-      <img v-if='isCollapsed' src='@/assets/Logos/LightIcon.png' class='nav-icon' alt='LightIcon'>
-      <img v-else src='@/assets/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
+    <div class='logo-container'>
+      <img src='@/assets/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle'>
+      <img src='@/assets/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
     </div>
     <ul>
       <li class='sub-menu' v-for='menu in menus' :key='menu.id'>
@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, watch} from 'vue'
+import {computed, ref, watch} from 'vue'
 import {useRouter} from 'vue-router'
 import {PriceTag, Orange, Document, User, ChatDotSquare, ArrowUpBold} from '@element-plus/icons-vue'
 
@@ -159,6 +159,11 @@ function rotateStyle(index: number) {
     transition: 'transform 0.25s ease'
   }
 }
+
+const iconStyle = computed(() => ({
+  transform: isCollapsed.value ? 'translateX(0)' : 'translateX(166px)',
+  transition: 'transform 0.25s ease'
+}))
 </script>
 
 <style scoped>
@@ -169,12 +174,14 @@ function rotateStyle(index: number) {
   transition: width 0.25s ease;
   overflow: hidden;
   user-select: none;
+  position: relative;
 }
 
 .nav-logo {
-  height: auto;
-  width: 196px;
+  height: 54px;
+  width: auto;
   margin: 35px 26px -15px 28px;
+  position: absolute;
 }
 
 .nav-icon {
@@ -183,6 +190,8 @@ function rotateStyle(index: number) {
   margin-top: 36px;
   margin-bottom: -16px;
   margin-left: 14px;
+  position: absolute;
+  transition: transform 0.25s ease;
 }
 
 .icon-size {
@@ -225,7 +234,7 @@ function rotateStyle(index: number) {
 }
 
 .sub-menu ul {
-  padding: 0 0 0 32px;
+  padding: 0 0 0 26px;
   background-color: #5182F8;
   overflow: hidden;
   transition: margin-top 0.25s ease;
@@ -257,5 +266,10 @@ function rotateStyle(index: number) {
 
 .menu.collapsed {
   width: 85px;
+}
+
+.logo-container {
+  position: relative;
+  height: 80px;
 }
 </style>
