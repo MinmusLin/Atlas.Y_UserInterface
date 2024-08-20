@@ -1,5 +1,9 @@
-body {
-    font-family: 'Inter', sans-serif;
+html, body {
     margin: 0;
     padding: 0;
+    min-width: 1400px;
+    min-height: 800px;
+    overflow-x: auto;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
