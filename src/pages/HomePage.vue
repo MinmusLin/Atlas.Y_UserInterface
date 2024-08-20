@@ -4,7 +4,7 @@
          alt='DefaultLogo'>
     <img src='@/assets/Logos/Title.png' style='width: 815px; margin-bottom: 34px' alt='Title'>
 
-    <ShadowButton width='875px' height='60px' style='margin-bottom: 50px'
+    <ShadowButton width='875px' height='60px' style='margin-bottom: 10px'
                   @click="router.push('/basic-designer')">
       <p style='font-size: 24px; margin-right: 14px'>START</p>
       <img src='@/assets/Icons/ArrowRight.png' alt='ArrowRight' style='filter: invert(100%); width: 16px'>
@@ -19,7 +19,7 @@
               size='large'
               table-layout='auto'>
       <el-table-column width="20px">
-        <el-icon>
+        <el-icon style='transform: translateY(2px)'>
           <Clock/>
         </el-icon>
       </el-table-column>
@@ -39,7 +39,7 @@ import {useRouter} from 'vue-router'
 
 const router = useRouter()
 const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px'})
-const cellStyle = () => ({textAlign: 'center', fontSize: '16px', padding: '16px'})
+const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px'})
 
 const tableData = ref([
   {
