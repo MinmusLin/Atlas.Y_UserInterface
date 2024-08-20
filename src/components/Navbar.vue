@@ -2,8 +2,11 @@
   <nav class='menu' :class="{ 'collapsed': isCollapsed }" @mouseenter='isCollapsed=false' @mouseleave='collapseMenu'>
     <div class='logo-container'>
       <img src='@/assets/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle'>
-      <img src='@/assets/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
+      <transition name='fade'>
+        <img v-if='!isCollapsed' src='@/assets/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
+      </transition>
     </div>
+
     <ul>
       <li class='sub-menu' v-for='menu in menus' :key='menu.id'>
         <div class='menu-title' :class="{ 'highlighted': isHighlighted(menu.id) }" @click='toggleSubMenu(menu.id)'>
@@ -13,6 +16,7 @@
             <ArrowUpBold :style='rotateStyle(menu.id)'/>
           </span>
         </div>
+
         <transition name='slide' @enter='enter' @after-enter='afterEnter' @leave='leave'>
           <ul v-show='isActive(menu.id) && !isCollapsed' ref='subMenu'>
             <li v-for='item in menu.items'
@@ -271,5 +275,20 @@ const iconStyle = computed(() => ({
 .logo-container {
   position: relative;
   height: 80px;
+}
+
+/* noinspection CssUnusedSymbol */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+/* noinspection CssUnusedSymbol */
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+/* noinspection CssUnusedSymbol */
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
 }
 </style>
