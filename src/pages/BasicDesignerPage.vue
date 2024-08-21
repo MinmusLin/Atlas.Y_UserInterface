@@ -112,7 +112,7 @@
     </div>
   </div>
 
-  <Dialog v-model='showProteinSequenceDialog' width='200px'>
+  <Dialog v-model='showProteinSequenceDialog'>
     45456
   </Dialog>
 </template>
