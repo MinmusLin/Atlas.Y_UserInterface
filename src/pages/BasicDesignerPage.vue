@@ -83,8 +83,8 @@ const showProteinSequenceDialog = ref(false)
 const showPDBDialog = ref(false)
 const mechanicalProperties = ref(true)
 const solubility = ref(true)
-const currentVideo = ref(NLS_Basic)
 const selectedIndex = ref<number | null>(null)
+const currentVideo = ref('')
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
