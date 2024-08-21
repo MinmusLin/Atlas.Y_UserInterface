@@ -14,7 +14,7 @@
 <script setup lang='ts'>
 import {ref, defineProps} from 'vue'
 
-const isHover = ref(true)
+const isHover = ref(false)
 const props = defineProps({
   size: {
     type: Number,
