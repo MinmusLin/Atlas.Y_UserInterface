@@ -177,7 +177,6 @@ const iconStyle = computed(() => ({
   color: white;
   transition: width 0.25s ease;
   overflow: hidden;
-  user-select: none;
   position: relative;
 }
 
