@@ -113,7 +113,8 @@
   </div>
 
   <Dialog v-model='showProteinSequenceDialog'>
-    45456
+    <h1>Upload protein sequence</h1>
+    <p>Copy and paste it into the Text Box or upload the Fasta file.</p>
   </Dialog>
 </template>
 

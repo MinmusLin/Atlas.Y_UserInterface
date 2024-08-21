@@ -29,7 +29,6 @@ import Navbar from '@/components/Navbar.vue'
 .router-view-container {
   width: 1190px;
   height: 800px;
-  border: 1px solid black;
   padding: 20px;
   box-sizing: border-box;
   margin: auto 0;
