@@ -48,6 +48,7 @@ const props = defineProps({
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
   transition: opacity 0.25s ease-in-out;
   padding: 16px;
+  color: #898E91;
 }
 
 /* noinspection CssUnusedSymbol */
