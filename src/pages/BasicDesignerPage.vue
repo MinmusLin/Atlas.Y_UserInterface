@@ -149,7 +149,7 @@ const items = ref([
   {name: 'PTS', basic: NLS_Basic, initial: NLS_Initial}
 ])
 
-const changeVideo = (initial: string, basic: string, index: number) => {
+const changeVideo = (initial, basic, index) => {
   if (index == selectedIndex.value) {
     return
   }
