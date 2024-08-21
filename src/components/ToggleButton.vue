@@ -149,6 +149,7 @@ const rightBoxStyle = computed<CSSProperties>(() => ({
 
 const leftLabelStyle = computed<CSSProperties>(() => ({
   fontSize: props.fontSize,
+  fontWeight: '500',
   color: isOnRight.value ? '#5182F8' : '#FFFFFF',
   userSelect: 'none',
   transition: 'color 0.2s'
@@ -156,6 +157,7 @@ const leftLabelStyle = computed<CSSProperties>(() => ({
 
 const rightLabelStyle = computed<CSSProperties>(() => ({
   fontSize: props.fontSize,
+  fontWeight: '500',
   color: isOnRight.value ? '#FFFFFF' : '#5182F8',
   userSelect: 'none',
   transition: 'color 0.2s'
