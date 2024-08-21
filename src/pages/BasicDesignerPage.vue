@@ -20,7 +20,7 @@
 
       <p>
         Select Positioning Demand
-        <v-icon :size='22' color='#2F3235'>mdi-information-variant-circle</v-icon>
+        <v-icon :size='20' color='#2F3235'>mdi-information-variant-circle</v-icon>
       </p>
       <div class='positioning-info'>
         <div class='videos'>
@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <ShadowButton width='100%' height='50px' style='margin-top: 23px'>
+      <ShadowButton width='100%' height='50px' style='margin-top: 23px; font-size: 18px'>
         Start Matching
       </ShadowButton>
     </div>
