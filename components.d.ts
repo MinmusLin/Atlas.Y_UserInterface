@@ -14,5 +14,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ShadowButton: typeof import('./src/components/ShadowButton.vue')['default']
+    ToggleButton: typeof import('./src/components/ToggleButton.vue')['default']
   }
 }
