@@ -30,8 +30,8 @@
                            height='40px'
                            width='304px'
                            :text='item.name'
-                           :active='selectedIndex==index'
-                           @click='selectedIndex=index'/>
+                           @click='changeImage(item.initialAnimation, item.basicAnimation, index, item.gifDuration)'
+                           :active='selectedIndex==index'/>
           </div>
         </div>
       </div>
@@ -104,11 +104,14 @@ const items = ref([
 ])
 
 const changeImage = (initialAnimation: string, basicAnimation: string, index: number, gifDuration: number) => {
+  if (index == selectedIndex.value) {
+    return
+  }
+  selectedIndex.value = index
   currentImage.value = initialAnimation
   setTimeout(() => {
     currentImage.value = basicAnimation
   }, gifDuration)
-  selectedIndex.value = index
 }
 </script>
 
