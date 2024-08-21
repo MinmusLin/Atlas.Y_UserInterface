@@ -24,9 +24,13 @@
       </p>
       <div class='positioning-info'>
         <div class='videos'>
-          <video ref='videoElement' autoplay muted playsinline loop>
-            <source :src='currentVideo' type='video/mp4'>
-          </video>
+          <video ref='initialVideoElement'
+                 v-show='showInitialVideo'
+                 autoplay muted playsinline
+                 @ended='showInitialVideo=false'/>
+          <video ref='basicVideoElement'
+                 v-show='!showInitialVideo'
+                 autoplay muted playsinline loop/>
         </div>
         <div class='button-scroller'>
           <div class='item-buttons'>
@@ -84,8 +88,9 @@ const showPDBDialog = ref(false)
 const mechanicalProperties = ref(true)
 const solubility = ref(true)
 const selectedIndex = ref<number | null>(null)
-const currentVideo = ref('')
-const videoElement = ref<HTMLVideoElement | null>(null)
+const showInitialVideo = ref(true)
+const initialVideoElement = ref<HTMLVideoElement | null>(null)
+const basicVideoElement = ref<HTMLVideoElement | null>(null)
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
@@ -105,14 +110,9 @@ const changeVideo = (initial: string, basic: string, index: number) => {
     return
   }
   selectedIndex.value = index
-  if (videoElement.value) {
-    videoElement.value.loop = false
-    videoElement.value.src = initial
-    videoElement.value.onended = () => {
-      videoElement.value!.loop = true
-      videoElement.value!.src = basic
-    }
-  }
+  initialVideoElement.value!.src = initial
+  basicVideoElement.value!.src = basic
+  showInitialVideo.value = true
 }
 </script>
 
@@ -148,6 +148,8 @@ p {
 .videos {
   width: 640px;
   height: 320px;
+  background: url('@/assets/PositioningDemand/Default.png');
+  background-size: cover;
 }
 
 .videos video {
