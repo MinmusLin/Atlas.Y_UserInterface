@@ -123,10 +123,28 @@ import {ref} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
-import Dialog from '@/components/Dialog.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
-import NLS_Initial from '@/assets/PositioningDemand/NLS_Initial.mp4'
+import Dialog from '@/components/Dialog.vue'
 import NLS_Basic from '@/assets/PositioningDemand/NLS_Basic.mp4'
+import NES_Basic from '@/assets/PositioningDemand/NES_Basic.mp4'
+import SP_Basic from '@/assets/PositioningDemand/SP_Basic.mp4'
+import SP_TM_Basic from '@/assets/PositioningDemand/SP_TM_Basic.mp4'
+import SP_GPI_Basic from '@/assets/PositioningDemand/SP_GPI_Basic.mp4'
+import GPI_Basic from '@/assets/PositioningDemand/GPI_Basic.mp4'
+import TM_Basic from '@/assets/PositioningDemand/TM_Basic.mp4'
+import LD_Basic from '@/assets/PositioningDemand/LD_Basic.mp4'
+import MT_Basic from '@/assets/PositioningDemand/MT_Basic.mp4'
+import PTS_Basic from '@/assets/PositioningDemand/PTS_Basic.mp4'
+import NLS_Initial from '@/assets/PositioningDemand/NLS_Initial.mp4'
+import NES_Initial from '@/assets/PositioningDemand/NES_Initial.mp4'
+import SP_Initial from '@/assets/PositioningDemand/SP_Initial.mp4'
+import SP_TM_Initial from '@/assets/PositioningDemand/SP_TM_Initial.mp4'
+import SP_GPI_Initial from '@/assets/PositioningDemand/SP_GPI_Initial.mp4'
+import GPI_Initial from '@/assets/PositioningDemand/GPI_Initial.mp4'
+import TM_Initial from '@/assets/PositioningDemand/TM_Initial.mp4'
+import LD_Initial from '@/assets/PositioningDemand/LD_Initial.mp4'
+import MT_Initial from '@/assets/PositioningDemand/MT_Initial.mp4'
+import PTS_Initial from '@/assets/PositioningDemand/PTS_Initial.mp4'
 
 const showProteinSequenceDialog = ref(false)
 const showPDBDialog = ref(false)
@@ -139,15 +157,15 @@ const basicVideoElement = ref<HTMLVideoElement | null>(null)
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'NES', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'SP', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'SP_TM', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'SP_GPI', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'GPI', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'TM', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'LD', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'MT', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'PTS', basic: NLS_Basic, initial: NLS_Initial}
+  {name: 'NES', basic: NES_Basic, initial: NES_Initial},
+  {name: 'SP', basic: SP_Basic, initial: SP_Initial},
+  {name: 'SP_TM', basic: SP_TM_Basic, initial: SP_TM_Initial},
+  {name: 'SP_GPI', basic: SP_GPI_Basic, initial: SP_GPI_Initial},
+  {name: 'GPI', basic: GPI_Basic, initial: GPI_Initial},
+  {name: 'TM', basic: TM_Basic, initial: TM_Initial},
+  {name: 'LD', basic: LD_Basic, initial: LD_Initial},
+  {name: 'MT', basic: MT_Basic, initial: MT_Initial},
+  {name: 'PTS', basic: PTS_Basic, initial: PTS_Initial}
 ])
 
 const changeVideo = (initial, basic, index) => {
