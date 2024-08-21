@@ -20,7 +20,50 @@
 
       <p>
         Select Positioning Demand
-        <v-icon :size='20' color='#2F3235'>mdi-information-variant-circle</v-icon>
+        <InfoTooltip width='444px' height='244px' style='font-size: 14px'>
+          <table class='positioning-demand-table'>
+            <tr>
+              <td>NLS</td>
+              <td>Cytoplasm -> Nucleus</td>
+            </tr>
+            <tr>
+              <td>NES</td>
+              <td>Nucleus -> Cytoplasm</td>
+            </tr>
+            <tr>
+              <td>SP</td>
+              <td>Cytoplasm -> Endoplasmic Reticulum Lumen</td>
+            </tr>
+            <tr>
+              <td>SP_TM</td>
+              <td>Anchored on the Endoplasmic Reticulum Membrane</td>
+            </tr>
+            <tr>
+              <td>SP_GPI</td>
+              <td>Cytoplasm -> Endoplasmic Reticulum Lumen -> Cytoplasm -> Cell Surface</td>
+            </tr>
+            <tr>
+              <td>GPI</td>
+              <td>Cell Surface</td>
+            </tr>
+            <tr>
+              <td>TM</td>
+              <td>Embedded in Cell Membrane</td>
+            </tr>
+            <tr>
+              <td>PTS</td>
+              <td>Peroxisome</td>
+            </tr>
+            <tr>
+              <td>MT</td>
+              <td>Mitochondria</td>
+            </tr>
+            <tr>
+              <td>LD</td>
+              <td>Lipid Droplets</td>
+            </tr>
+          </table>
+        </InfoTooltip>
       </p>
       <div class='positioning-info'>
         <div class='videos'>
@@ -78,8 +121,9 @@
 import {ref} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
-import Dialog from '@/components/Dialog.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
+import Dialog from '@/components/Dialog.vue'
+import InfoTooltip from '@/components/InfoTooltip.vue'
 import NLS_Initial from '@/assets/PositioningDemand/NLS_Initial.mp4'
 import NLS_Basic from '@/assets/PositioningDemand/NLS_Basic.mp4'
 
@@ -204,6 +248,25 @@ p {
 
 .linker-info p {
   margin-top: 0;
+  font-weight: 400;
+}
+
+.positioning-demand-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: -4px;
+}
+
+.positioning-demand-table td {
+  vertical-align: top;
+}
+
+.positioning-demand-table td:first-child {
+  font-weight: 600;
+  width: 65px;
+}
+
+.positioning-demand-table td:last-child {
   font-weight: 400;
 }
 </style>
