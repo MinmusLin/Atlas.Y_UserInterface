@@ -24,7 +24,7 @@
       </p>
       <div class='positioning-info'>
         <div class='videos'>
-          <video autoplay muted playsinline>
+          <video ref='videoElement' autoplay muted playsinline loop>
             <source :src='currentVideo' type='video/mp4'>
           </video>
         </div>
@@ -65,7 +65,7 @@
     </div>
   </div>
 
-  <Dialog v-model='showProteinSequenceDialog' width="200px">
+  <Dialog v-model='showProteinSequenceDialog' width='200px'>
     45456
   </Dialog>
 </template>
@@ -74,8 +74,8 @@
 import {ref} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
-import Dialog from "@/components/Dialog.vue";
-import ShadowButton from "@/components/ShadowButton.vue";
+import Dialog from '@/components/Dialog.vue'
+import ShadowButton from '@/components/ShadowButton.vue'
 import NLS_Initial from '@/assets/PositioningDemand/NLS_Initial.mp4'
 import NLS_Basic from '@/assets/PositioningDemand/NLS_Basic.mp4'
 
@@ -85,6 +85,7 @@ const mechanicalProperties = ref(true)
 const solubility = ref(true)
 const selectedIndex = ref<number | null>(null)
 const currentVideo = ref('')
+const videoElement = ref<HTMLVideoElement | null>(null)
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
@@ -104,8 +105,20 @@ const changeVideo = (initial: string, basic: string, index: number) => {
     return
   }
   selectedIndex.value = index
-  currentVideo.value = initial
-  currentVideo.value = basic
+  if (videoElement.value) {
+    currentVideo.value = initial
+    videoElement.value.loop = false
+    videoElement.value.src = initial
+    videoElement.value.load()
+    videoElement.value.play()
+    videoElement.value.onended = () => {
+      currentVideo.value = basic
+      videoElement.value!.loop = true
+      videoElement.value!.src = basic
+      videoElement.value!.load()
+      videoElement.value!.play()
+    }
+  }
 }
 </script>
 
