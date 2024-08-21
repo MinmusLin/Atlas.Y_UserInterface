@@ -53,7 +53,7 @@ const props = defineProps({
 
 /* noinspection CssUnusedSymbol */
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* noinspection CssUnusedSymbol */
