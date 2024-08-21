@@ -106,17 +106,11 @@ const changeVideo = (initial: string, basic: string, index: number) => {
   }
   selectedIndex.value = index
   if (videoElement.value) {
-    currentVideo.value = initial
     videoElement.value.loop = false
     videoElement.value.src = initial
-    videoElement.value.load()
-    videoElement.value.play()
     videoElement.value.onended = () => {
-      currentVideo.value = basic
       videoElement.value!.loop = true
       videoElement.value!.src = basic
-      videoElement.value!.load()
-      videoElement.value!.play()
     }
   }
 }
