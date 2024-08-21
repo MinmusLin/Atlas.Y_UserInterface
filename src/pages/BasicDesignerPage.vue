@@ -18,10 +18,15 @@
         </div>
       </div>
 
-      <p>Select Positioning Demand</p>
+      <p>
+        Select Positioning Demand
+        <v-icon :size='22' color='#2F3235'>mdi-information-variant-circle</v-icon>
+      </p>
       <div class='positioning-info'>
-        <div class='image'>
-          <img :src='currentImage' alt='Demo'>
+        <div class='videos'>
+          <video autoplay muted playsinline>
+            <source :src='currentVideo' type='video/mp4'>
+          </video>
         </div>
         <div class='button-scroller'>
           <div class='item-buttons'>
@@ -30,7 +35,7 @@
                            height='40px'
                            width='304px'
                            :text='item.name'
-                           @click='changeImage(item.initialAnimation, item.basicAnimation, index, item.gifDuration)'
+                           @click='changeVideo(item.initial, item.basic, index)'
                            :active='selectedIndex==index'/>
           </div>
         </div>
@@ -53,65 +58,54 @@
                         width='488px'/>
         </div>
       </div>
+
+      <ShadowButton width='100%' height='50px' style='margin-top: 23px'>
+        Start Matching
+      </ShadowButton>
     </div>
   </div>
+
+  <Dialog v-model='showProteinSequenceDialog' width="200px">
+    45456
+  </Dialog>
 </template>
 
 <script setup lang='ts'>
 import {ref} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
-import defaultImage from '@/assets/PositioningDemand/Default.png'
-import initialNLSImage from '@/assets/PositioningDemand/NLS_initial.gif'
-import initialNESImage from '@/assets/PositioningDemand/NES_initial.gif'
-import initialSPImage from '@/assets/PositioningDemand/SP_initial.gif'
-import initialSPTMImage from '@/assets/PositioningDemand/SP_TM_initial.gif'
-import initialSPGPIImage from '@/assets/PositioningDemand/SP_GPI_initial.gif'
-import initialGPIImage from '@/assets/PositioningDemand/GPI_initial.gif'
-import initialTMImage from '@/assets/PositioningDemand/TM_initial.gif'
-import initialLDImage from '@/assets/PositioningDemand/LD_initial.gif'
-import initialMTImage from '@/assets/PositioningDemand/MT_initial.gif'
-import initialPTSImage from '@/assets/PositioningDemand/PTS_initial.gif'
-import basicNLSImage from '@/assets/PositioningDemand/NLS_basic.gif'
-import basicNESImage from '@/assets/PositioningDemand/NES_basic.gif'
-import basicSPImage from '@/assets/PositioningDemand/SP_basic.gif'
-import basicSPTMImage from '@/assets/PositioningDemand/SP_TM_basic.gif'
-import basicSPGPIImage from '@/assets/PositioningDemand/SP_GPI_basic.gif'
-import basicGPIImage from '@/assets/PositioningDemand/GPI_basic.gif'
-import basicTMImage from '@/assets/PositioningDemand/TM_basic.gif'
-import basicLDImage from '@/assets/PositioningDemand/LD_basic.gif'
-import basicMTImage from '@/assets/PositioningDemand/MT_basic.gif'
-import basicPTSImage from '@/assets/PositioningDemand/PTS_basic.gif'
+import Dialog from "@/components/Dialog.vue";
+import ShadowButton from "@/components/ShadowButton.vue";
+import NLS_Initial from '@/assets/PositioningDemand/NLS_Initial.mp4'
+import NLS_Basic from '@/assets/PositioningDemand/NLS_Basic.mp4'
 
 const showProteinSequenceDialog = ref(false)
 const showPDBDialog = ref(false)
 const mechanicalProperties = ref(true)
 const solubility = ref(true)
-const currentImage = ref(defaultImage)
+const currentVideo = ref(NLS_Basic)
 const selectedIndex = ref<number | null>(null)
 
 const items = ref([
-  {name: 'NLS', basicAnimation: basicNLSImage, initialAnimation: initialNLSImage, gifDuration: 360},
-  {name: 'NES', basicAnimation: basicNESImage, initialAnimation: initialNESImage, gifDuration: 360},
-  {name: 'SP', basicAnimation: basicSPImage, initialAnimation: initialSPImage, gifDuration: 360},
-  {name: 'SP_TM', basicAnimation: basicSPTMImage, initialAnimation: initialSPTMImage, gifDuration: 1000},
-  {name: 'SP_GPI', basicAnimation: basicSPGPIImage, initialAnimation: initialSPGPIImage, gifDuration: 360},
-  {name: 'GPI', basicAnimation: basicGPIImage, initialAnimation: initialGPIImage, gifDuration: 360},
-  {name: 'TM', basicAnimation: basicTMImage, initialAnimation: initialTMImage, gifDuration: 360},
-  {name: 'LD', basicAnimation: basicLDImage, initialAnimation: initialLDImage, gifDuration: 1000},
-  {name: 'MT', basicAnimation: basicMTImage, initialAnimation: initialMTImage, gifDuration: 1000},
-  {name: 'PTS', basicAnimation: basicPTSImage, initialAnimation: initialPTSImage, gifDuration: 1000}
+  {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'NES', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'SP', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'SP_TM', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'SP_GPI', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'GPI', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'TM', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'LD', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'MT', basic: NLS_Basic, initial: NLS_Initial},
+  {name: 'PTS', basic: NLS_Basic, initial: NLS_Initial}
 ])
 
-const changeImage = (initialAnimation: string, basicAnimation: string, index: number, gifDuration: number) => {
+const changeVideo = (initial: string, basic: string, index: number) => {
   if (index == selectedIndex.value) {
     return
   }
   selectedIndex.value = index
-  currentImage.value = initialAnimation
-  setTimeout(() => {
-    currentImage.value = basicAnimation
-  }, gifDuration)
+  currentVideo.value = initial
+  currentVideo.value = basic
 }
 </script>
 
@@ -144,12 +138,12 @@ p {
   justify-content: space-between;
 }
 
-.image {
+.videos {
   width: 640px;
   height: 320px;
 }
 
-.image img {
+.videos video {
   width: 100%;
   height: 100%;
   object-fit: cover;
