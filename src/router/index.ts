@@ -64,6 +64,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/feedback',
     component: () => import('@/pages/FeedbackPage.vue'),
     meta: {title: 'Atlas.Y - Feedback'}
+  },
+  {
+    path: '/matching-results',
+    component: () => import('@/pages/MatchingResultsPage.vue'),
+    meta: {title: 'Atlas.Y - Matching Results'}
+  },
+  {
+    path: '/stability-evaluation',
+    component: () => import('@/pages/StabilityEvaluationPage.vue'),
+    meta: {title: 'Atlas.Y - Stability EValuation'}
   }
 ]
 
