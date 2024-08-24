@@ -26,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
+    path: '/function-evaluation',
+    component: () => import('@/pages/FunctionEvaluationPage.vue'),
+    meta: {title: 'Atlas.Y - Function Evaluation'}
+  },
+  {
     path: '/dynamic-designer',
     component: () => import('@/pages/DynamicDesignerPage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
