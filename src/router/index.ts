@@ -31,9 +31,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
   {
-    path: '/introduction',
-    component: () => import('@/pages/IntroductionPage.vue'),
-    meta: {title: 'Atlas.Y - Introduction'}
+    path: '/membership-plan',
+    component: () => import('@/pages/MembershipPlanPage.vue'),
+    meta: {title: 'Atlas.Y - Membership Plan'}
+  },
+  {
+    path: '/algorithm-store',
+    component: () => import('@/pages/AlgorithmStorePage.vue'),
+    meta: {title: 'Atlas.Y - Algorithm Store'}
   },
   {
     path: '/user-guide',
@@ -66,9 +71,19 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Feedback'}
   },
   {
-    path: '/function-evaluation-local',
-    component: () => import('@/pages/FundtionEvaluationLocalPage.vue'),
-    meta: {title: 'Atlas.Y - Function Evaluation'}
+    path: '/basic-designer/matching-results',
+    component: () => import('@/pages/BasicMatchingResultsPage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
+  },
+  {
+    path: '/basic-designer/stability-evaluation',
+    component: () => import('@/pages/BasicStabilityEvaluationPage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
+  },
+  {
+    path: '/basic-designer/function-evaluation-local',
+    component: () => import('@/pages/BasicFunctionEvaluationLocalPage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
   }
 ]
 

@@ -106,20 +106,55 @@
         </div>
       </div>
 
-      <ShadowButton width='100%' height='50px' style='margin-top: 23px; font-size: 18px'>
+      <ShadowButton width='100%'
+                    height='50px'
+                    style='margin-top: 23px; font-size: 18px'
+                    @click="router.push('/basic-designer/matching-results')">
         Start Matching
       </ShadowButton>
     </div>
   </div>
 
-  <Dialog v-model='showProteinSequenceDialog'>
-    <h1>Upload protein sequence</h1>
-    <p>Copy and paste it into the Text Box or upload the Fasta file.</p>
+  <Dialog v-model='showProteinSequenceDialog' style='padding: 16px 40px 36px'>
+    <p style='margin: 0; font-size: 16px'>Upload protein sequence</p>
+    <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
+      Copy and paste it into the Text Box or upload the Fasta file.
+    </p>
+    <v-file-input label='Fasta file'
+                  variant='outlined'
+                  prepend-icon=''
+                  color='#5182F8'
+                  base-color='#5182F8'
+                  style='margin-top:16px'
+                  show-size/>
+    <v-textarea placeholder='Text here'
+                variant='outlined'
+                color='#5182F8'
+                base-color='#5182F8'
+                rows='1'
+                auto-grow/>
+    <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
+  </Dialog>
+
+  <Dialog v-model='showPDBDialog' style='padding: 16px 40px 36px'>
+    <p style='margin: 0; font-size: 16px'>Upload PDB</p>
+    <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
+      Upload the PDB file.
+    </p>
+    <v-file-input label='PDB file'
+                  variant='outlined'
+                  prepend-icon=''
+                  color='#5182F8'
+                  base-color='#5182F8'
+                  style='margin-top:16px'
+                  show-size/>
+    <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
   </Dialog>
 </template>
 
 <script setup lang='ts'>
 import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
@@ -154,6 +189,7 @@ const selectedIndex = ref<number | null>(null)
 const showInitialVideo = ref(true)
 const initialVideoElement = ref<HTMLVideoElement | null>(null)
 const basicVideoElement = ref<HTMLVideoElement | null>(null)
+const router = useRouter()
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
