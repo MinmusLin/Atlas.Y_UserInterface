@@ -36,7 +36,7 @@
 <script setup lang='ts'>
 import {computed, ref, watch} from 'vue'
 import {useRouter} from 'vue-router'
-import {PriceTag, Orange, Document, User, ChatDotSquare, ArrowUpBold} from '@element-plus/icons-vue'
+import {PriceTag, Document, User, ChatDotSquare, ArrowUpBold, ShoppingBag} from '@element-plus/icons-vue'
 
 const activeIndices = ref<Set<number>>(new Set())
 const isCollapsed = ref<boolean>(true)
@@ -55,10 +55,11 @@ const menus = ref([
   },
   {
     id: 2,
-    title: 'Overview',
-    icon: Orange,
+    title: 'Store',
+    icon: ShoppingBag,
     items: [
-      {name: 'Introduction', route: '/introduction'}
+      {name: 'Membership Plan', route: '/membership-plan'},
+      {name: 'Algorithm Store', route: '/algorithm-store'}
     ]
   },
   {
