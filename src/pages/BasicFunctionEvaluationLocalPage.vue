@@ -7,10 +7,10 @@
           <p class='secondary'>Local CAD Score</p>
         </div>
         <div class='subtitle'>
-          <span>
+          <span style='margin-right: 50px'>
             <strong>Fusion Protein: </strong>FP_0001
           </span>
-          <span>
+          <span style='margin-right: 50px'>
             <strong>Signal: </strong>SG_0001
           </span>
           <span>
@@ -38,7 +38,7 @@
 
           <div class='score-a-a-section'>
             <p>CAD A-A Score
-              <InfoTooltip width='310px' height='86px'>
+              <InfoTooltip width='310px' height='90px'>
                 <div>
                   <p class='info-title'>CAD A-A Score:</p>
                   <p class='info-content'>
@@ -53,7 +53,7 @@
 
           <div class='score-a-s-section'>
             <p>CAD A-S Score
-              <InfoTooltip width='310px' height='98px'>
+              <InfoTooltip width='324px' height='90px'>
                 <div>
                   <p class='info-title'>CAD A-S Score:</p>
                   <p class='info-content'>
@@ -140,7 +140,6 @@ p {
 
 .subtitle {
   display: flex;
-  gap: 24px;
   height: 21px;
   margin-bottom: 5px;
   font-weight: 400;
