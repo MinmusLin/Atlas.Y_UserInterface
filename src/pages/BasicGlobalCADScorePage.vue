@@ -1,77 +1,72 @@
 <template>
   <div class='page-container'>
     <div class='inner-layer'>
-
-      <div class="title-section">
-        <div class="title">
-          <p class="primary">
-            Function Evaluation
-          </p>
-          <p class="secondary">
-            Global CAD Score
-          </p>
+      <div class='title-section'>
+        <div class='title'>
+          <p class='primary'>Function Evaluation</p>
+          <p class='secondary'>Global CAD Score</p>
         </div>
-        <div class="subtitle">
-                <span v-for="(item, index) in items" :key="index">
-                    <strong>{{ item.label }}: </strong>{{ item.value }}
-                </span>
+
+        <div class='subtitle'>
+          <span style='margin-right: 50px'>
+            <strong>Fusion Protein: </strong>FP_0001
+          </span>
+          <span style='margin-right: 50px'>
+            <strong>Signal: </strong>SG_0001
+          </span>
+          <span>
+            <strong>Linker: </strong>LK_0001
+          </span>
         </div>
       </div>
 
-      <div class="content-section">
-        <div class="left-section">
+      <div class='content-section'>
+        <div class='left-section'>
           <p>Interactive 3D Structure</p>
-          <div class="threeD-picture">
-
+          <div class='threeD-picture'>
           </div>
         </div>
 
-        <div class="right-section">
-          <div class="score-section">
+        <div class='right-section'>
+          <div class='score-section'>
             <p>Global CAD Score</p>
-            <p class="score">{{ score }}</p>
+            <p class='score'>{{ score }}</p>
             <div class='score-info'>
-              <div class="info-title">
-                <v-icon :size='14' color='#8F9396'>
-                  mdi-information-variant-circle
-                </v-icon>
+              <div class='info-title'>
+                <v-icon :size='14' color='#8F9396'>mdi-information-variant-circle</v-icon>
                 <p>Scoring Instructions</p>
               </div>
-              <p>
-                CAD-score values range from 0 to 1, where values close to 1 indicate that the fusion protein is highly similar to the original protein and retains its function intact,while values close to 0 indicate that the structure is more different and the function is significantly changed.
+              <p style='text-align: justify'>
+                CAD-score values range from 0 to 1, where values close to 1 indicate that the fusion protein is highly
+                similar to the original protein and retains its function intact,while values close to 0 indicate that
+                the structure is more different and the function is significantly changed.
               </p>
             </div>
           </div>
 
-          <div class="evaluation-section">
+          <div class='evaluation-section'>
             <p>Evaluation</p>
-            <p :style="{ color: evaluationColor }" class="evaluation-comment">{{ evaluation }}</p>
-            <p class="evaluation-description">{{ evaluationDescription }}</p>
+            <p :style='{ color: evaluationColor }' class='evaluation-comment'>{{ evaluation }}</p>
+            <p class='evaluation-description'>{{ evaluationDescription }}</p>
           </div>
+
           <DefaultButton width='488px'
                          height='40px'
                          text='Focus on Specific Sites'
-                         @click=''
                          :active='true'/>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script setup lang='ts'>
-import {ref,computed} from 'vue'
-// 路径相关逻辑
-const items = ref([
-  { label: "Fusion Protein", value: "FP_0001" },
-  { label: "Signal", value: "SG_0001" },
-  { label: "Linker", value: "LK_0001" },
-])
-// CAD Score 相关逻辑
+import {ref, computed} from 'vue'
+import DefaultButton from '@/components/DefaultButton.vue'
+
 const cadScore = ref(0.0)
-cadScore.value = 0.9329434924
 const score = computed(() => cadScore.value)
+
 const evaluation = computed(() => {
   if (cadScore.value > 0.8) {
     return 'High CAD Score'
@@ -81,6 +76,7 @@ const evaluation = computed(() => {
     return 'Low CAD Score'
   }
 })
+
 const evaluationColor = computed(() => {
   if (cadScore.value > 0.8) {
     return '#13986B'
@@ -90,6 +86,7 @@ const evaluationColor = computed(() => {
     return '#DA2420'
   }
 })
+
 const evaluationDescription = computed(() => {
   if (cadScore.value > 0.8) {
     return 'The structural integrity of your protein suggests that its original function is well maintained.'
@@ -99,6 +96,8 @@ const evaluationDescription = computed(() => {
     return 'Significant structural differences suggest that the protein\'s original function may be compromised.'
   }
 })
+
+cadScore.value = 0.9329434924
 </script>
 
 <style scoped>
@@ -108,6 +107,7 @@ const evaluationDescription = computed(() => {
   justify-content: center;
   align-items: center;
 }
+
 .inner-layer {
   margin-top: 100px;
   margin-bottom: 110px;
@@ -117,26 +117,29 @@ const evaluationDescription = computed(() => {
 p {
   font-size: 16px;
   font-weight: 600;
-  line-height: 19.36px;
+  line-height: 19px;
   text-align: left;
   color: #2F3235;
 }
-/* 标题 */
+
 .title-section {
   width: 1093px;
   border-bottom: solid 1px #C5C9CD;
   margin-bottom: 35px;
 }
+
 .title {
   display: flex;
   gap: 24px;
   height: 48px;
   margin-bottom: 11px;
 }
+
 .primary {
   font-size: 40px;
-  line-height: 48.41px;
+  line-height: 48px;
 }
+
 .secondary {
   font-size: 24px;
   color: #16396E;
@@ -144,62 +147,70 @@ p {
   align-self: flex-end;
   margin-bottom: 4px;
 }
+
 .subtitle {
   display: flex;
-  gap: 24px;
   height: 21px;
   margin-bottom: 5px;
   font-weight: 400;
-  line-height: 20.8px;
+  line-height: 21px;
 }
+
 .subtitle strong {
   font-weight: 600;
   color: #16396E;
 }
-/* 内容 */
+
 .content-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 470px;
 }
-/* 3D部分 */
+
 .left-section {
   width: 638px;
 }
+
 .threeD-picture {
   margin-top: 4px;
   background-color: #D9D9D9;
   height: 447px;
   width: 638px;
 }
+
 .right-section {
   width: 488px;
 }
-/* 打分部分 */
+
 .score-section {
   margin-bottom: 54px;
 }
+
 .score {
   font-size: 40px;
-  line-height: 48.41px;
-  color:#5182F8;
+  line-height: 48px;
+  color: #5182F8;
   margin-top: 4px;
   margin-bottom: 9px;
 }
+
 .score-info {
-  height: 104px;
+  height: 107px;
   border: solid 2px #C5C9CD;
   border-radius: 10px;
   color: #8F9396;
   padding-left: 13px;
+  padding-right: 13px;
 }
+
 .score-info p {
   font-size: 12px;
   font-weight: 400;
-  line-height: 15.6px;
+  line-height: 16px;
   color: #8F9396;
 }
+
 .info-title {
   height: 18px;
   display: flex;
@@ -208,25 +219,28 @@ p {
   margin-top: 8px;
   margin-bottom: 4px;
 }
+
 .info-title p {
   font-size: 14px;
   font-weight: 600;
-  line-height: 18.2px;
+  line-height: 18px;
 }
-/* 评价部分 */
+
 .evaluation-section {
   margin-bottom: 88px;
 }
+
 .evaluation-comment {
   font-size: 32px;
-  line-height: 38.73px;
+  line-height: 39px;
   margin-top: 4px;
   margin-bottom: 4px;
 }
+
 .evaluation-description {
   font-size: 14px;
   font-weight: 400;
-  line-height: 18.2px;
-  color: #000;
+  line-height: 18px;
+  color: #2F3235;
 }
 </style>
