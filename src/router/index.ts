@@ -81,13 +81,13 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/function-evaluation-global',
-    component: () => import('@/pages/BasicFunctionEvaluationGlobalPage.vue'),
+    path: '/basic-designer/global-cad-score',
+    component: () => import('@/pages/BasicGlobalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/function-evaluation-local',
-    component: () => import('@/pages/BasicFunctionEvaluationLocalPage.vue'),
+    path: '/basic-designer/local-cad-score',
+    component: () => import('@/pages/BasicLocalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   }
 ]

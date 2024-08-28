@@ -21,7 +21,7 @@
       <div class="content-section">
         <div class="left-section">
           <p>Interactive 3D Structure</p>
-          <div class="tD-picture">
+          <div class="threeD-picture">
 
           </div>
         </div>
@@ -167,7 +167,7 @@ p {
 .left-section {
   width: 638px;
 }
-.tD-picture {
+.threeD-picture {
   margin-top: 4px;
   background-color: #D9D9D9;
   height: 447px;
