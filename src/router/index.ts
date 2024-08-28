@@ -92,12 +92,12 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/basic-designer/result-details',
-    component: () => import('@/pages/BasicResultDetailsPages.vue'),
+    component: () => import('@/pages/BasicResultDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/variant-details',
-    component: () => import('@/pages/BasicVariantDetailsPages.vue'),
+    component: () => import('@/pages/BasicVariantDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
 ]
