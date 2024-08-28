@@ -29,8 +29,7 @@
     </el-table>
 
     <v-dialog v-model='showDialog' width='85%' min-width='1270px' persistent transition='dialog-bottom-transition'>
-      <v-card
-        style='border-radius: 10px; padding-top: 38px; padding-bottom: 30px; transform: translateY(calc(50vh - 130px))'>
+      <v-card class='cookies-dialog'>
         <v-card-text class='d-flex align-center'>
           <span class='cookie-icon'>
             <v-icon size='40px' color='#AACAF9'>mdi-cookie</v-icon>
@@ -204,5 +203,12 @@ const tableData = ref([
 
 .close-btn:hover {
   box-shadow: none;
+}
+
+.cookies-dialog {
+  border-radius: 10px;
+  padding-top: 38px;
+  padding-bottom: 30px;
+  transform: translateY(calc(50vh - 130px)) translateX(42px);
 }
 </style>

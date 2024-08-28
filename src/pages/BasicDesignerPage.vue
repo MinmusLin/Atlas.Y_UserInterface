@@ -115,23 +115,39 @@
     </div>
   </div>
 
-  <Dialog v-model='showProteinSequenceDialog' style='padding: 3px 40px 36px;'>
+  <Dialog v-model='showProteinSequenceDialog' style='padding: 16px 40px 36px'>
     <p style='margin: 0; font-size: 16px'>Upload protein sequence</p>
     <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
       Copy and paste it into the Text Box or upload the Fasta file.
     </p>
-    <v-file-input label='Upload Fasta file' prepend-icon=''/>
-    <v-file-input label='Upload Fasta file' variant='outlined' prepend-icon=''/>
-    <v-file-input label='Upload Fasta file' variant='underlined' prepend-icon=''/>
-    <v-file-input label='Upload Fasta file' variant='solo' prepend-icon=''/>
-    <v-file-input label='Upload Fasta file' variant='solo-filled' prepend-icon=''/>
+    <v-file-input label='Fasta file'
+                  variant='outlined'
+                  prepend-icon=''
+                  color='#5182F8'
+                  base-color='#5182F8'
+                  style='margin-top:16px'
+                  show-size/>
+    <v-textarea placeholder='Text here'
+                variant='outlined'
+                color='#5182F8'
+                base-color='#5182F8'
+                rows='1'
+                auto-grow/>
+    <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
+  </Dialog>
 
-    <v-text-field label='Text here'/>
-    <v-text-field label='Text here' variant='outlined'/>
-    <v-text-field label='Text here' variant='underlined'/>
-    <v-text-field label='Text here' variant='solo'/>
-    <v-text-field label='Text here' variant='solo-filled'/>
-
+  <Dialog v-model='showPDBDialog' style='padding: 16px 40px 36px'>
+    <p style='margin: 0; font-size: 16px'>Upload PDB</p>
+    <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
+      Upload the PDB file.
+    </p>
+    <v-file-input label='PDB file'
+                  variant='outlined'
+                  prepend-icon=''
+                  color='#5182F8'
+                  base-color='#5182F8'
+                  style='margin-top:16px'
+                  show-size/>
     <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
   </Dialog>
 </template>
