@@ -1,6 +1,6 @@
 <template>
   <div class='page-container'>
-    <p>IntroductionPage</p>
+    <p>AlgorithmStorePage</p>
   </div>
 </template>
 

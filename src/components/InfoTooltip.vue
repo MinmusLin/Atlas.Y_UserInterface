@@ -4,7 +4,12 @@
       mdi-information-variant-circle
     </v-icon>
     <transition name='fade'>
-      <v-card v-show='isHover' class='info-card' :style='{ width: props.width, height: props.height }'>
+      <v-card v-show='isHover'
+              class='info-card'
+              @mouseover='isHover=true'
+              @mouseleave='isHover=false'
+              style='z-index: 1'
+              :style='{ width: props.width, height: props.height }'>
         <slot/>
       </v-card>
     </transition>

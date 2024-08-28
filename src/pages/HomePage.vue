@@ -11,26 +11,26 @@
     </ShadowButton>
 
     <el-table :data='tableData'
-              height='160px'
-              style='width: 874px'
+              height='133px'
               class='table-style'
               :cell-style='cellStyle'
               :header-cell-style='headerCellStyle'
               size='large'
-              table-layout='auto'>
-      <el-table-column>
+              style='width: 874px'>
+      <el-table-column width='50'>
         <el-icon style='transform: translateY(2px)'>
           <Clock/>
         </el-icon>
       </el-table-column>
-      <el-table-column prop='time' label='TIME'/>
-      <el-table-column prop='sequenceOrFasta' label='SEQUENCE / FASTA'/>
-      <el-table-column prop='pdb' label='PDB'/>
-      <el-table-column prop='subcellularPosition' label='SUBCELLULAR POSITION'/>
+      <el-table-column width='250' prop='time' label='TIME'/>
+      <el-table-column width='190' prop='sequenceOrFasta' label='SEQUENCE / FASTA'/>
+      <el-table-column width='190' prop='pdb' label='PDB'/>
+      <el-table-column width='190' prop='subcellularPosition' label='SUBCELLULAR POSITION'/>
     </el-table>
 
-    <v-dialog v-model='showDialog' width='1270px' min-width='1270px' persistent transition='dialog-bottom-transition'>
-      <v-card style='border-radius: 10px; padding-top: 38px; padding-bottom: 30px; transform: translateY(calc(50vh - 130px))'>
+    <v-dialog v-model='showDialog' width='85%' min-width='1270px' persistent transition='dialog-bottom-transition'>
+      <v-card
+        style='border-radius: 10px; padding-top: 38px; padding-bottom: 30px; transform: translateY(calc(50vh - 130px))'>
         <v-card-text class='d-flex align-center'>
           <span class='cookie-icon'>
             <v-icon size='40px' color='#AACAF9'>mdi-cookie</v-icon>
@@ -38,11 +38,13 @@
           <span style='font-size: 18px'>
             Our website uses cookies. By continuing to navigate, we assume your permission to deploy cookies as detailed in our Privacy Policy.
           </span>
-          <v-btn class='accept-btn' text='Accept cookies' @click='showDialog=false'>
+          <v-btn class='accept-btn' @click='showDialog=false'>
             <v-icon size='22px' style='margin-right: 4px'>mdi-cookie</v-icon>
             Accept cookies
           </v-btn>
-          <v-btn class='decline-btn' text='Decline' @click='showDialog=false'/>
+          <v-btn class='decline-btn' @click='showDialog=false'>
+            Decline
+          </v-btn>
           <v-btn class='close-btn' icon='mdi-close' @click='showDialog=false'/>
         </v-card-text>
       </v-card>
@@ -58,7 +60,7 @@ import {useRouter} from 'vue-router'
 
 const router = useRouter()
 const showDialog = ref(true)
-const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px'})
+const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px', paddingBottom: '2px'})
 const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px'})
 
 const tableData = ref([
@@ -75,7 +77,7 @@ const tableData = ref([
     subcellularPosition: 'cell nucleus 2'
   },
   {
-    time: 'Wednesday, 3 2024 22:03',
+    time: 'Wednesday, 30 2024 22:03',
     sequenceOrFasta: 'MNO.PQR',
     pdb: 'pdb3.pdb',
     subcellularPosition: 'cell nucleus 3'
@@ -166,6 +168,10 @@ const tableData = ref([
   width: 212px;
   height: 52px !important;
   box-shadow: none;
+  margin-left: 30px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 16px;
 }
 
 .accept-btn:hover {
@@ -174,13 +180,16 @@ const tableData = ref([
 
 .decline-btn {
   border: 2px solid #5182F8;
-  color: #5182F8;
+  color: #2F3235;
   border-radius: 10px;
   width: 110px;
   height: 52px !important;
   box-shadow: none;
   margin-right: 28px;
   margin-left: 28px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 16px;
 }
 
 .decline-btn:hover {
