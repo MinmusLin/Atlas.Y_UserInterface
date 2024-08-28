@@ -79,6 +79,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/basic-designer/stability-evaluation',
     component: () => import('@/pages/BasicStabilityEvaluationPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
+  },
+  {
+    path: '/basic-designer/function-evaluation-local',
+    component: () => import('@/pages/BasicFunctionEvaluationLocalPage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
   }
 ]
 
