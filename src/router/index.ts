@@ -89,7 +89,17 @@ const routes: Array<RouteRecordRaw> = [
     path: '/basic-designer/local-cad-score',
     component: () => import('@/pages/BasicLocalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
-  }
+  },
+  {
+    path: '/basic-designer/result-details',
+    component: () => import('@/pages/BasicResultDetailsPages.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
+  },
+  {
+    path: '/basic-designer/variant-details',
+    component: () => import('@/pages/BasicVariantDetailsPages.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
+  },
 ]
 
 const router: Router = createRouter({
