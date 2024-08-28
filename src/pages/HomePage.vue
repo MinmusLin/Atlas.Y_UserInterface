@@ -58,7 +58,7 @@ import {useRouter} from 'vue-router'
 
 const router = useRouter()
 const showDialog = ref(true)
-const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px'})
+const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px', paddingBottom: '2px'})
 const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px'})
 
 const tableData = ref([
