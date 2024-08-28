@@ -31,9 +31,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
   {
-    path: '/introduction',
-    component: () => import('@/pages/IntroductionPage.vue'),
-    meta: {title: 'Atlas.Y - Introduction'}
+    path: '/membership-plan',
+    component: () => import('@/pages/MembershipPlanPage.vue'),
+    meta: {title: 'Atlas.Y - Membership Plan'}
+  },
+  {
+    path: '/algorithm-store',
+    component: () => import('@/pages/AlgorithmStorePage.vue'),
+    meta: {title: 'Atlas.Y - Algorithm Store'}
   },
   {
     path: '/user-guide',
