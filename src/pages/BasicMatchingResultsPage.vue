@@ -45,7 +45,9 @@
                      :page-size='pageSize'
                      :total='row'
                      background
+                     pager-count='6'
                      layout='prev, pager, next'
+                     hide-on-single-page
                      @current-change='handlePageChange'/>
     </div>
   </div>
@@ -215,6 +217,6 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   display: flex;
   justify-content: flex-end;
   width: 1093px;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 </style>
