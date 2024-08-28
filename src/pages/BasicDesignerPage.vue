@@ -106,20 +106,39 @@
         </div>
       </div>
 
-      <ShadowButton width='100%' height='50px' style='margin-top: 23px; font-size: 18px'>
+      <ShadowButton width='100%'
+                    height='50px'
+                    style='margin-top: 23px; font-size: 18px'
+                    @click="router.push('/basic-designer/matching-results')">
         Start Matching
       </ShadowButton>
     </div>
   </div>
 
-  <Dialog v-model='showProteinSequenceDialog'>
-    <h1>Upload protein sequence</h1>
-    <p>Copy and paste it into the Text Box or upload the Fasta file.</p>
+  <Dialog v-model='showProteinSequenceDialog' style='padding: 3px 40px 36px;'>
+    <p style='margin: 0; font-size: 16px'>Upload protein sequence</p>
+    <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
+      Copy and paste it into the Text Box or upload the Fasta file.
+    </p>
+    <v-file-input label='Upload Fasta file' prepend-icon=''/>
+    <v-file-input label='Upload Fasta file' variant='outlined' prepend-icon=''/>
+    <v-file-input label='Upload Fasta file' variant='underlined' prepend-icon=''/>
+    <v-file-input label='Upload Fasta file' variant='solo' prepend-icon=''/>
+    <v-file-input label='Upload Fasta file' variant='solo-filled' prepend-icon=''/>
+
+    <v-text-field label='Text here'/>
+    <v-text-field label='Text here' variant='outlined'/>
+    <v-text-field label='Text here' variant='underlined'/>
+    <v-text-field label='Text here' variant='solo'/>
+    <v-text-field label='Text here' variant='solo-filled'/>
+
+    <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
   </Dialog>
 </template>
 
 <script setup lang='ts'>
 import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
@@ -154,6 +173,7 @@ const selectedIndex = ref<number | null>(null)
 const showInitialVideo = ref(true)
 const initialVideoElement = ref<HTMLVideoElement | null>(null)
 const basicVideoElement = ref<HTMLVideoElement | null>(null)
+const router = useRouter()
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
