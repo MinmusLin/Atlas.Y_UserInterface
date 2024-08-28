@@ -71,14 +71,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Feedback'}
   },
   {
-    path: '/matching-results',
-    component: () => import('@/pages/MatchingResultsPage.vue'),
-    meta: {title: 'Atlas.Y - Matching Results'}
+    path: '/basic-designer/matching-results',
+    component: () => import('@/pages/BasicMatchingResultsPage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/stability-evaluation',
-    component: () => import('@/pages/StabilityEvaluationPage.vue'),
-    meta: {title: 'Atlas.Y - Stability EValuation'}
+    path: '/basic-designer/stability-evaluation',
+    component: () => import('@/pages/BasicStabilityEvaluationPage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
   }
 ]
 
