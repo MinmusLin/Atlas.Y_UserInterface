@@ -23,7 +23,7 @@
       <div class='content-section'>
         <div class='left-section'>
           <p>Interactive 3D Structure</p>
-          <div class='threeD-picture'>
+          <div id='global-pdb-container' class='threeD-picture'>
           </div>
         </div>
 
@@ -63,6 +63,8 @@
 <script setup lang='ts'>
 import {ref, computed} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
+import {onMounted} from 'vue'
+import {Stage} from 'ngl'
 
 const cadScore = ref(0.0)
 const score = computed(() => cadScore.value)
@@ -98,6 +100,16 @@ const evaluationDescription = computed(() => {
 })
 
 cadScore.value = 0.9329434924
+
+onMounted(() => {
+  const stage = new Stage('global-pdb-container')
+  stage.loadFile('/PDB/6uzq.pdb').then(function (component) {
+    if (component) {
+      component.addRepresentation('cartoon', {})
+      component.autoView()
+    }
+  })
+})
 </script>
 
 <style scoped>
