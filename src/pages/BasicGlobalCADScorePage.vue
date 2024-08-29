@@ -64,7 +64,7 @@
 import {ref, computed} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import {onMounted} from 'vue'
-import {Stage} from 'ngl'
+import {Stage, Vector3} from 'ngl'
 
 const cadScore = ref(0.0)
 const score = computed(() => cadScore.value)
@@ -108,6 +108,18 @@ onMounted(() => {
       component.addRepresentation('cartoon', {})
       component.autoView()
     }
+  })
+  stage.keyControls.add('w', function () {
+    stage.viewerControls.translate(new Vector3(0, 0.5, 0))
+  })
+  stage.keyControls.add('s', function () {
+    stage.viewerControls.translate(new Vector3(0, -0.5, 0))
+  })
+  stage.keyControls.add('a', function () {
+    stage.viewerControls.translate(new Vector3(0.5, 0, 0))
+  })
+  stage.keyControls.add('d', function () {
+    stage.viewerControls.translate(new Vector3(-0.5, 0, 0))
   })
 })
 </script>
