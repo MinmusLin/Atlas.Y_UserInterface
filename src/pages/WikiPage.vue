@@ -34,12 +34,11 @@
 import {ref} from 'vue'
 
 const images = ref([
-  {src: '@/assets/Wiki/Demo.png'},
-  {src: '@/assets/Wiki/Demo.png'},
-  {src: '@/assets/Wiki/Demo.png'},
-  {src: '@/assets/Wiki/Demo.png'},
-  {src: '@/assets/Wiki/Demo.png'},
-  {src: '@/assets/wiki/Demo.png'},
+  {src: 'src/assets/Wiki/Demo.png'},
+  {src: 'src/assets/Wiki/Demo.png'},
+  {src: 'src/assets/Wiki/Demo.png'},
+  {src: 'src/assets/Wiki/Demo.png'},
+  {src: 'src/assets/Wiki/Demo.png'}
 ])
 </script>
 
