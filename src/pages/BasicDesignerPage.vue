@@ -160,26 +160,26 @@ import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
 import Dialog from '@/components/Dialog.vue'
-import NLS_Basic from '@/assets/PositioningDemand/NLS_Basic.mp4'
-import NES_Basic from '@/assets/PositioningDemand/NES_Basic.mp4'
-import SP_Basic from '@/assets/PositioningDemand/SP_Basic.mp4'
-import SP_TM_Basic from '@/assets/PositioningDemand/SP_TM_Basic.mp4'
-import SP_GPI_Basic from '@/assets/PositioningDemand/SP_GPI_Basic.mp4'
-import GPI_Basic from '@/assets/PositioningDemand/GPI_Basic.mp4'
-import TM_Basic from '@/assets/PositioningDemand/TM_Basic.mp4'
-import LD_Basic from '@/assets/PositioningDemand/LD_Basic.mp4'
-import MT_Basic from '@/assets/PositioningDemand/MT_Basic.mp4'
-import PTS_Basic from '@/assets/PositioningDemand/PTS_Basic.mp4'
-import NLS_Initial from '@/assets/PositioningDemand/NLS_Initial.mp4'
-import NES_Initial from '@/assets/PositioningDemand/NES_Initial.mp4'
-import SP_Initial from '@/assets/PositioningDemand/SP_Initial.mp4'
-import SP_TM_Initial from '@/assets/PositioningDemand/SP_TM_Initial.mp4'
-import SP_GPI_Initial from '@/assets/PositioningDemand/SP_GPI_Initial.mp4'
-import GPI_Initial from '@/assets/PositioningDemand/GPI_Initial.mp4'
-import TM_Initial from '@/assets/PositioningDemand/TM_Initial.mp4'
-import LD_Initial from '@/assets/PositioningDemand/LD_Initial.mp4'
-import MT_Initial from '@/assets/PositioningDemand/MT_Initial.mp4'
-import PTS_Initial from '@/assets/PositioningDemand/PTS_Initial.mp4'
+import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
+import NES_Basic from '/PositioningDemand/NES_Basic.mp4'
+import SP_Basic from '/PositioningDemand/SP_Basic.mp4'
+import SP_TM_Basic from '/PositioningDemand/SP_TM_Basic.mp4'
+import SP_GPI_Basic from '/PositioningDemand/SP_GPI_Basic.mp4'
+import GPI_Basic from '/PositioningDemand/GPI_Basic.mp4'
+import TM_Basic from '/PositioningDemand/TM_Basic.mp4'
+import LD_Basic from '/PositioningDemand/LD_Basic.mp4'
+import MT_Basic from '/PositioningDemand/MT_Basic.mp4'
+import PTS_Basic from '/PositioningDemand/PTS_Basic.mp4'
+import NLS_Initial from '/PositioningDemand/NLS_Initial.mp4'
+import NES_Initial from '/PositioningDemand/NES_Initial.mp4'
+import SP_Initial from '/PositioningDemand/SP_Initial.mp4'
+import SP_TM_Initial from '/PositioningDemand/SP_TM_Initial.mp4'
+import SP_GPI_Initial from '/PositioningDemand/SP_GPI_Initial.mp4'
+import GPI_Initial from '/PositioningDemand/GPI_Initial.mp4'
+import TM_Initial from '/PositioningDemand/TM_Initial.mp4'
+import LD_Initial from '/PositioningDemand/LD_Initial.mp4'
+import MT_Initial from '/PositioningDemand/MT_Initial.mp4'
+import PTS_Initial from '/PositioningDemand/PTS_Initial.mp4'
 
 const showProteinSequenceDialog = ref(false)
 const showPDBDialog = ref(false)
@@ -247,7 +247,7 @@ p {
 .videos {
   width: 640px;
   height: 320px;
-  background: url('@/assets/PositioningDemand/Default.png');
+  background: url('/PositioningDemand/Default.png');
   background-size: cover;
 }
 

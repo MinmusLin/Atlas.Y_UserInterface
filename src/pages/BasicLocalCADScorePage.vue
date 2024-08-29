@@ -164,7 +164,6 @@ p {
 
 .threeD-picture {
   margin-top: 4px;
-  background-color: #D9D9D9;
   height: 447px;
   width: 638px;
 }

@@ -1,8 +1,8 @@
 <template>
   <div class='page-container'>
-    <img src='@/assets/Logos/DefaultLogo.png' style='width: 486px; margin-bottom: 35px; margin-top: 150px'
+    <img src='/Logos/DefaultLogo.png' style='width: 486px; margin-bottom: 35px; margin-top: 150px'
          alt='DefaultLogo'>
-    <img src='@/assets/Logos/Title.png' style='width: 815px; margin-bottom: 34px' alt='Title'>
+    <img src='/Logos/Title.png' style='width: 815px; margin-bottom: 34px' alt='Title'>
 
     <ShadowButton width='875px' height='60px' style='margin-bottom: 10px'
                   @click="router.push('/basic-designer')">

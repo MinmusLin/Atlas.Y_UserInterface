@@ -1,9 +1,9 @@
 <template>
   <nav class='menu' :class="{ 'collapsed': isCollapsed }" @mouseenter='isCollapsed=false' @mouseleave='collapseMenu'>
     <div class='logo-container'>
-      <img src='@/assets/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle'>
+      <img src='/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle'>
       <transition name='fade'>
-        <img v-if='!isCollapsed' src='@/assets/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
+        <img v-if='!isCollapsed' src='/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
       </transition>
     </div>
 
