@@ -23,8 +23,7 @@
       <div class='content-section'>
         <div class='left-section'>
           <p>Interactive 3D Structure</p>
-          <div id='global-pdb-container' class='threeD-picture'>
-          </div>
+          <div id='global-pdb-container' class='threeD-picture'/>
         </div>
 
         <div class='right-section'>
@@ -64,7 +63,7 @@
 import {ref, computed} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import {onMounted} from 'vue'
-import {Stage, Vector3} from 'ngl'
+import {Stage} from 'ngl'
 
 const cadScore = ref(0.0)
 const score = computed(() => cadScore.value)
@@ -108,18 +107,6 @@ onMounted(() => {
       component.addRepresentation('cartoon', {})
       component.autoView()
     }
-  })
-  stage.keyControls.add('w', function () {
-    stage.viewerControls.translate(new Vector3(0, 0.5, 0))
-  })
-  stage.keyControls.add('s', function () {
-    stage.viewerControls.translate(new Vector3(0, -0.5, 0))
-  })
-  stage.keyControls.add('a', function () {
-    stage.viewerControls.translate(new Vector3(0.5, 0, 0))
-  })
-  stage.keyControls.add('d', function () {
-    stage.viewerControls.translate(new Vector3(-0.5, 0, 0))
   })
 })
 </script>

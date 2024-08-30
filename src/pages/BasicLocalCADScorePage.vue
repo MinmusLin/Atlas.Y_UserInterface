@@ -22,7 +22,7 @@
       <div class='content-section'>
         <div class='left-section'>
           <p>Interactive 3D Structure</p>
-          <div class='threeD-picture'/>
+          <div id='local-pdb-container' class='threeD-picture'/>
         </div>
 
         <div class='right-section'>
@@ -39,10 +39,10 @@
           <div class='score-a-a-section'>
             <p>CAD A-A Score
               <InfoTooltip width='310px' height='90px'>
-                <div>
-                  <p class='info-title'>CAD A-A Score:</p>
+                <div style='text-align: justify'>
+                  <p class='info-title'>CAD A-A Score</p>
                   <p class='info-content'>
-                    Measures the difference in contact areas between all atoms of the central residue and surrounding
+                    measures the difference in contact areas between all atoms of the central residue and surrounding
                     residues.
                   </p>
                 </div>
@@ -54,10 +54,10 @@
           <div class='score-a-s-section'>
             <p>CAD A-S Score
               <InfoTooltip width='324px' height='90px'>
-                <div>
-                  <p class='info-title'>CAD A-S Score:</p>
+                <div style='text-align: justify'>
+                  <p class='info-title'>CAD A-S Score</p>
                   <p class='info-content'>
-                    ssesses the difference in contact areas between the central residue's atoms and surrounding
+                    assesses the difference in contact areas between the central residue's atoms and surrounding
                     side-chain atoms.
                   </p>
                 </div>
@@ -77,9 +77,10 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
+import {Stage} from 'ngl'
 
 const cad_AScore = ref(0.0)
 const score_A = computed(() => cad_AScore.value)
@@ -88,6 +89,23 @@ const score_S = computed(() => cad_SScore.value)
 
 cad_AScore.value = 0.970826775404717
 cad_SScore.value = 0.9217568423111843
+
+onMounted(() => {
+  const stage = new Stage('local-pdb-container')
+  stage.loadFile('/PDB/6uzq.pdb').then(function (component) {
+    if (component) {
+      component.addRepresentation('ball+stick', {
+        sele: '.CA',
+        radius: 0.5,
+        aspectRatio: 1.5,
+        colorScheme: 'uniform',
+        colorValue: '#ADD8E6'
+      })
+      component.addRepresentation('line', {})
+      component.autoView()
+    }
+  })
+})
 </script>
 
 <style scoped>
