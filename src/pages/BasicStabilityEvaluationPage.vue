@@ -6,18 +6,19 @@
 
     <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Fusion Protein: </span>FP_001
+        <span class='sub-content'>Fusion Protein: </span>{{ fusionProtein }}
       </span>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Signal: </span>SG_001
+        <span class='sub-content'>Signal: </span>{{ signal }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>Linker: </span>LK_001
+        <span class='sub-content'>Linker: </span>{{ linker }}
       </span>
     </div>
 
     <el-table :data='currentPageData'
               style='width: 1093px; max-height: 470px; overflow-y: auto'
+              class="table-style"
               :header-cell-style='headerCellStyle'
               :cell-style='cellStyle'
               height='470'>
@@ -44,10 +45,13 @@ interface TableData {
 }
 
 interface CellStyleParams {
-  columnIndex: number
   rowIndex: number
+  columnIndex: number
 }
 
+const fusionProtein = ref('FP_001')
+const signal = ref('SG_001')
+const linker = ref('LK_001')
 const row = ref(25)
 const pageSize = ref(100)
 const currentPage = ref(1)
@@ -91,7 +95,8 @@ const baseCellStyle = {
   paddingTop: '7px',
   paddingBottom: '6px',
   fontWeight: 400,
-  boxShadow: 'inset 0px 0px 0px 0px white',
+  borderTop: '1px solid #ffffff',
+  borderBottom: '1px solid #5182F8',
 }
 
 const headerCellStyle = ({columnIndex}: CellStyleParams) => {
@@ -109,7 +114,7 @@ const headerCellStyle = ({columnIndex}: CellStyleParams) => {
   return style
 }
 
-const cellStyle = ({columnIndex, rowIndex}: CellStyleParams) => {
+const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
   const style = {...baseCellStyle} as any
   if (rowIndex == 0) {
     style.backgroundColor = '#EEF3FE'
@@ -127,9 +132,6 @@ const cellStyle = ({columnIndex, rowIndex}: CellStyleParams) => {
   }
   if (columnIndex == 1) {
     style.paddingRight = '120px'
-  }
-  if (rowIndex % 4 == 3) {
-    style.boxShadow = 'inset 0px -0.25px 0px 0px #5182F8'
   }
   return style
 }
@@ -177,5 +179,30 @@ const cellStyle = ({columnIndex, rowIndex}: CellStyleParams) => {
 .sub-content {
   color: #16396E;
   font-weight: 600;
+}
+
+.table-style >>> tbody tr:hover > td {
+  background-color: #EEF3FF !important;
+  border: 2px solid #5182F8 !important;
+  border-top: 1px solid #5182F8 !important;
+}
+
+.table-style >>> tbody tr:hover > td:first-child {
+  border-left-width: 2px !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-right: none !important;
+}
+
+.table-style >>> tbody tr:hover > td:not(:first-child):not(:last-child) {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.table-style >>> tbody tr:hover > td:last-child {
+  border-right-width: 2px !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  border-left: none !important;
 }
 </style>

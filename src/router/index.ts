@@ -81,6 +81,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
+    path: '/basic-designer/directed-evolution-results',
+    component: () => import('@/pages/BasicDirectedEvolutionResults.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
+  },
+  {
     path: '/basic-designer/global-cad-score',
     component: () => import('@/pages/BasicGlobalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}

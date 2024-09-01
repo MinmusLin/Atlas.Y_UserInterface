@@ -1,7 +1,7 @@
 <template>
   <div class='page-container'>
     <div class='title-container'>
-      <h1 class='title'>Matching Results</h1>
+      <h1 class='title'>Directed Evolution Results</h1>
       <span class='results'>
         <span class='row-number'>{{ row }}</span> results
       </span>
@@ -9,13 +9,16 @@
 
     <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>SEQUNCE / FASTA: </span>{{ fastaFile }}
+        <span class='sub-content'>Fusion Protein: </span>{{ fusionProtein }}
       </span>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>PDB: </span>{{ pdbFile }}
+        <span class='sub-content'>Signal: </span>{{ signal }}
+      </span>
+      <span class='subtitle' style='margin-right: 50px'>
+        <span class='sub-content'>Linker: </span>{{ linker }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ subcellularPosition }}
+        <span class='sub-content'>Function: </span>{{ algoFuntion }}
       </span>
     </div>
 
@@ -23,25 +26,20 @@
 
     <el-table :data='currentPageData'
               style='width: 1093px; max-height: 470px; overflow-y: auto'
-              class='table-style'
+              class="table-style"
               :header-cell-style='headerCellStyle'
               :cell-style='cellStyle'
-              height='470'
-              >
-      <el-table-column prop='fusionProtein'
-                       label='Fusion Protein'
-                       width='200'/>
-      <el-table-column prop='signal'
-                       label='Signal'
-                       width='387'/>
-      <el-table-column prop='linker'
-                       label='Linker'
-                       width='306'/>
-      <el-table-column prop='stability'
-                       label='Stability'
-                       width='200'/>
+              height='470'>
+      <el-table-column prop='variantID'
+                       label='variant ID'
+                       width='290'/>
+      <el-table-column prop='evolutionScore'
+                       label='Evolution Score'
+                       width='470'/>
+      <el-table-column prop='evolutionRate'
+                       label='Evolution Rate'
+                       width='333'/>
     </el-table>
-
     <div class='pagination-container'>
       <el-pagination v-model:currentPage='currentPage'
                      :page-size='pageSize'
@@ -59,20 +57,19 @@
 import {ref, computed} from 'vue'
 
 interface TableData {
-  fusionProtein: string
-  signal: string
-  linker: string
-  stability: string
+  variantID: string
+  evolutionScore: number
+  evolutionRate: string
 }
 
 interface CellStyleParams {
-  rowIndex: number
   columnIndex: number
 }
 
-const fastaFile = ref('ABC.fasta')
-const pdbFile = ref('jhbcc.pdb')
-const subcellularPosition = ref('NLS')
+const fusionProtein = ref('FP_001')
+const signal = ref('SG_001')
+const linker = ref('LK_001')
+const algoFuntion = ref('Solubility')
 const row = ref(1050)
 const pageSize = ref(100)
 const currentPage = ref(1)
@@ -80,10 +77,9 @@ const tableData = ref<TableData[]>([])
 
 for (let i = 0; i < row.value; i++) {
   tableData.value.push({
-    fusionProtein: `FP_000${i + 1}`,
-    signal: `SG_000${i + 1}`,
-    linker: `LK_000${i + 1}`,
-    stability: `87.0`
+    variantID: `VR_0001`,
+    evolutionScore: 76.5,
+    evolutionRate: `20%`,
   })
 }
 
@@ -123,32 +119,29 @@ const headerCellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseHeaderStyle} as any
   if (columnIndex == 0) {
     style.borderTopLeftRadius = '10px'
-  } else if (columnIndex == 3) {
-    style.borderTopRightRadius = '10px'
-  } else if (columnIndex == 1) {
-    style.paddingLeft = '40px'
-    style.paddingRight = '0px'
+    style.paddingRight = '60px'
   } else if (columnIndex == 2) {
-    style.paddingLeft = '0px'
-    style.paddingRight = '90px'
+    style.borderTopRightRadius = '10px'
+    style.paddingLeft = '70px'
+  } else if (columnIndex == 1) {
+    style.paddingLeft = '50px'
   }
   return style
 }
 
-const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
+const cellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseCellStyle} as any
   if (columnIndex == 0) {
     style.borderLeft = '2px solid #EEF3FE'
+    style.paddingRight = '60px'
+
   }
-  if (columnIndex == 3) {
+  if (columnIndex == 2) {
     style.borderRight = '2px solid #EEF3FE'
+    style.paddingLeft = '70px'
   }
   if (columnIndex == 1) {
-    style.paddingLeft = '40px'
-    style.paddingRight = '0px'
-  } else if (columnIndex == 2) {
-    style.paddingLeft = '0px'
-    style.paddingRight = '90px'
+    style.paddingLeft = '50px'
   }
   return style
 }
