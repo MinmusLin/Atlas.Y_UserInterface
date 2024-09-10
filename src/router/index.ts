@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/dynamic-designer',
-    component: () => import('@/pages/DynamicDesignerPage.vue'),
+    component: () => import('@/pages/DynamicDesignerHomePage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
   {

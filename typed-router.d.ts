@@ -30,7 +30,7 @@ declare module 'vue-router/auto-routes' {
     '/BasicVariantDetailsPage': RouteRecordInfo<'/BasicVariantDetailsPage', '/BasicVariantDetailsPage', Record<never, never>, Record<never, never>>,
     '/ContactFormPage': RouteRecordInfo<'/ContactFormPage', '/ContactFormPage', Record<never, never>, Record<never, never>>,
     '/ContactUsPage': RouteRecordInfo<'/ContactUsPage', '/ContactUsPage', Record<never, never>, Record<never, never>>,
-    '/DynamicDesignerPage': RouteRecordInfo<'/DynamicDesignerPage', '/DynamicDesignerPage', Record<never, never>, Record<never, never>>,
+    '/DynamicDesignerHomePage': RouteRecordInfo<'/DynamicDesignerHomePage', '/DynamicDesignerHomePage', Record<never, never>, Record<never, never>>,
     '/FAQsPage': RouteRecordInfo<'/FAQsPage', '/FAQsPage', Record<never, never>, Record<never, never>>,
     '/FeedbackPage': RouteRecordInfo<'/FeedbackPage', '/FeedbackPage', Record<never, never>, Record<never, never>>,
     '/LoginPage': RouteRecordInfo<'/LoginPage', '/LoginPage', Record<never, never>, Record<never, never>>,
