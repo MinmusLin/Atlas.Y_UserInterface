@@ -66,6 +66,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Contact Us'}
   },
   {
+    path: '/contact-us/form',
+    component: () => import('@/pages/ContactFormPage.vue'),
+    meta: {title: 'Atlas.Y - Contact Form'}
+  },
+  {
     path: '/feedback',
     component: () => import('@/pages/FeedbackPage.vue'),
     meta: {title: 'Atlas.Y - Feedback'}
