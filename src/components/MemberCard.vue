@@ -14,6 +14,9 @@
         <p class="position">{{ position }}</p>
       </div>
     </div>
+    <div class="description">
+      {{ description }}
+    </div>
   </v-card>
 </template>
 
@@ -32,6 +35,10 @@ export default defineComponent({
       required: true,
     },
     photo: {
+      type: String,
+      required: true,
+    },
+    description: {
       type: String,
       required: true,
     },
@@ -69,14 +76,21 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
 .avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure image scales proportionally */
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%); 
+  transition: mask-image 1s ease; /* 透明度的平滑过渡 */
 }
+
+.card:hover .avatar img { 
+  transition: mask-image 0.3s ease; /* 透明度的平滑过渡 */
+}
+
 
 .card:hover .avatar {
   opacity: 0; /* Hide avatar on hover */
@@ -129,5 +143,9 @@ export default defineComponent({
   color: #EEF3FE; /* Text color */
   padding: 2px 0; /* Padding to adjust text box size */
   margin: 0; /* Remove default margin */
+}
+
+.description {
+  padding: 10px 15px;
 }
 </style>
