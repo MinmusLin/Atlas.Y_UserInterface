@@ -105,7 +105,7 @@
 <script setup lang='ts'>
 import { ref } from 'vue';
 import countries from '../../node_modules/country-list/data.json';
-import { ElForm } from 'element-plus';
+import { ElForm , FormItemRule} from 'element-plus';
 const researchFields = [
   { label: "Scientific Research Service", value: "scientific-research" },
   { label: "Clinical Detection", value: "clinical-detection" },
@@ -139,6 +139,7 @@ const formData = ref({
 });
 
 // 定义表单验证规则
+// 定义表单验证规则
 const rules = {
   researchField: [{ required: true, message: 'Please select your research field', trigger: 'change' }],
   post: [{ required: true, message: 'Please select your post', trigger: 'change' }],
@@ -148,11 +149,11 @@ const rules = {
   email: [
     { required: true, message: 'E-mail cannot be empty', trigger: 'blur' },
     { type: 'email', message: 'Please enter a valid e-mail', trigger: ['blur', 'change'] }
-  ],
+  ] as FormItemRule[], // 显式指定为 FormItemRule[]
   phone: [
     { required: true, message: 'Phone number cannot be empty', trigger: 'blur' },
     { pattern: /^[0-9]*$/, message: 'Phone number must be numeric', trigger: 'blur' }
-  ],
+  ] as FormItemRule[], // 显式指定为 FormItemRule[]
   company: [{ required: true, message: 'Company/Institution cannot be empty', trigger: 'blur' }],
   note: [{ required: true, message: 'Note cannot be empty', trigger: 'blur' }]
 };
