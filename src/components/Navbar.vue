@@ -86,6 +86,8 @@ const menus = ref([
     title: 'Support',
     icon: ChatDotSquare,
     items: [
+      {name: 'FAQs', route: '/faqs'},
+      {name: 'Video Tutorials', route: '/video-tutorials'},
       {name: 'Feedback', route: '/feedback'}
     ]
   }

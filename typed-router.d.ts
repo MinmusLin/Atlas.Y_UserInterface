@@ -29,7 +29,7 @@ declare module 'vue-router/auto-routes' {
     '/ContactFormPage': RouteRecordInfo<'/ContactFormPage', '/ContactFormPage', Record<never, never>, Record<never, never>>,
     '/ContactUsPage': RouteRecordInfo<'/ContactUsPage', '/ContactUsPage', Record<never, never>, Record<never, never>>,
     '/DynamicDesignerPage': RouteRecordInfo<'/DynamicDesignerPage', '/DynamicDesignerPage', Record<never, never>, Record<never, never>>,
-    '/FAQPage': RouteRecordInfo<'/FAQPage', '/FAQPage', Record<never, never>, Record<never, never>>,
+    '/FAQsPage': RouteRecordInfo<'/FAQsPage', '/FAQsPage', Record<never, never>, Record<never, never>>,
     '/FeedbackPage': RouteRecordInfo<'/FeedbackPage', '/FeedbackPage', Record<never, never>, Record<never, never>>,
     '/HomePage': RouteRecordInfo<'/HomePage', '/HomePage', Record<never, never>, Record<never, never>>,
     '/MembershipPlanPage': RouteRecordInfo<'/MembershipPlanPage', '/MembershipPlanPage', Record<never, never>, Record<never, never>>,
