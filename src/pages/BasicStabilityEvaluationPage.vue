@@ -59,9 +59,9 @@ const tableData = ref<TableData[]>([])
 
 for (let i = 0; i < row.value; i++) {
   tableData.value.push({
-    item: `fa_art`,
+    item: 'fa_art',
     scoreValue: -2525.13,
-    explanation: `Favorable atomic attraction`,
+    explanation: 'Favorable atomic attraction',
   })
 }
 

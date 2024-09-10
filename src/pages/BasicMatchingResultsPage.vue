@@ -26,8 +26,7 @@
               class='table-style'
               :header-cell-style='headerCellStyle'
               :cell-style='cellStyle'
-              height='470'
-              >
+              height='470'>
       <el-table-column prop='fusionProtein'
                        label='Fusion Protein'
                        width='200'/>
@@ -83,7 +82,7 @@ for (let i = 0; i < row.value; i++) {
     fusionProtein: `FP_000${i + 1}`,
     signal: `SG_000${i + 1}`,
     linker: `LK_000${i + 1}`,
-    stability: `87.0`
+    stability: '87.0'
   })
 }
 
@@ -115,7 +114,7 @@ const baseCellStyle = {
   paddingTop: '7px',
   paddingBottom: '6px',
   fontWeight: 400,
-  borderTop: '1px solid #ffffff',
+  borderTop: '1px solid #FFFFFF',
   borderBottom: '1px solid #5182F8',
 }
 
@@ -135,7 +134,7 @@ const headerCellStyle = ({columnIndex}: CellStyleParams) => {
   return style
 }
 
-const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
+const cellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseCellStyle} as any
   if (columnIndex == 0) {
     style.borderLeft = '2px solid #EEF3FE'
@@ -152,7 +151,6 @@ const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
   }
   return style
 }
-
 </script>
 
 <style scoped>

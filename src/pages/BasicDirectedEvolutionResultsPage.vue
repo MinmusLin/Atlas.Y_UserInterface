@@ -77,9 +77,9 @@ const tableData = ref<TableData[]>([])
 
 for (let i = 0; i < row.value; i++) {
   tableData.value.push({
-    variantID: `VR_0001`,
+    variantID: 'VR_0001',
     evolutionScore: 76.5,
-    evolutionRate: `20%`,
+    evolutionRate: '20%'
   })
 }
 
@@ -99,7 +99,7 @@ const baseHeaderStyle = {
   fontSize: '16px',
   color: 'white',
   textAlign: 'center',
-  fontWeight: 600,
+  fontWeight: 600
 }
 
 const baseCellStyle = {
@@ -111,8 +111,8 @@ const baseCellStyle = {
   paddingTop: '7px',
   paddingBottom: '6px',
   fontWeight: 400,
-  borderTop: '1px solid #ffffff',
-  borderBottom: '1px solid #5182F8',
+  borderTop: '1px solid #FFFFFF',
+  borderBottom: '1px solid #5182F8'
 }
 
 const headerCellStyle = ({columnIndex}: CellStyleParams) => {
@@ -145,7 +145,6 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   }
   return style
 }
-
 </script>
 
 <style scoped>
