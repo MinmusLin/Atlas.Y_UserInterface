@@ -20,6 +20,7 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/AlgorithmStorePage': RouteRecordInfo<'/AlgorithmStorePage', '/AlgorithmStorePage', Record<never, never>, Record<never, never>>,
     '/BasicDesignerConfigurationPage': RouteRecordInfo<'/BasicDesignerConfigurationPage', '/BasicDesignerConfigurationPage', Record<never, never>, Record<never, never>>,
+    '/BasicDesignerHomePage': RouteRecordInfo<'/BasicDesignerHomePage', '/BasicDesignerHomePage', Record<never, never>, Record<never, never>>,
     '/BasicDirectedEvolutionResultsPage': RouteRecordInfo<'/BasicDirectedEvolutionResultsPage', '/BasicDirectedEvolutionResultsPage', Record<never, never>, Record<never, never>>,
     '/BasicGlobalCADScorePage': RouteRecordInfo<'/BasicGlobalCADScorePage', '/BasicGlobalCADScorePage', Record<never, never>, Record<never, never>>,
     '/BasicLocalCADScorePage': RouteRecordInfo<'/BasicLocalCADScorePage', '/BasicLocalCADScorePage', Record<never, never>, Record<never, never>>,
@@ -32,7 +33,6 @@ declare module 'vue-router/auto-routes' {
     '/DynamicDesignerPage': RouteRecordInfo<'/DynamicDesignerPage', '/DynamicDesignerPage', Record<never, never>, Record<never, never>>,
     '/FAQsPage': RouteRecordInfo<'/FAQsPage', '/FAQsPage', Record<never, never>, Record<never, never>>,
     '/FeedbackPage': RouteRecordInfo<'/FeedbackPage', '/FeedbackPage', Record<never, never>, Record<never, never>>,
-    '/HomePage': RouteRecordInfo<'/HomePage', '/HomePage', Record<never, never>, Record<never, never>>,
     '/LoginPage': RouteRecordInfo<'/LoginPage', '/LoginPage', Record<never, never>, Record<never, never>>,
     '/MembershipPlanPage': RouteRecordInfo<'/MembershipPlanPage', '/MembershipPlanPage', Record<never, never>, Record<never, never>>,
     '/NotFoundPage': RouteRecordInfo<'/NotFoundPage', '/NotFoundPage', Record<never, never>, Record<never, never>>,
