@@ -7,7 +7,6 @@
       ref="formRef"
       :rules="rules"
       :model="formData"
-      @submit.native.prevent="handleSubmit"
     >
 
       <!-- 下拉表单 -->
@@ -80,14 +79,14 @@
       <el-row class="custom-row">
         <el-col :span="12">
           <el-form-item label="Company/Institution" class="custom-label" prop="company">
-            <el-input v-model="formData.company" class="custom-input" placeholder="Enter your company/institution"></el-input>
+            <el-input v-model="formData.company" class="custom-input" placeholder="Enter your company /institution"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row class="custom-row" :gutter="0">
         <el-col :span="24">
           <el-form-item label="Note" class="custom-label" prop="note">
-            <el-input type="textarea" v-model="formData.note" class="custom-textarea" placeholder="Tell us about your needs" rows="6"></el-input>
+            <el-input type="textarea" resize="none" v-model="formData.note" class="custom-textarea" placeholder="Tell us about your needs" rows="6"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -95,7 +94,7 @@
       <!-- 提交按钮 -->
       <el-row class="custom-row" :gutter="0">
         <el-col :span="24">
-          <el-button type="primary" class="submit-button" @click="handleSubmit">Submit</el-button>
+          <el-button type="primary" class="submit-button" @click="submitContactForm(formRef)">Submit</el-button>
         </el-col>
       </el-row>
     </el-form>
@@ -103,9 +102,11 @@
 </template>
 
 <script setup lang='ts'>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
+import { FormInstance, FormRules} from 'element-plus'
 import countries from '../../node_modules/country-list/data.json';
-import { ElForm , FormItemRule} from 'element-plus';
+
+const formRef = ref<FormInstance>()
 const researchFields = [
   { label: "Scientific Research Service", value: "scientific-research" },
   { label: "Clinical Detection", value: "clinical-detection" },
@@ -124,9 +125,20 @@ const posts = [
   { label: "Others", value: "others-post" }
 ];
 
+interface ContactRuleForm {
+  researchField: string
+  post: string
+  country: string
+  givenName: string
+  surname: string
+  email: string
+  phone: string
+  company: string
+  note: string
+}
 
 // 定义表单数据
-const formData = ref({
+const formData = reactive<ContactRuleForm>({
   researchField: '',
   post: '',
   country: '',
@@ -139,8 +151,7 @@ const formData = ref({
 });
 
 // 定义表单验证规则
-// 定义表单验证规则
-const rules = {
+const rules: FormRules = {
   researchField: [{ required: true, message: 'Please select your research field', trigger: 'change' }],
   post: [{ required: true, message: 'Please select your post', trigger: 'change' }],
   country: [{ required: true, message: 'Please select your country', trigger: 'change' }],
@@ -149,47 +160,25 @@ const rules = {
   email: [
     { required: true, message: 'E-mail cannot be empty', trigger: 'blur' },
     { type: 'email', message: 'Please enter a valid e-mail', trigger: ['blur', 'change'] }
-  ] as FormItemRule[], // 显式指定为 FormItemRule[]
+  ],
   phone: [
     { required: true, message: 'Phone number cannot be empty', trigger: 'blur' },
     { pattern: /^[0-9]*$/, message: 'Phone number must be numeric', trigger: 'blur' }
-  ] as FormItemRule[], // 显式指定为 FormItemRule[]
+  ],
   company: [{ required: true, message: 'Company/Institution cannot be empty', trigger: 'blur' }],
   note: [{ required: true, message: 'Note cannot be empty', trigger: 'blur' }]
 };
 
-const formRef = ref<InstanceType<typeof ElForm> | null>(null);
-// 表单提交处理函数
-const handleSubmit = async () => {
-  try {
-    // 触发表单验证
-    if (formRef.value) { // 非空检查
-      await formRef.value.validate();
-
-      // 示例：将表单数据发送到后端
-      const response = await fetch('YOUR_BACKEND_API_URL', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData.value),
-      });
-
-      if (response.ok) {
-        // 处理成功的响应
-        console.log('Form submitted successfully!');
-        // 可以在这里添加成功消息或重置表单
-      } else {
-        // 处理错误的响应
-        console.error('Error submitting form:', response.statusText);
-      }
-    } else {
-      console.error('Form reference is null');
-    }
-  } catch (error) {
-    console.error('Error submitting form:', error);
+const submitContactForm = async (formEl: FormInstance | undefined) => {
+  if (!formEl) {
+    return
   }
-};
+  await formEl.validate(async (valid) => {
+    if (valid) {
+      console.log('有效')
+    }
+  })
+}
 </script>
 
 <style scoped>
