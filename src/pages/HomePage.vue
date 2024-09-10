@@ -8,7 +8,7 @@
     <img src='/DesignMaterials/TitlePrompt.png' style='width: 815px; margin-bottom: 34px' alt='TitlePrompt'>
 
     <ShadowButton width='875px' height='60px' style='margin-bottom: 10px'
-                  @click="router.push('/basic-designer')">
+                  @click="router.push('/basic-designer/configuration')">
       <p style='font-size: 24px; margin-right: 10px'>START</p>
       <v-icon size='26px'>mdi-arrow-right</v-icon>
     </ShadowButton>
