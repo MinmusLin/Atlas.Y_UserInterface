@@ -1,9 +1,9 @@
 <template>
   <nav class='menu' :class="{ 'collapsed': isCollapsed }" @mouseenter='isCollapsed=false' @mouseleave='collapseMenu'>
     <div class='logo-container'>
-      <img src='/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle'>
+      <img src='/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle' @click="router.push('/')">
       <transition name='fade'>
-        <img v-if='!isCollapsed' src='/Logos/LightLogo.png' class='nav-logo' alt='LightLogo'>
+        <img v-if='!isCollapsed' src='/Logos/LightLogo.png' class='nav-logo' alt='LightLogo' @click="router.push('/')">
       </transition>
     </div>
 
@@ -188,6 +188,7 @@ const iconStyle = computed(() => ({
   width: auto;
   margin: 35px 26px -15px 28px;
   position: absolute;
+  cursor: pointer;
 }
 
 .nav-icon {
@@ -198,6 +199,7 @@ const iconStyle = computed(() => ({
   margin-left: 14px;
   position: absolute;
   transition: transform 0.25s ease;
+  cursor: pointer;
 }
 
 .icon-size {
