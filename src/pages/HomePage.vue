@@ -1,8 +1,10 @@
 <template>
   <div class='page-container'>
-    <img src='/Logos/DefaultLogo.png'
-         style='width: 486px; margin-bottom: 35px; margin-top: 150px'
-         alt='DefaultLogo'>
+    <div style='display: flex; align-items: flex-end; margin-bottom: 35px; margin-top: 150px'>
+      <img src='/Logos/DefaultLogo.png' style='width: 486px' alt='DefaultLogo'>
+      <img src='/DesignMaterials/BasicVersionFrame.png' alt='BasicVersionFrame' style='height: 42px; margin-left: 18px'>
+    </div>
+
     <img src='/DesignMaterials/TitlePrompt.png' style='width: 815px; margin-bottom: 34px' alt='TitlePrompt'>
 
     <ShadowButton width='875px' height='60px' style='margin-bottom: 10px'
