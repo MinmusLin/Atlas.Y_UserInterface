@@ -58,8 +58,8 @@ const menus = ref([
     title: 'Store',
     icon: ShoppingBag,
     items: [
-      {name: 'Membership Plan', route: '/membership-plan'},
-      {name: 'Algorithm Store', route: '/algorithm-store'}
+      {name: 'Algorithm Store', route: '/algorithm-store'},
+      {name: 'Membership Plan', route: '/membership-plan'}
     ]
   },
   {
