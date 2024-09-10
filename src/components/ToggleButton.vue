@@ -11,12 +11,9 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed, defineProps, defineEmits, onMounted, CSSProperties, watch} from 'vue'
+import {ref, computed, defineProps, defineEmits} from 'vue'
 
-const backgroundColor = ref('white')
-
-let timerId: ReturnType<typeof setTimeout> | null = null
-
+// 定义 Props 和 Emits
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -48,39 +45,30 @@ const props = defineProps({
   }
 })
 
-const isOnRight = ref(!props.modelValue)
-
-onMounted(() => {
-  backgroundColor.value = props.modelValue
-    ? 'linear-gradient(to right, #5182F8 0%, #5182F8 30%, #FFFFFF 30%)'
-    : 'linear-gradient(to left, #5182F8 0%, #5182F8 30%, #FFFFFF 30%)'
-})
-
 const emit = defineEmits(['update:modelValue'])
 
+// 处理是否位于右侧的状态，默认基于 props.modelValue
+const isOnRight = ref(!props.modelValue)
+
+// 切换按钮状态的函数
 const toggle = () => {
-  isOnRight.value = !isOnRight.value
-  emit('update:modelValue', !isOnRight.value)
+  emit('update:modelValue',  !props.modelValue)
 }
 
-watch(isOnRight, (newVal) => {
-  backgroundColor.value = '#FFFFFF'
-  if (timerId != null) {
-    clearTimeout(timerId)
-  }
-  timerId = setTimeout(() => {
-    backgroundColor.value = newVal
-      ? 'linear-gradient(to left, #5182F8 0%, #5182F8 30%, #FFFFFF 30%)'
-      : 'linear-gradient(to right, #5182F8 0%, #5182F8 30%, #FFFFFF 30%)'
-  }, 200)
-})
+// 动态计算背景颜色，无需使用定时器和 watch
+const backgroundColor = computed(() =>
+  isOnRight.value
+    ? 'linear-gradient(to left, #5182F8 0%, #5182F8 30%, #FFFFFF 30%)'
+    : 'linear-gradient(to right, #5182F8 0%, #5182F8 30%, #FFFFFF 30%)'
+);
 
-const containerStyle = computed<CSSProperties>(() => ({
+// 容器样式
+const containerStyle = computed(() => ({
   width: props.width,
   height: props.height,
   borderRadius: props.borderRadius,
   background: backgroundColor.value,
-  transition: 'background 0s ease',
+  transition: 'background 0.3s ease',  // 使用适当的过渡时间
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -94,7 +82,8 @@ const containerStyle = computed<CSSProperties>(() => ({
   boxSizing: 'border-box'
 }))
 
-const buttonStyle = computed<CSSProperties>(() => ({
+// 按钮样式
+const buttonStyle = computed(() => ({
   width: '53%',
   height: '100%',
   backgroundColor: '#5182F8',
@@ -117,7 +106,8 @@ const buttonStyle = computed<CSSProperties>(() => ({
   boxSizing: 'border-box'
 }))
 
-const leftBoxStyle = computed<CSSProperties>(() => ({
+// 左侧盒子样式
+const leftBoxStyle = computed(() => ({
   width: '53%',
   height: '100%',
   display: 'flex',
@@ -132,7 +122,8 @@ const leftBoxStyle = computed<CSSProperties>(() => ({
   pointerEvents: isOnRight.value ? 'none' : 'auto'
 }))
 
-const rightBoxStyle = computed<CSSProperties>(() => ({
+// 右侧盒子样式
+const rightBoxStyle = computed(() => ({
   width: '53%',
   height: '100%',
   display: 'flex',
@@ -147,7 +138,8 @@ const rightBoxStyle = computed<CSSProperties>(() => ({
   pointerEvents: isOnRight.value ? 'auto' : 'none'
 }))
 
-const leftLabelStyle = computed<CSSProperties>(() => ({
+// 左侧标签样式
+const leftLabelStyle = computed(() => ({
   fontSize: props.fontSize,
   fontWeight: '500',
   color: isOnRight.value ? '#5182F8' : '#FFFFFF',
@@ -155,7 +147,8 @@ const leftLabelStyle = computed<CSSProperties>(() => ({
   transition: 'color 0.2s'
 }))
 
-const rightLabelStyle = computed<CSSProperties>(() => ({
+// 右侧标签样式
+const rightLabelStyle = computed(() => ({
   fontSize: props.fontSize,
   fontWeight: '500',
   color: isOnRight.value ? '#FFFFFF' : '#5182F8',
