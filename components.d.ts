@@ -11,7 +11,6 @@ declare module 'vue' {
     Dialog: typeof import('./src/components/Dialog.vue')['default']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     InfoTooltip: typeof import('./src/components/InfoTooltip.vue')['default']
