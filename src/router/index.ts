@@ -97,7 +97,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/basic-designer/directed-evolution-results',
-    component: () => import('@/pages/BasicDirectedEvolutionResults.vue'),
+    component: () => import('@/pages/BasicDirectedEvolutionResultsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
