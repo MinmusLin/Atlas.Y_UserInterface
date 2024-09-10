@@ -120,6 +120,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/BasicVariantDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
+  {
+    path: '/register',
+    component: () => import('@/pages/RegisterPage.vue'),
+    meta: {title: 'Atlas.Y - Register'}
+  },
+  {
+    path: '/login',
+    component: () => import('@/pages/LoginPage.vue'),
+    meta: {title: 'Atlas.Y - Login'}
+  }
 ]
 
 const router: Router = createRouter({
