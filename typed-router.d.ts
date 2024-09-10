@@ -29,6 +29,7 @@ declare module 'vue-router/auto-routes' {
     '/ContactFormPage': RouteRecordInfo<'/ContactFormPage', '/ContactFormPage', Record<never, never>, Record<never, never>>,
     '/ContactUsPage': RouteRecordInfo<'/ContactUsPage', '/ContactUsPage', Record<never, never>, Record<never, never>>,
     '/DynamicDesignerPage': RouteRecordInfo<'/DynamicDesignerPage', '/DynamicDesignerPage', Record<never, never>, Record<never, never>>,
+    '/FAQPage': RouteRecordInfo<'/FAQPage', '/FAQPage', Record<never, never>, Record<never, never>>,
     '/FeedbackPage': RouteRecordInfo<'/FeedbackPage', '/FeedbackPage', Record<never, never>, Record<never, never>>,
     '/HomePage': RouteRecordInfo<'/HomePage', '/HomePage', Record<never, never>, Record<never, never>>,
     '/MembershipPlanPage': RouteRecordInfo<'/MembershipPlanPage', '/MembershipPlanPage', Record<never, never>, Record<never, never>>,
@@ -36,6 +37,7 @@ declare module 'vue-router/auto-routes' {
     '/TeamPage': RouteRecordInfo<'/TeamPage', '/TeamPage', Record<never, never>, Record<never, never>>,
     '/TechnicalResourcesPage': RouteRecordInfo<'/TechnicalResourcesPage', '/TechnicalResourcesPage', Record<never, never>, Record<never, never>>,
     '/UserGuidePage': RouteRecordInfo<'/UserGuidePage', '/UserGuidePage', Record<never, never>, Record<never, never>>,
+    '/VideoTutorialsPage': RouteRecordInfo<'/VideoTutorialsPage', '/VideoTutorialsPage', Record<never, never>, Record<never, never>>,
     '/WikiPage': RouteRecordInfo<'/WikiPage', '/WikiPage', Record<never, never>, Record<never, never>>,
   }
 }
