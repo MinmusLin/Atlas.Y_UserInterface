@@ -1,17 +1,253 @@
 <template>
   <div class='page-container'>
-    <p>ContactFormPage</p>
-  </div>
+    <p class="form-title">Contact Form</p>
+    <el-form
+      label-position="top"
+      label-width="100px"
+      ref="formRef"
+      :rules="rules"
+      :model="formData"
+      @submit.native.prevent="handleSubmit"
+    >
+
+      <!-- 下拉表单 -->
+      <el-row class="custom-row" :gutter="0">
+        <el-col :span="12">
+          <el-form-item label="Research Field" class="custom-label" prop="researchField">
+            <el-select v-model="formData.researchField" class="custom-select" placeholder="Select your research field">
+              <el-option
+                v-for="option in researchFields"
+                :key="option.value"
+                :label="option.label"
+                :value="option.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="Post" class="custom-label" prop="post">
+            <el-select v-model="formData.post" class="custom-select" placeholder="Select your post">
+              <el-option
+                v-for="option in posts"
+                :key="option.value"
+                :label="option.label"
+                :value="option.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row class="custom-row" :gutter="0">
+        <el-col :span="12">
+          <el-form-item label="Country" class="custom-label" prop="country">
+            <el-select v-model="formData.country" class="custom-select" placeholder="Select your country">
+              <el-option
+                v-for="country in countries"
+                :key="country.code"
+                :label="country.name"
+                :value="country.code">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      
+      <!-- 输入表单 -->
+      <el-row class="custom-row" :gutter="0">
+        <el-col :span="12">
+          <el-form-item label="Given Name" class="custom-label" prop="givenName">
+            <el-input v-model="formData.givenName" class="custom-input" placeholder="Enter your given name"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="Surname" class="custom-label" prop="surname">
+            <el-input v-model="formData.surname" class="custom-input" placeholder="Enter your surname"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row class="custom-row" :gutter="0">
+        <el-col :span="12">
+          <el-form-item label="E-mail" class="custom-label" prop="email">
+            <el-input v-model="formData.email" class="custom-input" placeholder="Enter your email"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="Phone Number" class="custom-label" prop="phone">
+            <el-input v-model="formData.phone" class="custom-input" placeholder="Enter your phone number"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row class="custom-row">
+        <el-col :span="12">
+          <el-form-item label="Company/Institution" class="custom-label" prop="company">
+            <el-input v-model="formData.company" class="custom-input" placeholder="Enter your company/institution"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row class="custom-row" :gutter="0">
+        <el-col :span="24">
+          <el-form-item label="Note" class="custom-label" prop="note">
+            <el-input type="textarea" v-model="formData.note" class="custom-textarea" placeholder="Tell us about your needs" rows="6"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      
+      <!-- 提交按钮 -->
+      <el-row class="custom-row" :gutter="0">
+        <el-col :span="24">
+          <el-button type="primary" class="submit-button" @click="handleSubmit">Submit</el-button>
+        </el-col>
+      </el-row>
+    </el-form>
+  </div>  
 </template>
 
 <script setup lang='ts'>
+import { ref } from 'vue';
+import countries from '../../node_modules/country-list/data.json';
+import { ElForm , FormItemRule} from 'element-plus';
+const researchFields = [
+  { label: "Scientific Research Service", value: "scientific-research" },
+  { label: "Clinical Detection", value: "clinical-detection" },
+  { label: "Media Organization", value: "media-organization" },
+  { label: "Others", value: "others" }
+];
+
+const posts = [
+  { label: "Company Manager", value: "company-manager" },
+  { label: "Company Director", value: "company-director" },
+  { label: "Company Buyer", value: "company-buyer" },
+  { label: "Laboratory Manager", value: "laboratory-manager" },
+  { label: "Professor", value: "professor" },
+  { label: "Researcher", value: "researcher" },
+  { label: "Student", value: "student" },
+  { label: "Others", value: "others-post" }
+];
+
+
+// 定义表单数据
+const formData = ref({
+  researchField: '',
+  post: '',
+  country: '',
+  givenName: '',
+  surname: '',
+  email: '',
+  phone: '',
+  company: '',
+  note: ''
+});
+
+// 定义表单验证规则
+// 定义表单验证规则
+const rules = {
+  researchField: [{ required: true, message: 'Please select your research field', trigger: 'change' }],
+  post: [{ required: true, message: 'Please select your post', trigger: 'change' }],
+  country: [{ required: true, message: 'Please select your country', trigger: 'change' }],
+  givenName: [{ required: true, message: 'Given name cannot be empty', trigger: 'blur' }],
+  surname: [{ required: true, message: 'Surname cannot be empty', trigger: 'blur' }],
+  email: [
+    { required: true, message: 'E-mail cannot be empty', trigger: 'blur' },
+    { type: 'email', message: 'Please enter a valid e-mail', trigger: ['blur', 'change'] }
+  ] as FormItemRule[], // 显式指定为 FormItemRule[]
+  phone: [
+    { required: true, message: 'Phone number cannot be empty', trigger: 'blur' },
+    { pattern: /^[0-9]*$/, message: 'Phone number must be numeric', trigger: 'blur' }
+  ] as FormItemRule[], // 显式指定为 FormItemRule[]
+  company: [{ required: true, message: 'Company/Institution cannot be empty', trigger: 'blur' }],
+  note: [{ required: true, message: 'Note cannot be empty', trigger: 'blur' }]
+};
+
+const formRef = ref<InstanceType<typeof ElForm> | null>(null);
+// 表单提交处理函数
+const handleSubmit = async () => {
+  try {
+    // 触发表单验证
+    if (formRef.value) { // 非空检查
+      await formRef.value.validate();
+
+      // 示例：将表单数据发送到后端
+      const response = await fetch('YOUR_BACKEND_API_URL', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData.value),
+      });
+
+      if (response.ok) {
+        // 处理成功的响应
+        console.log('Form submitted successfully!');
+        // 可以在这里添加成功消息或重置表单
+      } else {
+        // 处理错误的响应
+        console.error('Error submitting form:', response.statusText);
+      }
+    } else {
+      console.error('Form reference is null');
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
+};
 </script>
 
 <style scoped>
 .page-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* 改为左对齐 */
+  padding-top: 30px;
 }
+
+.form-title {
+  color: #5182F8;
+  font-size: 40px; /* 字体大小 */
+  font-weight: 600; /* 字体粗细 */
+  line-height: 49px; /* 行高 */
+  margin-bottom: 20px; /* 和表单的间距 */
+  margin-left: 0; /* 与 Research Field 左对齐 */
+}
+
+.el-form {
+  width: 100%; /* 表单的宽度为100%，表单项根据需要调整宽度 */
+}
+
+.custom-row {
+  width: 1094px;
+}
+
+.custom-select {
+  width: 492px; /* 每个下拉选择的宽度 */
+  height: 35px; /* 每个下拉选择的高度 */
+  padding-left: 0px;
+}
+
+.custom-input {
+  width: 492px; /* 每个输入框的宽度 */
+  height: 35px; /* 每个输入框的高度 */
+  border-radius: 10px; /* 设置圆角为10px */
+}
+
+.custom-textarea {
+  width: 1038px; /* 新增的文本区域宽度 */
+  height: 150px; /* 新增的文本区域高度 */
+}
+
+.submit-button {
+  background-color: #5182F8;
+  font-size: 24px;
+  font-weight: 700;
+  width: 1038px; /* 提交按钮宽度 */
+  height: 60px; /* 提交按钮高度 */
+  border-radius: 10px;
+}
+
+/* 表单标签 */
+.custom-label >>> .el-form-item__label {
+  font-size: 16px; /* 字体大小 */
+  font-weight: 600; /* 字体粗细 */
+  line-height: 19px; /* 行高 */
+}
+
 </style>
