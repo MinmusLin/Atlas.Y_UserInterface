@@ -2,7 +2,7 @@
   <div class='page-container'>
     <div style='display: flex; align-items: flex-end; margin-bottom: 35px; margin-top: 150px'>
       <img src='/Logos/DefaultLogo.png' style='width: 486px' alt='DefaultLogo'>
-      <img src='/DesignMaterials/DynamicVersionFrame.png' alt='BasicVersionFrame' style='height: 42px; margin-left: 18px'>
+      <img src='/DesignMaterials/DynamicVersionFrame.png' alt='DynamicVersionFrame' style='height: 42px; margin-left: 18px'>
     </div>
 
     <img src='/DesignMaterials/TitlePrompt.png' style='width: 815px; margin-bottom: 34px' alt='TitlePrompt'>
