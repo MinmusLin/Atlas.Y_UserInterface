@@ -4,7 +4,7 @@ import {Router, RouteRecordRaw} from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/basic-designer'
   },
   {
     path: '/:pathMatch(.*)*',
@@ -16,18 +16,18 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Not Found'}
   },
   {
-    path: '/home',
-    component: () => import('@/pages/HomePage.vue'),
-    meta: {title: 'Atlas.Y - Home'}
+    path: '/basic-designer',
+    component: () => import('@/pages/BasicDesignerHomePage.vue'),
+    meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer',
-    component: () => import('@/pages/BasicDesignerPage.vue'),
+    path: '/basic-designer/configuration',
+    component: () => import('@/pages/BasicDesignerConfigurationPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/dynamic-designer',
-    component: () => import('@/pages/DynamicDesignerPage.vue'),
+    component: () => import('@/pages/DynamicDesignerHomePage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
   {
