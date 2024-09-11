@@ -145,7 +145,7 @@ import MemberCard from '@/components/MemberCard.vue'
 .title-section {
   display: flex;
   justify-content: space-between;
-  width: 1210px;
+  width: 1100px;
 }
 
 .title {
@@ -167,7 +167,7 @@ import MemberCard from '@/components/MemberCard.vue'
 }
 
 .intro {
-  width: 730px;
+  width: 670px;
   margin-top: 110px;
   margin-bottom: 45px;
 }
