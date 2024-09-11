@@ -1,129 +1,104 @@
 <template>
   <div class='page-container'>
-    <p class="form-title">Contact Form</p>
-    <el-form
-      label-position="top"
-      label-width="100px"
-      ref="formRef"
-      :rules="rules"
-      :model="formData"
-    >
-
-      <!-- 下拉表单 -->
-      <el-row class="custom-row" :gutter="0">
-        <el-col :span="12">
-          <el-form-item label="Research Field" class="custom-label" prop="researchField">
-            <el-select v-model="formData.researchField" class="custom-select" placeholder="Select your research field">
-              <el-option
-                v-for="option in researchFields"
-                :key="option.value"
-                :label="option.label"
-                :value="option.value">
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="Post" class="custom-label" prop="post">
-            <el-select v-model="formData.post" class="custom-select" placeholder="Select your post">
-              <el-option
-                v-for="option in posts"
-                :key="option.value"
-                :label="option.label"
-                :value="option.value">
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row class="custom-row" :gutter="0">
-        <el-col :span="12">
-          <el-form-item label="Country" class="custom-label" prop="country">
-            <el-select v-model="formData.country" class="custom-select" placeholder="Select your country">
-              <el-option
-                v-for="country in countries"
-                :key="country.code"
-                :label="country.name"
-                :value="country.code">
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
-
-      <!-- 输入表单 -->
-      <el-row class="custom-row" :gutter="0">
-        <el-col :span="12">
-          <el-form-item label="Given Name" class="custom-label" prop="givenName">
-            <el-input v-model="formData.givenName" class="custom-input" placeholder="Enter your given name"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="Surname" class="custom-label" prop="surname">
-            <el-input v-model="formData.surname" class="custom-input" placeholder="Enter your surname"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row class="custom-row" :gutter="0">
-        <el-col :span="12">
-          <el-form-item label="E-mail" class="custom-label" prop="email">
-            <el-input v-model="formData.email" class="custom-input" placeholder="Enter your email"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="Phone Number" class="custom-label" prop="phone">
-            <el-input v-model="formData.phone" class="custom-input" placeholder="Enter your phone number"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row class="custom-row">
-        <el-col :span="12">
-          <el-form-item label="Company/Institution" class="custom-label" prop="company">
-            <el-input v-model="formData.company" class="custom-input" placeholder="Enter your company /institution"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row class="custom-row" :gutter="0">
-        <el-col :span="24">
-          <el-form-item label="Note" class="custom-label" prop="note">
-            <el-input type="textarea" resize="none" v-model="formData.note" class="custom-textarea" placeholder="Tell us about your needs" rows="6"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-
-      <!-- 提交按钮 -->
-      <el-row class="custom-row" :gutter="0">
-        <el-col :span="24">
-          <el-button type="primary" class="submit-button" @click="submitContactForm(formRef)">Submit</el-button>
-        </el-col>
-      </el-row>
+    <p class='form-title'>Contact Form</p>
+    <el-form ref='contactRuleFormRef' :model='contactRuleForm' :rules='contactRules'>
+      <el-form-item prop='researchField'>
+        <p>Research Field</p>
+        <el-select v-model='contactRuleForm.researchField'
+                   style='width: 492px'
+                   placeholder='Select your research field'>
+          <el-option v-for='(researchField, index) in researchFields'
+                     :key='index'
+                     :label='researchField'
+                     :value='researchField'/>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop='post'>
+        <p>Post</p>
+        <el-select v-model='contactRuleForm.post'
+                   style='width: 492px'
+                   placeholder='Select your post'>
+          <el-option v-for='(post, index) in posts'
+                     :key='index'
+                     :label='post'
+                     :value='post'/>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop='country'>
+        <p>Country</p>
+        <el-select v-model='contactRuleForm.country'
+                   style='width: 492px'
+                   placeholder='Select your country'>
+          <el-option v-for='(country, code) in countries'
+                     :key='code'
+                     :label='country.name'
+                     :value='country.name'>
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop='givenName'>
+        <p>Given Name</p>
+        <el-input v-model='contactRuleForm.givenName'
+                  style='width: 492px'
+                  placeholder='Enter your given name'/>
+      </el-form-item>
+      <el-form-item prop='surname'>
+        <p>Surname</p>
+        <el-input v-model='contactRuleForm.surname'
+                  style='width: 492px'
+                  placeholder='Enter your surname'/>
+      </el-form-item>
+      <el-form-item prop='email'>
+        <p>E-mail</p>
+        <el-input v-model='contactRuleForm.email'
+                  style='width: 492px'
+                  placeholder='Enter your E-mail'/>
+      </el-form-item>
+      <el-form-item prop='phoneNumber'>
+        <p>Phone Number</p>
+        <el-input v-model='contactRuleForm.phoneNumber'
+                  style='width: 492px'
+                  placeholder='Enter your phone number'/>
+      </el-form-item>
+      <el-form-item prop='companyOrInstitution'>
+        <p>Company / Institution</p>
+        <el-input v-model='contactRuleForm.companyOrInstitution'
+                  style='width: 492px'
+                  placeholder='Enter your company or institution'/>
+      </el-form-item>
+      <el-form-item prop='note'>
+        <p>Note</p>
+        <el-input v-model='contactRuleForm.note'
+                  style='width: 492px'
+                  type='textarea'
+                  placeholder='Tell us about your needs'/>
+      </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script setup lang='ts'>
-import { ref, reactive } from 'vue';
-import { FormInstance, FormRules} from 'element-plus'
-import countries from 'country-list/data.json';
+import {ref, reactive} from 'vue'
+import {FormInstance, FormRules} from 'element-plus'
+import countries from 'country-list/data.json'
 
-const formRef = ref<FormInstance>()
+const contactRuleFormRef = ref<FormInstance>()
 const researchFields = [
-  { label: "Scientific Research Service", value: "scientific-research" },
-  { label: "Clinical Detection", value: "clinical-detection" },
-  { label: "Media Organization", value: "media-organization" },
-  { label: "Others", value: "others" }
-];
-
+  'Scientific Research Service',
+  'Clinical Detection',
+  'Media Organization',
+  'Others'
+]
 const posts = [
-  { label: "Company Manager", value: "company-manager" },
-  { label: "Company Director", value: "company-director" },
-  { label: "Company Buyer", value: "company-buyer" },
-  { label: "Laboratory Manager", value: "laboratory-manager" },
-  { label: "Professor", value: "professor" },
-  { label: "Researcher", value: "researcher" },
-  { label: "Student", value: "student" },
-  { label: "Others", value: "others-post" }
-];
+  'Company Manager',
+  'Company Director',
+  'Company Buyer',
+  'Laboratory Manager',
+  'Professor',
+  'Researcher',
+  'Student',
+  'Others'
+]
 
 interface ContactRuleForm {
   researchField: string
@@ -132,42 +107,54 @@ interface ContactRuleForm {
   givenName: string
   surname: string
   email: string
-  phone: string
-  company: string
+  phoneNumber: string
+  companyOrInstitution: string
   note: string
 }
 
-// 定义表单数据
-const formData = reactive<ContactRuleForm>({
+const contactRuleForm = reactive<ContactRuleForm>({
   researchField: '',
   post: '',
   country: '',
   givenName: '',
   surname: '',
   email: '',
-  phone: '',
-  company: '',
+  phoneNumber: '',
+  companyOrInstitution: '',
   note: ''
-});
+})
 
-// 定义表单验证规则
-const rules: FormRules = {
-  researchField: [{ required: true, message: 'Please select your research field', trigger: 'change' }],
-  post: [{ required: true, message: 'Please select your post', trigger: 'change' }],
-  country: [{ required: true, message: 'Please select your country', trigger: 'change' }],
-  givenName: [{ required: true, message: 'Given name cannot be empty', trigger: 'blur' }],
-  surname: [{ required: true, message: 'Surname cannot be empty', trigger: 'blur' }],
+const contactRules: FormRules = {
+  researchField: [
+    {required: true, message: 'Please select your research field', trigger: 'change'}
+  ],
+  post: [
+    {required: true, message: 'Please select your post', trigger: 'change'}
+  ],
+  country: [
+    {required: true, message: 'Please select your country', trigger: 'change'}
+  ],
+  givenName: [
+    {required: true, message: 'Given name cannot be empty', trigger: 'change'}
+  ],
+  surname: [
+    {required: true, message: 'Surname cannot be empty', trigger: 'change'}
+  ],
   email: [
-    { required: true, message: 'E-mail cannot be empty', trigger: 'blur' },
-    { type: 'email', message: 'Please enter a valid e-mail', trigger: ['blur', 'change'] }
+    {required: true, message: 'E-mail cannot be empty', trigger: 'change'},
+    {type: 'email', message: 'Please enter a valid e-mail', trigger: 'change'}
   ],
-  phone: [
-    { required: true, message: 'Phone number cannot be empty', trigger: 'blur' },
-    { pattern: /^[0-9]*$/, message: 'Phone number must be numeric', trigger: 'blur' }
+  phoneNumber: [
+    {required: true, message: 'Phone number cannot be empty', trigger: 'change'},
+    {pattern: /^[0-9]*$/, message: 'Please enter a valid phone number ', trigger: 'change'}
   ],
-  company: [{ required: true, message: 'Company/Institution cannot be empty', trigger: 'blur' }],
-  note: [{ required: true, message: 'Note cannot be empty', trigger: 'blur' }]
-};
+  companyOrInstitution: [
+    {required: true, message: 'Company or institution cannot be empty', trigger: 'change'}
+  ],
+  note: [
+    {required: true, message: 'Note cannot be empty', trigger: 'change'}
+  ]
+}
 
 const submitContactForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) {
@@ -175,7 +162,7 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
   }
   await formEl.validate(async (valid) => {
     if (valid) {
-      console.log('有效')
+      console.log('valid')
     }
   })
 }
@@ -185,58 +172,16 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
 .page-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 改为左对齐 */
+  align-items: flex-start;
   padding-top: 30px;
 }
 
 .form-title {
   color: #5182F8;
-  font-size: 40px; /* 字体大小 */
-  font-weight: 600; /* 字体粗细 */
-  line-height: 49px; /* 行高 */
-  margin-bottom: 20px; /* 和表单的间距 */
-  margin-left: 0; /* 与 Research Field 左对齐 */
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 49px;
+  margin-bottom: 20px;
+  margin-left: 0;
 }
-
-.el-form {
-  width: 100%; /* 表单的宽度为100%，表单项根据需要调整宽度 */
-}
-
-.custom-row {
-  width: 1094px;
-}
-
-.custom-select {
-  width: 492px; /* 每个下拉选择的宽度 */
-  height: 35px; /* 每个下拉选择的高度 */
-  padding-left: 0px;
-}
-
-.custom-input {
-  width: 492px; /* 每个输入框的宽度 */
-  height: 35px; /* 每个输入框的高度 */
-  border-radius: 10px; /* 设置圆角为10px */
-}
-
-.custom-textarea {
-  width: 1038px; /* 新增的文本区域宽度 */
-  height: 150px; /* 新增的文本区域高度 */
-}
-
-.submit-button {
-  background-color: #5182F8;
-  font-size: 24px;
-  font-weight: 700;
-  width: 1038px; /* 提交按钮宽度 */
-  height: 60px; /* 提交按钮高度 */
-  border-radius: 10px;
-}
-
-/* 表单标签 */
-.custom-label >>> .el-form-item__label {
-  font-size: 16px; /* 字体大小 */
-  font-weight: 600; /* 字体粗细 */
-  line-height: 19px; /* 行高 */
-}
-
 </style>
