@@ -28,7 +28,7 @@
         <div class='right-section'>
           <div class='residue-section'>
             <p class='residue-title'>Center Residue</p>
-            <p class='residue'>('A', 50)</p>
+            <p class='residue'>{{ '(' + currentResidueName + ', ' + currentResidueIndex + ')' }}</p>
           </div>
 
           <div class='radius-section'>
@@ -86,12 +86,18 @@ const cad_AScore = ref(0.0)
 const score_A = computed(() => cad_AScore.value)
 const cad_SScore = ref(0.0)
 const score_S = computed(() => cad_SScore.value)
+const currentResidueIndex = ref('null')
+const currentResidueName = ref('null')
 
 cad_AScore.value = 0.970826775404717
 cad_SScore.value = 0.9217568423111843
 
 onMounted(() => {
-  const stage = new Stage('local-pdb-container')
+  const stage = new Stage('local-pdb-container', {
+    impostor: false,
+    quality: 'high',
+    mousePreset: 'pymol'
+  })
   stage.loadFile('/PDB/6uzq.pdb').then(function (component) {
     if (component) {
       component.addRepresentation('ball+stick', {
@@ -101,7 +107,30 @@ onMounted(() => {
         colorScheme: 'uniform',
         colorValue: '#ADD8E6'
       })
-      component.addRepresentation('line', {})
+      component.addRepresentation('line', {
+        disablePicking: true,
+        multipleBond: 'offset'
+      })
+      let highlightRepr = null
+      stage.signals.clicked.add((pickingProxy) => {
+        if (pickingProxy && pickingProxy.atom && pickingProxy.atom.atomname == 'CA') {
+          const atom = pickingProxy.atom
+          currentResidueIndex.value = atom.residueIndex
+          currentResidueName.value = atom.resname
+
+          if (highlightRepr) {
+            component.removeRepresentation(highlightRepr);
+          }
+
+          // 添加新的高亮表示
+          highlightRepr = component.addRepresentation('ball+stick', {
+            sele: `.CA`,
+            colorScheme: 'uniform',
+            colorValue: '#12ff39', // 设置高亮颜色为黄色
+            radiusScale: 2 // 可以设置不同的大小来进一步增加可见性
+          });
+        }
+      })
       component.autoView()
     }
   })
