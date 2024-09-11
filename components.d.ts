@@ -7,19 +7,5 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    DefaultButton: typeof import('./src/components/DefaultButton.vue')['default']
-    Dialog: typeof import('./src/components/Dialog.vue')['default']
-    ElDialog: typeof import('element-plus/es')['ElDialog']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElPagination: typeof import('element-plus/es')['ElPagination']
-    ElTable: typeof import('element-plus/es')['ElTable']
-    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    InfoTooltip: typeof import('./src/components/InfoTooltip.vue')['default']
-    MemberCard: typeof import('./src/components/MemberCard.vue')['default']
-    Navbar: typeof import('./src/components/Navbar.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
-    ShadowButton: typeof import('./src/components/ShadowButton.vue')['default']
-    ToggleButton: typeof import('./src/components/ToggleButton.vue')['default']
   }
 }
