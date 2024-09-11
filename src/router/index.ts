@@ -17,117 +17,117 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/basic-designer',
-    component: () => import('@/pages/BasicDesignerHomePage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicDesignerHomePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/configuration',
-    component: () => import('@/pages/BasicDesignerConfigurationPage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicDesignerConfigurationPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/dynamic-designer',
-    component: () => import('@/pages/DynamicDesignerHomePage.vue'),
+    component: () => import('@/pages/DynamicDesignerPages/DynamicDesignerHomePage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
   {
     path: '/membership-plan',
-    component: () => import('@/pages/MembershipPlanPage.vue'),
+    component: () => import('@/pages/StorePages/MembershipPlanPage.vue'),
     meta: {title: 'Atlas.Y - Membership Plan'}
   },
   {
     path: '/algorithm-store',
-    component: () => import('@/pages/AlgorithmStorePage.vue'),
+    component: () => import('@/pages/StorePages/AlgorithmStorePage.vue'),
     meta: {title: 'Atlas.Y - Algorithm Store'}
   },
   {
     path: '/user-guide',
-    component: () => import('@/pages/UserGuidePage.vue'),
+    component: () => import('@/pages/DocumentationPages/UserGuidePage.vue'),
     meta: {title: 'Atlas.Y - User Guide'}
   },
   {
     path: '/technical-resources',
-    component: () => import('@/pages/TechnicalResourcesPage.vue'),
+    component: () => import('@/pages/DocumentationPages/TechnicalResourcesPage.vue'),
     meta: {title: 'Atlas.Y - Technical Resources'}
   },
   {
     path: '/team',
-    component: () => import('@/pages/TeamPage.vue'),
+    component: () => import('@/pages/TeamPages/TeamPage.vue'),
     meta: {title: 'Atlas.Y - Team'}
   },
   {
     path: '/wiki',
-    component: () => import('@/pages/WikiPage.vue'),
+    component: () => import('@/pages/TeamPages/WikiPage.vue'),
     meta: {title: 'Atlas.Y - Wiki'}
   },
   {
     path: '/contact-us',
-    component: () => import('@/pages/ContactUsPage.vue'),
+    component: () => import('@/pages/TeamPages/ContactUsPage.vue'),
     meta: {title: 'Atlas.Y - Contact Us'}
   },
   {
     path: '/contact-us/form',
-    component: () => import('@/pages/ContactFormPage.vue'),
+    component: () => import('@/pages/TeamPages/ContactFormPage.vue'),
     meta: {title: 'Atlas.Y - Contact Form'}
   },
   {
     path: '/faqs',
-    component: () => import('@/pages/FAQsPage.vue'),
+    component: () => import('@/pages/SupportPages/FAQsPage.vue'),
     meta: {title: 'Atlas.Y - FAQs'}
   },
   {
     path: '/video-tutorials',
-    component: () => import('@/pages/VideoTutorialsPage.vue'),
+    component: () => import('@/pages/SupportPages/VideoTutorialsPage.vue'),
     meta: {title: 'Atlas.Y - Video Tutorials'}
   },
   {
     path: '/feedback',
-    component: () => import('@/pages/FeedbackPage.vue'),
+    component: () => import('@/pages/SupportPages/FeedbackPage.vue'),
     meta: {title: 'Atlas.Y - Feedback'}
   },
   {
     path: '/basic-designer/matching-results',
-    component: () => import('@/pages/BasicMatchingResultsPage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicMatchingResultsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/stability-evaluation',
-    component: () => import('@/pages/BasicStabilityEvaluationPage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicStabilityEvaluationPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/directed-evolution-results',
-    component: () => import('@/pages/BasicDirectedEvolutionResultsPage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicDirectedEvolutionResultsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/global-cad-score',
-    component: () => import('@/pages/BasicGlobalCADScorePage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicGlobalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/local-cad-score',
-    component: () => import('@/pages/BasicLocalCADScorePage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicLocalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/result-details',
-    component: () => import('@/pages/BasicResultDetailsPage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicResultDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/basic-designer/variant-details',
-    component: () => import('@/pages/BasicVariantDetailsPage.vue'),
+    component: () => import('@/pages/BasicDesignerPages/BasicVariantDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
     path: '/register',
-    component: () => import('@/pages/RegisterPage.vue'),
+    component: () => import('@/pages/AccountPages/RegisterPage.vue'),
     meta: {title: 'Atlas.Y - Register'}
   },
   {
     path: '/login',
-    component: () => import('@/pages/LoginPage.vue'),
+    component: () => import('@/pages/AccountPages/LoginPage.vue'),
     meta: {title: 'Atlas.Y - Login'}
   }
 ]

@@ -1,9 +1,9 @@
 <template>
   <div class='page-container'>
     <p class="form-title">Feedback</p>
-    <div class="feedback-tips">Use the form below to send us your comments. We read all feedback carefully, 
-      but we are unable to respond to each submission individually. 
-      If you provide your email address, 
+    <div class="feedback-tips">Use the form below to send us your comments. We read all feedback carefully,
+      but we are unable to respond to each submission individually.
+      If you provide your email address,
       you agree that we may contact you to better understand the comments you submitted.</div>
     <el-form
       label-position="top"
@@ -81,7 +81,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <el-row class="custom-row" :gutter="0">
         <el-col :span="24">
           <el-form-item label="Comments" class="custom-label" prop="comment">
@@ -89,7 +89,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <!-- 提交按钮 -->
       <el-row class="custom-row" :gutter="0">
         <el-col :span="24">
@@ -97,13 +97,13 @@
         </el-col>
       </el-row>
     </el-form>
-  </div>  
+  </div>
 </template>
 
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
 import { FormInstance, FormRules} from 'element-plus'
-import countries from '../../node_modules/country-list/data.json';
+import countries from 'country-list/data.json';
 
 const formRef = ref<FormInstance>()
 const researchFields = [

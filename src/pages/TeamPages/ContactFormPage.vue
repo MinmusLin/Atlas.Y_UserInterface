@@ -50,7 +50,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <!-- 输入表单 -->
       <el-row class="custom-row" :gutter="0">
         <el-col :span="12">
@@ -90,7 +90,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      
+
       <!-- 提交按钮 -->
       <el-row class="custom-row" :gutter="0">
         <el-col :span="24">
@@ -98,13 +98,13 @@
         </el-col>
       </el-row>
     </el-form>
-  </div>  
+  </div>
 </template>
 
 <script setup lang='ts'>
 import { ref, reactive } from 'vue';
 import { FormInstance, FormRules} from 'element-plus'
-import countries from '../../node_modules/country-list/data.json';
+import countries from 'country-list/data.json';
 
 const formRef = ref<FormInstance>()
 const researchFields = [
