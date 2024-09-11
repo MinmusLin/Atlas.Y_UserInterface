@@ -7,9 +7,12 @@
 
     <img src='/DesignMaterials/TitlePrompt.png' style='width: 815px; margin-bottom: 34px' alt='TitlePrompt'>
 
-    <ShadowButton width='875px' height='60px' style='margin-bottom: 10px'>
+    <!-- 添加会员弹窗 -->
+    <ShadowButton class="start-btn" width='875px' height='60px' style='margin-bottom: 10px'  @click='showContinueDialog=true'>
       <p style='font-size: 24px; margin-right: 10px'>START</p>
       <v-icon size='26px'>mdi-arrow-right</v-icon>
+      <!-- 添加会员图片 -->
+      <img class="icon" src="/DesignMaterials/InclinedCrown.png" alt="icon" />
     </ShadowButton>
 
     <el-table :data='tableData'
@@ -51,6 +54,53 @@
       </v-card>
     </v-dialog>
   </div>
+
+  <!-- 会员弹窗 -->
+  <Dialog v-model="showContinueDialog" style="padding: 14.5px 40px 0 40px; width:543px; height: 299px;">
+    <!-- 顶部标题和图标 -->
+    <div class="dialog-header">
+      <img src="/DesignMaterials/InclinedCrown.png" class="crown-icon" alt="crown" />
+      <p class="dialog-title">Experience Membership Features</p>
+    </div>
+
+    <!-- 描述文本 -->
+    <div class="dialog-description">
+      <p>
+        This is our membership feature. For more sophisticated algorithms and superior solutions, please go to our store to explore!
+      </p>
+    </div>
+
+    <!-- Privileges 部分 -->
+    <div class="dialog-privileges">
+      <div class="title">
+        <hr style="border: 1px solid #C5C9CD; width: 177px;" />
+        <p class="privileges-title">Privileges</p>
+        <hr style="border: 1px solid #C5C9CD; width: 177px;" />
+      </div>
+      <div class="privileges-icons">
+        <div class="privilege-item" style="width: 96px;height: 62px;">
+          <img src="/DesignMaterials/InclinedCrown.png" alt="Data Security" />
+          <p>Data Security</p>
+        </div>
+        <div class="privilege-item" style="width: 93px;height: 62px;">
+          <img src="/DesignMaterials/InclinedCrown.png" alt="Team Management" />
+          <p>Team Management</p>
+        </div>
+        <div class="privilege-item" style="width: 105px;height: 62px;">
+          <img src="/DesignMaterials/InclinedCrown.png" alt="Advanced Algorithms" />
+          <p>Advanced Algorithms</p>
+        </div>
+        <div class="privilege-item" style="width: 105px;height: 62px;">
+          <img src="/DesignMaterials/InclinedCrown.png" alt="Custom Development" />
+          <p>Custom Development</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 按钮 -->
+    <DefaultButton width="100%" height="48px" text="Continue" :active="true" style="background-color: #5182F8; color: white;" />
+</Dialog>
+
 </template>
 
 <script setup lang='ts'>
@@ -58,7 +108,9 @@ import {ref} from 'vue'
 import {Clock} from '@element-plus/icons-vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import {useRouter} from 'vue-router'
+import Dialog from '@/components/Dialog.vue'
 
+const showContinueDialog = ref(false)
 const router = useRouter()
 const showDialog = ref(true)
 const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px', paddingBottom: '2px'})
@@ -212,5 +264,94 @@ const tableData = ref([
   padding-top: 38px;
   padding-bottom: 30px;
   transform: translateY(calc(50vh - 130px)) translateX(42px);
+}
+
+.start-btn {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: -15px; 
+  right: -15px; 
+  width: 50px;
+  height: 50px;
+}
+
+/* 会员弹窗 */
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.crown-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+}
+
+.dialog-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.36px;
+  text-align: left;
+  color: #2F3235;
+}
+
+.dialog-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  color: #2F3235;
+  margin-bottom: 14px;
+}
+
+.dialog-privileges {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.privileges-title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14.52px;
+  text-align: left;
+  color: #2F3235;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.privileges-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.privilege-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12.1px;
+  text-align: left;
+  color: #5182F8;
+}
+
+.privilege-item img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
 }
 </style>
