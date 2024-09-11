@@ -1,20 +1,30 @@
 <template>
   <div class="subscription-card">
-    <h2 class="subscription-title">{{ props.title }}</h2>
+    <h2 class="subscription-title">{{ title }}</h2>
     <ul class="subscription-features">
-      <ul>
-        <slot />
-      </ul>
+      <slot></slot> <!-- Render the features passed in from the parent -->
     </ul>
     <!-- 按钮部分 -->
-    <button class="subscribe-button">Subscribe</button>
+    <button class="subscribe-button" @click="openDialog">Subscribe</button>
   </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
-  title: String
-})
+  title: {
+    type: String,
+    required: true
+  }
+});
+
+const emit = defineEmits(['open-dialog']);
+
+const openDialog = () => {
+  emit('open-dialog', {
+    title: props.title
+  });
+  console.log("openDialog:emit")
+}; // 通知父组件打开对话框
 </script>
 
 <style scoped>

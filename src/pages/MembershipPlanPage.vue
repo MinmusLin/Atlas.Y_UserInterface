@@ -27,7 +27,7 @@
         <li>Overall stability scoring</li>
       </MembershipItem>
 
-      <MembershipItem title="Professional">
+      <MembershipItem title="Professional" @open-dialog="openDialog">
         <li>Includes all Free Version features</li>
         <li>
           Access to all algorithms in the algorithm store
@@ -40,7 +40,7 @@
         </li>
       </MembershipItem>
 
-      <MembershipItem title="Company">
+      <MembershipItem title="Company" @open-dialog="openDialog">
         <li>Includes all Professional Version features</li>
         <li>
           Exclusive enterprise services and functions
@@ -53,69 +53,45 @@
         </li>
       </MembershipItem>
 
-      <Dialog v-model="isDialogVisible"
-              width="732px"
-              class="dialog-container">
-        <div class="dialog-content">
-          <!-- 标题 -->
-          <div class="title-container">
-            <h2 class="dialog-title" style="font-size:16px">Professional Plan</h2>
-
-            <!-- 描述文本 -->
-            <p class="dialog-description">Copy and paste it into the Text Box or upload the Fasta file.</p>
-          </div>
-          <!-- 价格选项 -->
-          <!-- 价格选项 -->
-          <div class="price-options">
-            <div
-              class="price-card"
-              :class="{ 'selected': selectedPrice === 1 }"
-              @click="selectPrice(1)"
-            >
-              <span class="price-amount">399$</span>
-              <span class="price-duration">1 month</span>
-            </div>
-
-            <div
-              class="price-card"
-              :class="{ 'selected': selectedPrice === 2 }"
-              @click="selectPrice(2)"
-            >
-              <span class="price-amount">1800$</span>
-              <span class="price-duration">half year</span>
-            </div>
-
-            <div
-              class="price-card"
-              :class="{ 'selected': selectedPrice === 3 }"
-              @click="selectPrice(3)"
-            >
-              <span class="price-amount">3000$</span>
-              <span class="price-duration">1 year</span>
-            </div>
-          </div>
-
-          <!-- 订阅按钮 -->
-          <button class="subscribe-button">Subscribe</button>
-        </div>
-      </Dialog>
+      <!-- Custom Dialog for subscribing -->
+      <CustomDialog
+        v-model="isDialogVisible"
+        :title="'Professional'"
+        :description="'Copy and paste it into the Text Box or upload the Fasta file.'"
+        :prices="[
+            { amount: '399$', duration: '1 month' },
+            { amount: '1800$', duration: 'half year' },
+            { amount: '3000$', duration: '1 year' }
+          ]"
+        @subscribe="handleSubscribe"
+      />
     </div>
-
-
   </div>
 </template>
 
 <script setup lang='ts'>
-import {ref, watch} from 'vue'
+import {ref, watch} from 'vue';
 import {useRouter} from "vue-router";
 import ToggleButton from "@/components/ToggleButton.vue";
 import MembershipItem from "@/components/MembershipItem.vue";
-import Dialog from "@/components/Dialog.vue";
+import CustomDialog from '@/components/CustomDialog.vue';
 
 const isToggled = ref(false);
 const router = useRouter();
-const isDialogVisible = ref(true);
-const selectedPrice = ref<number | null>(null);
+const isDialogVisible = ref(false); // initially hidden
+const dialogTitle = ref(''); // dynamically set title
+
+// 处理订阅的逻辑
+const handleSubscribe = (selectedPrice: number | null) => {
+  console.log('Subscribed with price option:', selectedPrice);
+};
+
+// Open dialog with a specific title
+const openDialog = ({ title }) => {
+  console.log("father:openDialog:", title);
+  dialogTitle.value = title;  // 设置弹窗的标题
+  isDialogVisible.value = true;  // 打开弹窗
+};
 
 watch(isToggled, (newValue) => {
   console.log('isToggled:', newValue);
@@ -126,18 +102,6 @@ watch(isToggled, (newValue) => {
     console.log("An error occured");
   }
 });
-
-// 选择价格的函数
-const selectPrice = (priceIndex: number) => {
-  if (selectedPrice.value === priceIndex) {
-    // 如果再次点击，取消选择
-    selectedPrice.value = null;
-  } else {
-    // 设置选中的 price-card
-    selectedPrice.value = priceIndex;
-  }
-};
-
 </script>
 
 <style scoped>
@@ -198,94 +162,5 @@ const selectPrice = (priceIndex: number) => {
 .inner-li{
   font-size: 4px;
 }
-
-.dialog-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.dialog-content {
-  text-align: center;
-  padding: 16px;
-}
-
-.dialog-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 12px;
-}
-
-.dialog-description {
-  font-size: 16px;
-  color: #6A737D;
-  margin-bottom: 12px;
-}
-
-/* 价格选项容器 */
-.price-options {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-/* 每个价格选项卡 */
-.price-card {
-  border: 2px solid #5182F8;
-  border-radius: 8px;
-  padding: 16px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 209px;
-  height: 108px;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-.price-card:hover {
-  border:1px solid #5182F8; /* 钱色 (Gold) */
-}
-.price-card.selected {
-  border: 3px solid #5182F8;
-}
-/* 价格金额 */
-.price-amount {
-  font-size: 36px;
-  font-weight: bold;
-  color: #FFCA31;
-  margin-bottom: 4px;
-}
-
-/* 价格持续时间 */
-.price-duration {
-  font-size: 16px;
-  color: #6A737D;
-  font-weight: 600;
-}
-
-/* 订阅按钮 */
-.subscribe-button {
-  background-color: #5182F8;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-}
-
-.subscribe-button:hover {
-  background-color: #4168C8;
-}
-.title-container{
-  display: flex;
-  text-align:left;
-  flex-direction: column;
-}
-
 
 </style>
