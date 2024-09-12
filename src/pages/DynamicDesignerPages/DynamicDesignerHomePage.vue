@@ -2,14 +2,20 @@
   <div class='page-container'>
     <div style='display: flex; align-items: flex-end; margin-bottom: 35px; margin-top: 150px'>
       <img src='/Logos/DefaultLogo.png' style='width: 486px' alt='DefaultLogo'>
-      <img src='/DesignMaterials/DynamicVersionFrame.png' alt='DynamicVersionFrame' style='height: 42px; margin-left: 18px'>
+      <img src='/DesignMaterials/DynamicVersionFrame.png'
+           alt='DynamicVersionFrame'
+           style='height: 42px; margin-left: 18px'>
     </div>
 
     <img src='/DesignMaterials/TitlePrompt.png' style='width: 815px; margin-bottom: 34px' alt='TitlePrompt'>
 
-    <ShadowButton width='875px' height='60px' style='margin-bottom: 10px'>
+    <ShadowButton width='875px'
+                  height='60px'
+                  style='position: relative; margin-bottom: 10px'
+                  @click='showContinueDialog=true'>
       <p style='font-size: 24px; margin-right: 10px'>START</p>
       <v-icon size='26px'>mdi-arrow-right</v-icon>
+      <img class='icon' src='/DesignMaterials/InclinedCrown.png' alt='InclinedCrown'/>
     </ShadowButton>
 
     <el-table :data='tableData'
@@ -51,16 +57,58 @@
       </v-card>
     </v-dialog>
   </div>
+
+  <Dialog v-model='showContinueDialog' style='padding: 14px 40px 0 40px; width: 543px; height: 299px'>
+    <div class='dialog-header'>
+      <img src='/DesignMaterials/DefaultCrown.png' class='crown-icon' alt='DefaultCrown'/>
+      <p class='dialog-title'>Experience Membership Features</p>
+    </div>
+    <div class='dialog-description'>
+      <p>
+        This is our membership feature. For more sophisticated algorithms and superior solutions, please go to our store
+        to explore!
+      </p>
+    </div>
+    <div class='dialog-privileges'>
+      <div class='title'>
+        <hr style='border: 1px solid #C5C9CD; width: 177px'/>
+        <p class='privileges-title'>Privileges</p>
+        <hr style='border: 1px solid #C5C9CD; width: 177px'/>
+      </div>
+      <div class='privileges-icons'>
+        <div class='privilege-item' style='width: 96px; height: 62px'>
+          <img src='/DesignMaterials/DataSecurity.png' alt='DataSecurity'/>
+          <p>Data Security</p>
+        </div>
+        <div class='privilege-item' style='width: 93px; height: 62px'>
+          <img src='/DesignMaterials/TeamManagement.png' alt='TeamManagement'/>
+          <p>Team Management</p>
+        </div>
+        <div class='privilege-item' style='width: 105px; height: 62px'>
+          <img src='/DesignMaterials/AdvancedAlgorithms.png' alt='AdvancedAlgorithms'/>
+          <p>Advanced Algorithms</p>
+        </div>
+        <div class='privilege-item' style='width: 105px; height: 62px'>
+          <img src='/DesignMaterials/CustomDevelopment.png' alt='CustomDevelopment'/>
+          <p>Custom Development</p>
+        </div>
+      </div>
+    </div>
+    <DefaultButton width='100%' height='48px' text='Continue' :active='true'/>
+  </Dialog>
 </template>
 
 <script setup lang='ts'>
 import {ref} from 'vue'
 import {Clock} from '@element-plus/icons-vue'
-import ShadowButton from '@/components/ShadowButton.vue'
 import {useRouter} from 'vue-router'
+import ShadowButton from '@/components/ShadowButton.vue'
+import Dialog from '@/components/Dialog.vue'
+import DefaultButton from '@/components/DefaultButton.vue'
 
 const router = useRouter()
 const showDialog = ref(true)
+const showContinueDialog = ref(false)
 const headerCellStyle = () => ({color: '#2F62D7', textAlign: 'center', fontSize: '12px', paddingBottom: '2px'})
 const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px'})
 
@@ -212,5 +260,89 @@ const tableData = ref([
   padding-top: 38px;
   padding-bottom: 30px;
   transform: translateY(calc(50vh - 130px)) translateX(42px);
+}
+
+.icon {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 50px;
+  height: 50px;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.crown-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+}
+
+.dialog-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  color: #2F3235;
+}
+
+.dialog-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  color: #2F3235;
+  margin-bottom: 14px;
+}
+
+.dialog-privileges {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.privileges-title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: left;
+  color: #2F3235;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.privileges-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.privilege-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  text-align: left;
+  color: #5182F8;
+}
+
+.privilege-item img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
 }
 </style>
