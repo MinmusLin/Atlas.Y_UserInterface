@@ -58,7 +58,7 @@
     </v-dialog>
   </div>
 
-  <Dialog v-model='showContinueDialog' style='padding: 14px 40px 0 40px; width: 543px; height: 299px'>
+  <Dialog v-model='showContinueDialog' style='padding: 20px 40px 0 40px; width: 543px; height: 299px'>
     <div class='dialog-header'>
       <img src='/DesignMaterials/DefaultCrown.png' class='crown-icon' alt='DefaultCrown'/>
       <p class='dialog-title'>Experience Membership Features</p>
@@ -71,30 +71,30 @@
     </div>
     <div class='dialog-privileges'>
       <div class='title'>
-        <hr style='border: 1px solid #C5C9CD; width: 177px'/>
+        <hr style='border: 1px solid #d2d5d7; width: 177px'/>
         <p class='privileges-title'>Privileges</p>
-        <hr style='border: 1px solid #C5C9CD; width: 177px'/>
+        <hr style='border: 1px solid #d2d5d7; width: 177px'/>
       </div>
       <div class='privileges-icons'>
-        <div class='privilege-item' style='width: 96px; height: 62px'>
+        <div class='privilege-item' style='width: 96px;'>
           <img src='/DesignMaterials/DataSecurity.png' alt='DataSecurity'/>
           <p>Data Security</p>
         </div>
-        <div class='privilege-item' style='width: 93px; height: 62px'>
+        <div class='privilege-item' style='width: 93px;'>
           <img src='/DesignMaterials/TeamManagement.png' alt='TeamManagement'/>
           <p>Team Management</p>
         </div>
-        <div class='privilege-item' style='width: 105px; height: 62px'>
+        <div class='privilege-item' style='width: 105px;'>
           <img src='/DesignMaterials/AdvancedAlgorithms.png' alt='AdvancedAlgorithms'/>
           <p>Advanced Algorithms</p>
         </div>
-        <div class='privilege-item' style='width: 105px; height: 62px'>
+        <div class='privilege-item' style='width: 105px;'>
           <img src='/DesignMaterials/CustomDevelopment.png' alt='CustomDevelopment'/>
           <p>Custom Development</p>
         </div>
       </div>
     </div>
-    <DefaultButton width='100%' height='48px' text='Continue' :active='true'/>
+    <DefaultButton width='463px' height='40px' text='Continue' :active='true'/>
   </Dialog>
 </template>
 
@@ -279,8 +279,9 @@ const tableData = ref([
 
 .crown-icon {
   width: 15px;
-  height: 15px;
+  height: 16px;
   margin-right: 8px;
+  margin-bottom: 2px;
 }
 
 .dialog-title {
@@ -325,13 +326,14 @@ const tableData = ref([
 .privileges-icons {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: -6px;
+  height: 60px;
 }
 
 .privilege-item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
   font-size: 10px;
   font-weight: 600;
@@ -341,8 +343,8 @@ const tableData = ref([
 }
 
 .privilege-item img {
-  width: 48px;
-  height: 48px;
+  width: 45px;
+  height: 45px;
   margin-bottom: 8px;
 }
 </style>
