@@ -103,11 +103,7 @@
                     position='Primary PI'
                     photo='/Members/Example.png'
                     description='Description.'/>
-        <MemberCard name='Qi Liu'
-                    position='Primary PI'
-                    photo='/Members/Example.png'
-                    description='Description.'/>
-        <MemberCard name='Qi Liu'
+        <MemberCard name='Guohui Chuai'
                     position='Secondary PI'
                     photo='/Members/Example.png'
                     description='Description.'/>
