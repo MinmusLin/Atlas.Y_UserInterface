@@ -56,9 +56,7 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-  </div>
-
-  <Dialog v-model='showContinueDialog' style='padding: 20px 40px 0 40px; width: 543px; height: 299px'>
+    <Dialog v-model='showContinueDialog' style='padding: 20px 40px 0 40px; width: 543px; height: 299px'>
     <div class='dialog-header'>
       <img src='/DesignMaterials/DefaultCrown.png' class='crown-icon' alt='DefaultCrown'/>
       <p class='dialog-title'>Experience Membership Features</p>
@@ -96,6 +94,7 @@
     </div>
     <DefaultButton width='463px' height='40px' text='Continue' :active='true'/>
   </Dialog>
+  </div>
 </template>
 
 <script setup lang='ts'>
