@@ -45,6 +45,10 @@
                 :key="country.code"
                 :label="country.name"
                 :value="country.code">
+                <span>
+                  <span :class="`flag-icon flag-icon-${country.code.toLowerCase()}`" style="margin-right: 16px;"></span>
+                  {{ country.name }}
+                </span>
               </el-option>
             </el-select>
           </el-form-item>
