@@ -2,77 +2,106 @@
   <div class='page-container'>
     <p class='form-title'>Contact Form</p>
     <el-form ref='contactRuleFormRef' :model='contactRuleForm' :rules='contactRules'>
-      <el-form-item prop='researchField'>
-        <p>Research Field</p>
-        <el-select v-model='contactRuleForm.researchField'
-                   style='width: 492px'
-                   placeholder='Select your research field'>
-          <el-option v-for='(researchField, index) in researchFields'
-                     :key='index'
-                     :label='researchField'
-                     :value='researchField'/>
-        </el-select>
-      </el-form-item>
-      <el-form-item prop='post'>
-        <p>Post</p>
-        <el-select v-model='contactRuleForm.post'
-                   style='width: 492px'
-                   placeholder='Select your post'>
-          <el-option v-for='(post, index) in posts'
-                     :key='index'
-                     :label='post'
-                     :value='post'/>
-        </el-select>
-      </el-form-item>
+      <div class='form-item-row-container'>
+        <el-form-item prop='researchField'>
+          <div class='form-item-container'>
+            <p>Research Field</p>
+            <el-select v-model='contactRuleForm.researchField'
+                       style='width: 500px'
+                       placeholder='Select your research field'>
+              <el-option v-for='(researchField, index) in researchFields'
+                         :key='index'
+                         :label='researchField'
+                         :value='researchField'/>
+            </el-select>
+          </div>
+        </el-form-item>
+        <el-form-item prop='post'>
+          <div class='form-item-container'>
+            <p>Post</p>
+            <el-select v-model='contactRuleForm.post'
+                       style='width: 500px'
+                       placeholder='Select your post'>
+              <el-option v-for='(post, index) in posts'
+                         :key='index'
+                         :label='post'
+                         :value='post'/>
+            </el-select>
+          </div>
+        </el-form-item>
+      </div>
       <el-form-item prop='country'>
-        <p>Country</p>
-        <el-select v-model='contactRuleForm.country'
-                   style='width: 492px'
-                   placeholder='Select your country'>
-          <el-option v-for='(country, code) in countries'
-                     :key='code'
-                     :label='country.name'
-                     :value='country.name'>
-          </el-option>
-        </el-select>
+        <div class='form-item-container'>
+          <p>Country</p>
+          <el-select v-model='contactRuleForm.country'
+                     style='width: 500px'
+                     placeholder='Select your country'>
+            <el-option v-for='(country, code) in countries'
+                       :key='code'
+                       :label='country.name'
+                       :value='country.name'>
+            </el-option>
+          </el-select>
+        </div>
       </el-form-item>
-      <el-form-item prop='givenName'>
-        <p>Given Name</p>
-        <el-input v-model='contactRuleForm.givenName'
-                  style='width: 492px'
-                  placeholder='Enter your given name'/>
-      </el-form-item>
-      <el-form-item prop='surname'>
-        <p>Surname</p>
-        <el-input v-model='contactRuleForm.surname'
-                  style='width: 492px'
-                  placeholder='Enter your surname'/>
-      </el-form-item>
-      <el-form-item prop='email'>
-        <p>E-mail</p>
-        <el-input v-model='contactRuleForm.email'
-                  style='width: 492px'
-                  placeholder='Enter your E-mail'/>
-      </el-form-item>
-      <el-form-item prop='phoneNumber'>
-        <p>Phone Number</p>
-        <el-input v-model='contactRuleForm.phoneNumber'
-                  style='width: 492px'
-                  placeholder='Enter your phone number'/>
-      </el-form-item>
+      <div class='form-item-row-container'>
+        <el-form-item prop='givenName'>
+          <div class='form-item-container'>
+            <p>Given Name</p>
+            <el-input v-model='contactRuleForm.givenName'
+                      style='width: 500px'
+                      placeholder='Enter your given name'/>
+          </div>
+        </el-form-item>
+        <el-form-item prop='surname'>
+          <div class='form-item-container'>
+            <p>Surname</p>
+            <el-input v-model='contactRuleForm.surname'
+                      style='width: 500px'
+                      placeholder='Enter your surname'/>
+          </div>
+        </el-form-item>
+      </div>
+      <div class='form-item-row-container'>
+        <el-form-item prop='email'>
+          <div class='form-item-container'>
+            <p>E-mail</p>
+            <el-input v-model='contactRuleForm.email'
+                      style='width: 500px'
+                      placeholder='Enter your E-mail'/>
+          </div>
+        </el-form-item>
+        <el-form-item prop='phoneNumber'>
+          <div class='form-item-container'>
+            <p>Phone Number</p>
+            <el-input v-model='contactRuleForm.phoneNumber'
+                      style='width: 500px'
+                      placeholder='Enter your phone number'/>
+          </div>
+        </el-form-item>
+      </div>
       <el-form-item prop='companyOrInstitution'>
-        <p>Company / Institution</p>
-        <el-input v-model='contactRuleForm.companyOrInstitution'
-                  style='width: 492px'
-                  placeholder='Enter your company or institution'/>
+        <div class='form-item-container'>
+          <p>Company / Institution</p>
+          <el-input v-model='contactRuleForm.companyOrInstitution'
+                    style='width: 500px'
+                    placeholder='Enter your company or institution'/>
+        </div>
       </el-form-item>
       <el-form-item prop='note'>
-        <p>Note</p>
-        <el-input v-model='contactRuleForm.note'
-                  style='width: 492px'
-                  type='textarea'
-                  placeholder='Tell us about your needs'/>
+        <div class='form-item-container'>
+          <p>Note</p>
+          <el-input v-model='contactRuleForm.note'
+                    type='textarea'
+                    style='width: 1062px'
+                    :autosize='{ minRows: 5, maxRows: 5 }'
+                    resize='none'
+                    placeholder='Tell us about your needs'/>
+        </div>
       </el-form-item>
+      <el-button @click='submitContactForm(contactRuleFormRef)' class='submit-button'>
+        Submit
+      </el-button>
     </el-form>
   </div>
 </template>
@@ -163,6 +192,8 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate(async (valid) => {
     if (valid) {
       console.log('valid')
+    } else {
+      console.log('error in form validation')
     }
   })
 }
@@ -172,16 +203,45 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
 .page-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding-top: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-title {
   color: #5182F8;
   font-size: 40px;
   font-weight: 600;
-  line-height: 49px;
-  margin-bottom: 20px;
-  margin-left: 0;
+  align-self: flex-start;
+  margin-left: 43px;
+  margin-bottom: 28px;
+}
+
+.form-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item-container p {
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: -5px;
+}
+
+.form-item-row-container {
+  display: flex;
+  flex-direction: row;
+  gap: 62px;
+}
+
+.submit-button {
+  width: 100%;
+  height: 60px;
+  background-color: #5182F8;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
 }
 </style>
