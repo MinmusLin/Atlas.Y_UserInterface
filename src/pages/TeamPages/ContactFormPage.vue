@@ -247,5 +247,10 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
   border: none;
   border-radius: 10px;
   margin-top: 30px;
+  transition: box-shadow 0.25s;
+}
+
+.submit-button:hover {
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2)
 }
 </style>
