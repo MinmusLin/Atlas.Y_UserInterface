@@ -31,15 +31,6 @@
 </template>
 
 <script setup lang='ts'>
-import {ref} from 'vue'
-
-const images = ref([
-  {src: 'src/assets/Wiki/Demo.png'},
-  {src: 'src/assets/Wiki/Demo.png'},
-  {src: 'src/assets/Wiki/Demo.png'},
-  {src: 'src/assets/Wiki/Demo.png'},
-  {src: 'src/assets/Wiki/Demo.png'}
-])
 </script>
 
 <style scoped>
