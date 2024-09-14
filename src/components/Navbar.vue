@@ -73,7 +73,7 @@ const menus = ref([
   },
   {
     id: 4,
-    title: 'Team',
+    title: 'About',
     icon: User,
     items: [
       {name: 'Team', route: '/team'},
