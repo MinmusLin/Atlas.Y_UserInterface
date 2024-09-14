@@ -38,8 +38,11 @@
                      placeholder='Select your country'>
             <el-option v-for='(country, code) in countries'
                        :key='code'
-                       :label='country.name'
                        :value='country.name'>
+              <span>
+                <span :class='`flag-icon flag-icon-${country.code.toLowerCase()}`' style='margin-right: 6px'/>
+                {{ country.name }}
+              </span>
             </el-option>
           </el-select>
         </div>
@@ -68,7 +71,7 @@
             <p>E-mail</p>
             <el-input v-model='contactRuleForm.email'
                       style='width: 500px'
-                      placeholder='Enter your E-mail'/>
+                      placeholder='Enter your e-mail'/>
           </div>
         </el-form-item>
         <el-form-item prop='phoneNumber'>

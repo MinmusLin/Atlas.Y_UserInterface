@@ -15,6 +15,7 @@
     "core-js": "^3.37.1",
     "country-list": "^2.3.0",
     "element-plus": "^2.8.0",
+    "flag-icon-css": "^4.1.7",
     "ngl": "^2.3.1",
     "roboto-fontface": "*",
     "unplugin-auto-import": "^0.18.2",
