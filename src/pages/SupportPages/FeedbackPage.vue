@@ -1,6 +1,11 @@
 <template>
   <div class='page-container'>
     <p class='form-title'>Feedback</p>
+    <p class='intro'>
+      Use the form below to send us your comments. We read all feedback carefully, but we are unable to respond to each
+      submission individually. If you provide your email address, you agree that we may contact you to better understand
+      the comments you submitted.
+    </p>
     <el-form ref='feedbackRuleFormRef' :model='feedbackRuleForm' :rules='feedbackRules'>
       <div class='form-item-row-container'>
         <el-form-item prop='givenName'>
@@ -236,5 +241,16 @@ const submitFeedbackForm = async (formEl: FormInstance | undefined) => {
 
 .submit-button:hover {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2)
+}
+
+.intro {
+  color: #2F3235;
+  font-weight: 500;
+  text-align: justify;
+  align-self: flex-start;
+  width: 690px;
+  margin-left: 45px;
+  margin-top: 9px;
+  margin-bottom: 31px;
 }
 </style>
