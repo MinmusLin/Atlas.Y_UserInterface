@@ -228,6 +228,7 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
   font-weight: 600;
   font-size: 16px;
   margin-top: -5px;
+  color: #2F3235;
 }
 
 .form-item-row-container {
