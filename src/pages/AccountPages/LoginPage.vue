@@ -25,6 +25,11 @@
           <span class='or-text'>Or</span>
           <hr class='line' style='margin-right: 0'/>
         </div>
+        <div class='login-group'>
+          <img src='/DesignMaterials/Google.png' alt='Google'>
+          <img src='/DesignMaterials/Apple.png' alt='Apple'>
+          <img src='/DesignMaterials/Facebook.png' alt='Facebook'>
+        </div>
         <div class='login-prompt'>
           New User? <a href='#' @click="router.push('/register')">SIGN UP HERE</a>
         </div>
@@ -151,5 +156,22 @@ const router = useRouter()
 .login-prompt a {
   font-weight: 700;
   color: #2F3235;
+}
+
+.login-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 15px;
+  margin-bottom: 32px;
+}
+
+.login-group img {
+  border-radius: 4px;
+}
+
+.login-group img:hover {
+  cursor: pointer;
 }
 </style>
