@@ -1,22 +1,16 @@
 <template>
   <div class='page-container'>
     <v-container class='custom-container'>
-      <div class='login-title'>Log in to your Account</div>
+      <div class='login-title'>Create an Account</div>
       <v-form>
+        <v-text-field label='Your Name' variant='outlined' placeholder='Enter your name'/>
         <v-text-field label='E-mail' variant='outlined' placeholder='Enter your e-mail'/>
         <v-text-field label='Password'
                       :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
                       :type="visible ? 'text' : 'password'"
                       placeholder='Enter your password'
                       variant='outlined'
-                      @click:append-inner='visible = !visible'/>
-        <div>
-          <label class='custom-checkbox-container'>
-            <input type='checkbox' class='custom-checkbox-input'>
-            <span class='custom-checkbox'></span>
-            <span class='remember-me'>Remember me</span>
-          </label>
-        </div>
+                      @click:append-inner='visible=!visible'/>
         <v-btn class='start-button'>
           Get Started
         </v-btn>
@@ -26,7 +20,7 @@
           <hr class='line' style='margin-right: 0'/>
         </div>
         <div class='login-prompt'>
-          New User? <a href='#'>SIGN UP HERE</a>
+          Already have an account? <a href='#' @click="router.push('/login')">LOGIN HERE</a>
         </div>
       </v-form>
     </v-container>
@@ -35,8 +29,10 @@
 
 <script setup lang='ts'>
 import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 
 const visible = ref(false)
+const router = useRouter()
 </script>
 
 <style scoped>
@@ -63,51 +59,6 @@ const visible = ref(false)
   margin-bottom: 35px;
 }
 
-.custom-checkbox-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.custom-checkbox-input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.custom-checkbox {
-  width: 22px;
-  height: 22px;
-  background-color: white;
-  border: 1px solid #EEF3FE;
-  border-radius: 3px;
-  margin-right: 8px;
-  display: inline-block;
-  position: relative;
-}
-
-.custom-checkbox-input:checked + .custom-checkbox {
-  background-color: #EEF3FE;
-}
-
-.custom-checkbox-input:checked + .custom-checkbox:after {
-  content: '';
-  position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 8px;
-  height: 12px;
-  border: solid #9E9E9E;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.remember-me {
-  font-size: 13px;
-  font-weight: 400;
-  color: #2F3235;
-}
-
 .start-button {
   color: white;
   width: 396px;
@@ -116,7 +67,6 @@ const visible = ref(false)
   font-size: 16px;
   font-weight: 500;
   border-radius: 10px;
-  margin-top: 57px;
   margin-bottom: 16px;
 }
 

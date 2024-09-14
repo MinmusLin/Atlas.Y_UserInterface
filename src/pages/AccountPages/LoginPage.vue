@@ -9,7 +9,7 @@
                       :type="visible ? 'text' : 'password'"
                       placeholder='Enter your password'
                       variant='outlined'
-                      @click:append-inner='visible = !visible'/>
+                      @click:append-inner='visible=!visible'/>
         <div>
           <label class='custom-checkbox-container'>
             <input type='checkbox' class='custom-checkbox-input'>
@@ -26,7 +26,7 @@
           <hr class='line' style='margin-right: 0'/>
         </div>
         <div class='login-prompt'>
-          New User? <a href='#'>SIGN UP HERE</a>
+          New User? <a href='#' @click="router.push('/register')">SIGN UP HERE</a>
         </div>
       </v-form>
     </v-container>
@@ -35,8 +35,10 @@
 
 <script setup lang='ts'>
 import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 
 const visible = ref(false)
+const router = useRouter()
 </script>
 
 <style scoped>
@@ -116,7 +118,7 @@ const visible = ref(false)
   font-size: 16px;
   font-weight: 500;
   border-radius: 10px;
-  margin-top: 57px;
+  margin-top: 56px;
   margin-bottom: 16px;
 }
 
