@@ -112,7 +112,7 @@
 <script setup lang='ts'>
 import {ref, reactive} from 'vue'
 import {FormInstance, FormRules} from 'element-plus'
-import countries from 'country-list/data.json'
+import countries from '@/countriesList.json'
 
 const contactRuleFormRef = ref<FormInstance>()
 const researchFields = [
