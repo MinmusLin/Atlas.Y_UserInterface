@@ -1,6 +1,12 @@
 <template>
   <div class='page-container'>
-    <p class='form-title'>Contact Form</p>
+    <div style='display: flex; justify-content: flex-start; align-items: center; width: 1080px; margin: 28px'>
+      <v-icon style='color: #5182F8; font-size: 50px; cursor: pointer'
+              @click="router.push('/contact-us')">
+        mdi-arrow-left
+      </v-icon>
+      <p class='form-title'>Contact Form</p>
+    </div>
     <el-form ref='contactRuleFormRef' :model='contactRuleForm' :rules='contactRules'>
       <div class='form-item-row-container'>
         <el-form-item prop='researchField'>
@@ -112,8 +118,10 @@
 <script setup lang='ts'>
 import {ref, reactive} from 'vue'
 import {FormInstance, FormRules} from 'element-plus'
+import {useRouter} from 'vue-router'
 import countries from '@/countriesList.json'
 
+const router = useRouter()
 const contactRuleFormRef = ref<FormInstance>()
 const researchFields = [
   'Scientific Research Service',
@@ -215,8 +223,7 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
   font-size: 40px;
   font-weight: 600;
   align-self: flex-start;
-  margin-left: 43px;
-  margin-bottom: 28px;
+  margin-left: 20px;
 }
 
 .form-item-container {
