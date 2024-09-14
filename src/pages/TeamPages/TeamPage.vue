@@ -166,6 +166,7 @@ import MemberCard from '@/components/MemberCard.vue'
   width: 670px;
   margin-top: 110px;
   margin-bottom: 45px;
+  color: #2F3235;
 }
 
 .intro p {
@@ -187,6 +188,7 @@ import MemberCard from '@/components/MemberCard.vue'
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 30px;
+  color: #2F3235;
 }
 
 .group {
