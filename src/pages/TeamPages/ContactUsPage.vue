@@ -39,7 +39,7 @@
 
     <div class='contact-content-group'>
       <img src='/DesignMaterials/MapMarker.png' alt='MapMarker'>
-      <p>Office Address: Tongji University, No.1239, Yangpu District, Shanghai</p>
+      <p>Office Address: Tongji University, No.1239 Siping Road, Yangpu District, Shanghai, P.R. China</p>
     </div>
   </div>
 </template>
