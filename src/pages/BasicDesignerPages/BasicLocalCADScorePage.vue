@@ -25,7 +25,16 @@
           <div id='local-pdb-container' class='threeD-picture'/>
         </div>
 
-        <div class='right-section'>
+        <div class='right-section' v-if='true'>
+          <p class='residue'>{{ '(' + currentResidueName + ', ' + currentResidueIndex + ')' }}</p>
+
+          <DefaultButton width='488px'
+                         height='40px'
+                         text='Calculate'
+                         :active='true'/>
+        </div>
+
+        <div class='right-section' v-else>
           <div class='residue-section'>
             <p class='residue-title'>Center Residue</p>
             <p class='residue'>{{ '(' + currentResidueName + ', ' + currentResidueIndex + ')' }}</p>
