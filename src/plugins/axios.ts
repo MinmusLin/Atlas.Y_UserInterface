@@ -1,7 +1,8 @@
 import axios from 'axios'
+import apiBaseUrl from '@/global'
 
 const axiosInstance = axios.create({
-    baseURL: ''
+    baseURL: apiBaseUrl
 })
 
 export default axiosInstance
