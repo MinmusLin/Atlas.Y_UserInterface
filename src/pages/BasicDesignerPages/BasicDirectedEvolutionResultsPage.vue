@@ -104,12 +104,12 @@ const baseHeaderStyle = {
 
 const baseCellStyle = {
   backgroundColor: 'white',
-  height: '37px',
+  height: '38px',
   fontSize: '16px',
   color: '#2F3235',
   textAlign: 'center',
   paddingTop: '7px',
-  paddingBottom: '6px',
+  paddingBottom: '7px',
   fontWeight: 400,
   borderTop: '1px solid #FFFFFF',
   borderBottom: '1px solid #5182F8'
@@ -221,6 +221,7 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
 }
 
 .table-style >>> tbody tr:hover > td {
+  padding-bottom: 6px !important;
   background-color: #EEF3FF !important;
   border: 2px solid #5182F8 !important;
   border-top: 1px solid #5182F8 !important;
