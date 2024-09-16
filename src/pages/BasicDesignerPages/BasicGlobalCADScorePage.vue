@@ -60,9 +60,8 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
-import {onMounted} from 'vue'
 import {Stage} from 'ngl'
 
 const cadScore = ref(0.0)
