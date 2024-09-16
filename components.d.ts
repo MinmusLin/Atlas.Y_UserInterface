@@ -24,6 +24,7 @@ declare module 'vue' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     InfoTooltip: typeof import('./src/components/InfoTooltip.vue')['default']
     MemberCard: typeof import('./src/components/MemberCard.vue')['default']
     MembershipItem: typeof import('./src/components/MembershipItem.vue')['default']

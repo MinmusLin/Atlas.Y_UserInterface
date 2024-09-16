@@ -4,10 +4,12 @@
       <div class='upload-button'>
         <div>
           <p>Protein Sequence Demand</p>
-          <DefaultButton width='488px'
-                         height='40px'
-                         text='Upload Protein Sequence'
-                         @click='showProteinSequenceDialog=true'/>
+          <el-upload v-model='fastaFile' :limit='1' accept='.fasta'>
+            <DefaultButton width='488px'
+                           height='40px'
+                           text='Upload Protein Sequence'
+                           @click='showProteinSequenceDialog=true'/>
+          </el-upload>
         </div>
         <div>
           <p>PDB Demand</p>
@@ -22,6 +24,7 @@
         Select Positioning Demand
         <InfoTooltip width='444px' height='244px' style='font-size: 14px'>
           <table class='positioning-demand-table'>
+            <tbody>
             <tr>
               <td>NLS</td>
               <td>Cytoplasm -> Nucleus</td>
@@ -62,6 +65,7 @@
               <td>LD</td>
               <td>Lipid Droplets</td>
             </tr>
+            </tbody>
           </table>
         </InfoTooltip>
       </p>
@@ -101,7 +105,7 @@
           <p>Solubility</p>
           <ToggleButton v-model='solubility'
                         leftLabel='hydrophilic'
-                        rightLabel='hydrophilic'
+                        rightLabel='hydrophobic'
                         width='488px'/>
         </div>
       </div>
@@ -109,57 +113,21 @@
       <ShadowButton width='100%'
                     height='50px'
                     style='margin-top: 23px; font-size: 18px'
-                    @click="router.push('/basic-designer/matching-results')">
+                    @click='submitQueryLog'>
         Start Matching
       </ShadowButton>
     </div>
   </div>
-
-  <Dialog v-model='showProteinSequenceDialog' style='padding: 16px 40px 36px'>
-    <p style='margin: 0; font-size: 16px'>Upload protein sequence</p>
-    <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
-      Copy and paste it into the Text Box or upload the Fasta file.
-    </p>
-    <v-file-input label='Fasta file'
-                  variant='outlined'
-                  prepend-icon=''
-                  color='#5182F8'
-                  base-color='#5182F8'
-                  style='margin-top:16px'
-                  show-size/>
-    <v-textarea placeholder='Text here'
-                variant='outlined'
-                color='#5182F8'
-                base-color='#5182F8'
-                rows='1'
-                auto-grow/>
-    <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
-  </Dialog>
-
-  <Dialog v-model='showPDBDialog' style='padding: 16px 40px 36px'>
-    <p style='margin: 0; font-size: 16px'>Upload PDB</p>
-    <p style='padding-top: 7px; padding-bottom: 7px; margin: 0; font-size: 14px; font-weight: 500'>
-      Upload the PDB file.
-    </p>
-    <v-file-input label='PDB file'
-                  variant='outlined'
-                  prepend-icon=''
-                  color='#5182F8'
-                  base-color='#5182F8'
-                  style='margin-top:16px'
-                  show-size/>
-    <DefaultButton width='100%' height='40px' text='Submit' :active='true'/>
-  </Dialog>
 </template>
 
 <script setup lang='ts'>
-import {ref} from 'vue'
+import {Ref, ref} from 'vue'
 import {useRouter} from 'vue-router'
+import axiosInstance from '@/plugins/axios'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
-import Dialog from '@/components/Dialog.vue'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
 import NES_Basic from '/PositioningDemand/NES_Basic.mp4'
 import SP_Basic from '/PositioningDemand/SP_Basic.mp4'
@@ -190,6 +158,10 @@ const showInitialVideo = ref(true)
 const initialVideoElement = ref<HTMLVideoElement | null>(null)
 const basicVideoElement = ref<HTMLVideoElement | null>(null)
 const router = useRouter()
+const pdbFile: Ref<File | null> = ref(null)
+const pdbBase64: Ref<string | null> = ref(null)
+const fastaFile: Ref<File | null> = ref(null)
+const fastaBase64: Ref<string | null> = ref(null)
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
@@ -199,9 +171,9 @@ const items = ref([
   {name: 'SP_GPI', basic: SP_GPI_Basic, initial: SP_GPI_Initial},
   {name: 'GPI', basic: GPI_Basic, initial: GPI_Initial},
   {name: 'TM', basic: TM_Basic, initial: TM_Initial},
-  {name: 'LD', basic: LD_Basic, initial: LD_Initial},
+  {name: 'PTS', basic: PTS_Basic, initial: PTS_Initial},
   {name: 'MT', basic: MT_Basic, initial: MT_Initial},
-  {name: 'PTS', basic: PTS_Basic, initial: PTS_Initial}
+  {name: 'LD', basic: LD_Basic, initial: LD_Initial}
 ])
 
 const changeVideo = (initial, basic, index) => {
@@ -209,9 +181,64 @@ const changeVideo = (initial, basic, index) => {
     return
   }
   selectedIndex.value = index
+  // noinspection TypeScriptUnresolvedReference
   initialVideoElement.value!.src = initial
+  // noinspection TypeScriptUnresolvedReference
   basicVideoElement.value!.src = basic
   showInitialVideo.value = true
+}
+
+const fileToBase64 = (file: File): Promise<string | null> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => resolve(reader.result as string)
+    reader.onerror = error => reject(error)
+  })
+}
+
+const submitPdbFile = async () => {
+  if (pdbFile.value) {
+    try {
+      pdbBase64.value = await fileToBase64(pdbFile.value)
+    } catch (error) {
+    }
+  }
+}
+
+const submitFastaFile = async () => {
+  if (fastaFile.value) {
+    try {
+      fastaBase64.value = await fileToBase64(fastaFile.value)
+    } catch (error) {
+    }
+  }
+}
+
+function generateRandomHash() {
+  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'
+  let result = ''
+  const charactersLength = characters.length
+  for (let i = 0; i < 32; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+  return result
+}
+
+async function submitQueryLog() {
+  try {
+    const body = {
+      logId: generateRandomHash(),
+      queryTime: new Date(),
+      targetProSeq: 'targetProSeq',
+      targetProPdb: pdbBase64.value,
+      targetPosition: items.value[selectedIndex.value].name,
+      linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
+      linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
+    }
+    await axiosInstance.post('query-log', body)
+  } catch (error) {
+  }
 }
 </script>
 
