@@ -12,7 +12,8 @@ const props = withDefaults(defineProps<{
   height: string
   text: string
   active: boolean
-}>(), {active: false})
+  warning: boolean
+}>(), {active: false, warning: false})
 </script>
 
 <style scoped>

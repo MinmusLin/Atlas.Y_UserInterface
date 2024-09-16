@@ -4,19 +4,21 @@
       <div class='upload-button'>
         <div>
           <p>Protein Sequence Demand</p>
-          <el-upload v-model='fastaFile' :limit='1' accept='.fasta'>
-            <DefaultButton width='488px'
-                           height='40px'
-                           text='Upload Protein Sequence'
-                           @click='showProteinSequenceDialog=true'/>
-          </el-upload>
+          <DefaultButton @click='selectFastaFile'
+                         width='488px'
+                         height='40px'
+                         :active="fastaBase64!=''"
+                         :text='fastaName'/>
+          <input type='file' ref='fastaInput' style='display: none' @change='handleFastaFileChange' accept='.fasta'/>
         </div>
         <div>
           <p>PDB Demand</p>
-          <DefaultButton width='488px'
+          <DefaultButton @click='selectPdbFile'
+                         width='488px'
                          height='40px'
-                         text='Upload PDB'
-                         @click='showPDBDialog=true'/>
+                         :active="pdbBase64!=''"
+                         :text='pdbName'/>
+          <input type='file' ref='pdbInput' style='display: none' @change='handlePdbFileChange' accept='.pdb'/>
         </div>
       </div>
 
@@ -121,7 +123,7 @@
 </template>
 
 <script setup lang='ts'>
-import {Ref, ref} from 'vue'
+import {ref} from 'vue'
 import {useRouter} from 'vue-router'
 import axiosInstance from '@/plugins/axios'
 import DefaultButton from '@/components/DefaultButton.vue'
@@ -149,8 +151,6 @@ import LD_Initial from '/PositioningDemand/LD_Initial.mp4'
 import MT_Initial from '/PositioningDemand/MT_Initial.mp4'
 import PTS_Initial from '/PositioningDemand/PTS_Initial.mp4'
 
-const showProteinSequenceDialog = ref(false)
-const showPDBDialog = ref(false)
 const mechanicalProperties = ref(true)
 const solubility = ref(true)
 const selectedIndex = ref<number | null>(null)
@@ -158,10 +158,12 @@ const showInitialVideo = ref(true)
 const initialVideoElement = ref<HTMLVideoElement | null>(null)
 const basicVideoElement = ref<HTMLVideoElement | null>(null)
 const router = useRouter()
-const pdbFile: Ref<File | null> = ref(null)
-const pdbBase64: Ref<string | null> = ref(null)
-const fastaFile: Ref<File | null> = ref(null)
-const fastaBase64: Ref<string | null> = ref(null)
+const fastaBase64 = ref('')
+const fastaInput = ref(null)
+const pdbBase64 = ref('')
+const pdbInput = ref(null)
+const fastaName = ref('Upload Fasta File')
+const pdbName = ref('Upload PDB File')
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
@@ -188,7 +190,15 @@ const changeVideo = (initial, basic, index) => {
   showInitialVideo.value = true
 }
 
-const fileToBase64 = (file: File): Promise<string | null> => {
+const selectFastaFile = () => {
+  fastaInput.value.click()
+}
+
+const selectPdbFile = () => {
+  pdbInput.value.click()
+}
+
+const fileToBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
@@ -197,21 +207,29 @@ const fileToBase64 = (file: File): Promise<string | null> => {
   })
 }
 
-const submitPdbFile = async () => {
-  if (pdbFile.value) {
-    try {
-      pdbBase64.value = await fileToBase64(pdbFile.value)
-    } catch (error) {
-    }
+const handleFastaFileChange = async (event) => {
+  const file = event.target.files[0]
+  if (!file) {
+    return
+  }
+  try {
+    const base64String = await fileToBase64(file)
+    fastaBase64.value = base64String as string
+    fastaName.value = file.name
+  } catch (error) {
   }
 }
 
-const submitFastaFile = async () => {
-  if (fastaFile.value) {
-    try {
-      fastaBase64.value = await fileToBase64(fastaFile.value)
-    } catch (error) {
-    }
+const handlePdbFileChange = async (event) => {
+  const file = event.target.files[0]
+  if (!file) {
+    return
+  }
+  try {
+    const base64String = await fileToBase64(file)
+    pdbBase64.value = base64String as string
+    pdbName.value = file.name
+  } catch (error) {
   }
 }
 
@@ -230,13 +248,14 @@ async function submitQueryLog() {
     const body = {
       logId: generateRandomHash(),
       queryTime: new Date(),
-      targetProSeq: 'targetProSeq',
+      targetProSeq: fastaBase64.value,
       targetProPdb: pdbBase64.value,
       targetPosition: items.value[selectedIndex.value].name,
       linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
       linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
     }
-    await axiosInstance.post('query-log', body)
+    await router.push('/basic-designer/matching-results')
+    // await axiosInstance.post('query-log', body)
   } catch (error) {
   }
 }
