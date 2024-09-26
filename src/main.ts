@@ -1,7 +1,7 @@
 import {registerPlugins} from '@/plugins'
 import App from './App.vue'
 import {createApp} from 'vue'
-import '@/assets/styles/global.css'
+import '@/styles/global.css'
 import 'flag-icons/css/flag-icons.css'
 
 const app = createApp(App)
