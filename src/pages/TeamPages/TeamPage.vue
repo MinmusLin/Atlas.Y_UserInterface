@@ -60,7 +60,7 @@
                     position='Member'
                     photo='/Members/Example.png'
                     description='Description.'/>
-        <MemberCard name='Wenxin Zeng'
+        <MemberCard name='Jiaxin Fan'
                     position='Member'
                     photo='/Members/Example.png'
                     description='Description.'/>
@@ -84,13 +84,22 @@
       </div>
     </div>
     <div class='group-section'>
-      <div class='group-name'>Human Practice</div>
+      <div class='group-name'>Human Practices</div>
       <div class='group'>
         <MemberCard name='Xi Cui'
                     position='Member'
                     photo='/Members/Example.png'
                     description='Description.'/>
         <MemberCard name='Ziwen Yao'
+                    position='Member'
+                    photo='/Members/Example.png'
+                    description='Description.'/>
+      </div>
+    </div>
+    <div class='group-section'>
+      <div class='group-name'>Wet Lab</div>
+      <div class='group'>
+        <MemberCard name='Zhenhua Bai'
                     position='Member'
                     photo='/Members/Example.png'
                     description='Description.'/>
@@ -173,7 +182,6 @@ import MemberCard from '@/components/MemberCard.vue'
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  text-align: justify;
 }
 
 .group-section {

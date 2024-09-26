@@ -67,7 +67,7 @@
                          :key='code'
                          :value='country.name'>
               <span>
-                <span :class='`flag-icon flag-icon-${country.code.toLowerCase()}`' style='margin-right: 6px'/>
+                <span :class='`fi fi-${country.code.toLowerCase()}`' style='margin-right: 6px'/>
                 {{ country.name }}
               </span>
               </el-option>
@@ -246,7 +246,6 @@ const submitFeedbackForm = async (formEl: FormInstance | undefined) => {
 .intro {
   color: #2F3235;
   font-weight: 500;
-  text-align: justify;
   align-self: flex-start;
   width: 690px;
   margin-left: 45px;
