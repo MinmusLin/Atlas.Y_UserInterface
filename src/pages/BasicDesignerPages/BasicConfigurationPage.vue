@@ -8,6 +8,7 @@
                          width='488px'
                          height='40px'
                          :active="fastaBase64!=''"
+                         :warning='fastaWarning'
                          :text='fastaName'/>
           <input type='file' ref='fastaInput' style='display: none' @change='handleFastaFileChange' accept='.fasta'/>
         </div>
@@ -17,6 +18,7 @@
                          width='488px'
                          height='40px'
                          :active="pdbBase64!=''"
+                         :warning='pdbWarning'
                          :text='pdbName'/>
           <input type='file' ref='pdbInput' style='display: none' @change='handlePdbFileChange' accept='.pdb'/>
         </div>
@@ -88,6 +90,7 @@
                            height='40px'
                            width='304px'
                            :text='item.name'
+                           :warning='item.warning'
                            @click='changeVideo(item.initial, item.basic, index)'
                            :active='selectedIndex==index'/>
           </div>
@@ -164,18 +167,20 @@ const pdbBase64 = ref('')
 const pdbInput = ref(null)
 const fastaName = ref('Upload Fasta File')
 const pdbName = ref('Upload PDB File')
+const fastaWarning = ref(false)
+const pdbWarning = ref(false)
 
 const items = ref([
-  {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial},
-  {name: 'NES', basic: NES_Basic, initial: NES_Initial},
-  {name: 'SP', basic: SP_Basic, initial: SP_Initial},
-  {name: 'SP_TM', basic: SP_TM_Basic, initial: SP_TM_Initial},
-  {name: 'SP_GPI', basic: SP_GPI_Basic, initial: SP_GPI_Initial},
-  {name: 'GPI', basic: GPI_Basic, initial: GPI_Initial},
-  {name: 'TM', basic: TM_Basic, initial: TM_Initial},
-  {name: 'PTS', basic: PTS_Basic, initial: PTS_Initial},
-  {name: 'MT', basic: MT_Basic, initial: MT_Initial},
-  {name: 'LD', basic: LD_Basic, initial: LD_Initial}
+  {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial, warning: false},
+  {name: 'NES', basic: NES_Basic, initial: NES_Initial, warning: false},
+  {name: 'SP', basic: SP_Basic, initial: SP_Initial, warning: false},
+  {name: 'SP_TM', basic: SP_TM_Basic, initial: SP_TM_Initial, warning: false},
+  {name: 'SP_GPI', basic: SP_GPI_Basic, initial: SP_GPI_Initial, warning: false},
+  {name: 'GPI', basic: GPI_Basic, initial: GPI_Initial, warning: false},
+  {name: 'TM', basic: TM_Basic, initial: TM_Initial, warning: false},
+  {name: 'PTS', basic: PTS_Basic, initial: PTS_Initial, warning: false},
+  {name: 'MT', basic: MT_Basic, initial: MT_Initial, warning: false},
+  {name: 'LD', basic: LD_Basic, initial: LD_Initial, warning: false}
 ])
 
 const changeVideo = (initial, basic, index) => {
@@ -183,6 +188,9 @@ const changeVideo = (initial, basic, index) => {
     return
   }
   selectedIndex.value = index
+  items.value.forEach(item => {
+    item.warning = false
+  })
   // noinspection TypeScriptUnresolvedReference
   initialVideoElement.value!.src = initial
   // noinspection TypeScriptUnresolvedReference
@@ -216,6 +224,7 @@ const handleFastaFileChange = async (event) => {
     const base64String = await fileToBase64(file)
     fastaBase64.value = base64String as string
     fastaName.value = file.name
+    fastaWarning.value = false
   } catch (error) {
   }
 }
@@ -229,6 +238,7 @@ const handlePdbFileChange = async (event) => {
     const base64String = await fileToBase64(file)
     pdbBase64.value = base64String as string
     pdbName.value = file.name
+    pdbWarning.value = false
   } catch (error) {
   }
 }
@@ -244,6 +254,21 @@ function generateRandomHash() {
 }
 
 async function submitQueryLog() {
+  fastaWarning.value = fastaBase64.value == ''
+  pdbWarning.value = pdbBase64.value == ''
+  const isItemSelected = selectedIndex.value != null
+  if (!isItemSelected) {
+    items.value.forEach(item => {
+      item.warning = true
+    })
+  } else {
+    items.value.forEach(item => {
+      item.warning = false
+    })
+  }
+  if (fastaWarning.value || pdbWarning.value || !isItemSelected) {
+    return
+  }
   try {
     const body = {
       logId: generateRandomHash(),
