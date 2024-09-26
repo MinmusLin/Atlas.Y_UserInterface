@@ -66,8 +66,8 @@
               <td>Mitochondria</td>
             </tr>
             <tr>
-              <td>LD</td>
-              <td>Lipid Droplets</td>
+              <td>LYS</td>
+              <td>Lysosome</td>
             </tr>
             </tbody>
           </table>
@@ -140,7 +140,7 @@ import SP_TM_Basic from '/PositioningDemand/SP_TM_Basic.mp4'
 import SP_GPI_Basic from '/PositioningDemand/SP_GPI_Basic.mp4'
 import GPI_Basic from '/PositioningDemand/GPI_Basic.mp4'
 import TM_Basic from '/PositioningDemand/TM_Basic.mp4'
-import LD_Basic from '/PositioningDemand/LD_Basic.mp4'
+import LYS_Basic from '/PositioningDemand/LYS_Basic.mp4'
 import MT_Basic from '/PositioningDemand/MT_Basic.mp4'
 import PTS_Basic from '/PositioningDemand/PTS_Basic.mp4'
 import NLS_Initial from '/PositioningDemand/NLS_Initial.mp4'
@@ -150,7 +150,7 @@ import SP_TM_Initial from '/PositioningDemand/SP_TM_Initial.mp4'
 import SP_GPI_Initial from '/PositioningDemand/SP_GPI_Initial.mp4'
 import GPI_Initial from '/PositioningDemand/GPI_Initial.mp4'
 import TM_Initial from '/PositioningDemand/TM_Initial.mp4'
-import LD_Initial from '/PositioningDemand/LD_Initial.mp4'
+import LYS_Initial from '/PositioningDemand/LYS_Initial.mp4'
 import MT_Initial from '/PositioningDemand/MT_Initial.mp4'
 import PTS_Initial from '/PositioningDemand/PTS_Initial.mp4'
 
@@ -180,7 +180,7 @@ const items = ref([
   {name: 'TM', basic: TM_Basic, initial: TM_Initial, warning: false},
   {name: 'PTS', basic: PTS_Basic, initial: PTS_Initial, warning: false},
   {name: 'MT', basic: MT_Basic, initial: MT_Initial, warning: false},
-  {name: 'LD', basic: LD_Basic, initial: LD_Initial, warning: false}
+  {name: 'LYS', basic: LYS_Basic, initial: LYS_Initial, warning: false}
 ])
 
 const changeVideo = (initial, basic, index) => {
