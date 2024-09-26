@@ -7,36 +7,45 @@
       </transition>
     </div>
 
-    <ul>
-      <li class='sub-menu' v-for='menu in menus' :key='menu.id'>
-        <div class='menu-title' :class="{ 'highlighted': isHighlighted(menu.id) }" @click='toggleSubMenu(menu.id)'>
-          <component :is='menu.icon' class='icon-size'/>
-          <span v-show='!isCollapsed' style='margin-left: 6px; font-size: 14px'>{{ menu.title }}</span>
-          <span class='icon-toggle' v-show='!isCollapsed'>
-            <ArrowUpBold :style='rotateStyle(menu.id)'/>
-          </span>
-        </div>
+    <div class="menu-content">
+      <ul>
+        <li class='sub-menu' v-for='menu in menus' :key='menu.id'>
+          <div class='menu-title' :class="{ 'highlighted': isHighlighted(menu.id) }" @click='toggleSubMenu(menu.id)'>
+            <component :is='menu.icon' class='icon-size'/>
+            <span v-show='!isCollapsed' style='margin-left: 6px; font-size: 14px'>{{ menu.title }}</span>
+            <span class='icon-toggle' v-show='!isCollapsed'>
+          <ArrowUpBold :style='rotateStyle(menu.id)'/>
+        </span>
+          </div>
 
-        <transition name='slide' @enter='enter' @after-enter='afterEnter' @leave='leave'>
-          <ul v-show='isActive(menu.id) && !isCollapsed' ref='subMenu'>
-            <li v-for='item in menu.items'
-                :key='item.route'
-                style='font-size: 12px'
-                :class="{ 'highlighted': currentRoute.startsWith(item.route) }"
-                @click='router.push(item.route)'>
-              {{ item.name }}
-            </li>
-          </ul>
-        </transition>
-      </li>
-    </ul>
+          <transition name='slide' @enter='enter' @after-enter='afterEnter' @leave='leave'>
+            <ul v-show='isActive(menu.id) && !isCollapsed' ref='subMenu'>
+              <li v-for='item in menu.items'
+                  :key='item.route'
+                  style='font-size: 12px'
+                  :class="{ 'highlighted': currentRoute.startsWith(item.route) }"
+                  @click='router.push(item.route)'>
+                {{ item.name }}
+              </li>
+            </ul>
+          </transition>
+        </li>
+      </ul>
+
+      <div class='login-container' @click="router.push('/login')">
+        <el-icon :size='23' class='avatar'>
+          <Avatar/>
+        </el-icon>
+        <span v-show='!isCollapsed' class='login-text'>Log in</span>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script setup lang='ts'>
 import {computed, ref, watch} from 'vue'
 import {useRouter} from 'vue-router'
-import {PriceTag, Document, User, ChatDotSquare, ArrowUpBold, ShoppingBag} from '@element-plus/icons-vue'
+import {PriceTag, Document, User, ChatDotSquare, ArrowUpBold, ShoppingBag, Avatar} from '@element-plus/icons-vue'
 
 const activeIndices = ref<Set<number>>(new Set())
 const isCollapsed = ref<boolean>(true)
@@ -207,9 +216,17 @@ const iconStyle = computed(() => ({
   flex-shrink: 0;
 }
 
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 110px);
+  padding: 0 16px;
+}
+
 .menu ul {
   list-style-type: none;
-  padding: 26px;
+  padding: 8px;
 }
 
 .menu-title {
@@ -279,6 +296,37 @@ const iconStyle = computed(() => ({
 .logo-container {
   position: relative;
   height: 80px;
+}
+
+.login-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 23px;
+  height: 23px;
+  color: white;
+  margin-right: 6px;
+  transition: opacity 0.3s ease;
+}
+
+.login-text {
+  font-size: 14px;
+  color: white;
+  margin-left: 6px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.login-container:hover .avatar,
+.login-container:hover .login-text {
+  opacity: 0.6;
 }
 
 /* noinspection CssUnusedSymbol */
