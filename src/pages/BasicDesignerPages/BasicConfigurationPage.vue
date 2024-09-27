@@ -221,8 +221,25 @@ const handleFastaFileChange = async (event) => {
     return
   }
   try {
-    const base64String = await fileToBase64(file)
-    fastaBase64.value = base64String as string
+    const fileContent = await file.text()
+    const lines = fileContent.split('\n')
+    let sequence = ''
+    let isSequencePart = false
+    const validChars = new Set('ARNDCEQGHILKMFPSTWYV')
+    for (let line of lines) {
+      line = line.trim()
+      if (line.startsWith('>')) {
+        if (isSequencePart) {
+          break
+        }
+        isSequencePart = true
+        continue
+      }
+      if (isSequencePart) {
+        sequence += [...line].filter(char => validChars.has(char)).join('')
+      }
+    }
+    fastaBase64.value = sequence
     fastaName.value = file.name
     fastaWarning.value = false
   } catch (error) {
@@ -271,7 +288,7 @@ async function submitQueryLog() {
   }
   try {
     const body = {
-      logId: generateRandomHash(),
+      logId: generateRandomHash().toString(),
       queryTime: new Date(),
       targetProSeq: fastaBase64.value,
       targetProPdb: pdbBase64.value,
@@ -279,8 +296,9 @@ async function submitQueryLog() {
       linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
       linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
     }
-    await router.push('/basic-designer/matching-results')
-    // await axiosInstance.post('query-log', body)
+    // await router.push('/basic-designer/matching-results')
+    console.log(body.targetPosition)
+    await axiosInstance.post('basic-prediction', body)
   } catch (error) {
   }
 }
