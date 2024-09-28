@@ -198,24 +198,11 @@ onMounted(() => {
         disablePicking: true,
         multipleBond: 'offset'
       })
-      let highlightRepr = null
       stage.signals.clicked.add((pickingProxy) => {
         if (pickingProxy && pickingProxy.atom && pickingProxy.atom.atomname == 'CA') {
           const atom = pickingProxy.atom
           currentResidueIndex.value = atom.residueIndex
           currentResidueName.value = atom.resname
-
-          if (highlightRepr) {
-            component.removeRepresentation(highlightRepr);
-          }
-
-          // 添加新的高亮表示
-          highlightRepr = component.addRepresentation('ball+stick', {
-            sele: `.CA`,
-            colorScheme: 'uniform',
-            colorValue: '#12ff39', // 设置高亮颜色为黄色
-            radiusScale: 2 // 可以设置不同的大小来进一步增加可见性
-          });
         }
       })
       component.autoView()

@@ -52,6 +52,7 @@
           <DefaultButton width='488px'
                          height='40px'
                          text='Focus on Specific Sites'
+                         @click="router.push(`/basic-designer/local-cad-score/${fpId}`)"
                          :active='true'/>
         </div>
       </div>

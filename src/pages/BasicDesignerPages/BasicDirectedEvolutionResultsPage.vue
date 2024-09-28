@@ -26,7 +26,7 @@
 
     <el-table :data='currentPageData'
               style='width: 1093px; max-height: 470px; overflow-y: auto'
-              class="table-style"
+              class='table-style'
               :header-cell-style='headerCellStyle'
               :cell-style='cellStyle'
               height='470'>
