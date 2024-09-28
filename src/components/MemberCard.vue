@@ -1,15 +1,15 @@
 <template>
   <v-card class='card' elevation='10'>
     <div class='avatar'>
-      <img :src='props.photo' alt='Photo'/>
+      <img :src='props.photo' alt='Photo' style='background-color: white'/>
     </div>
     <div class='content-wrapper'>
       <div class='text-background'>
         <h3 class='name'>{{ props.name }}</h3>
-        <p class='position'>{{ props.position }}</p>
+        <p class='position'>{{ props.role }}</p>
       </div>
     </div>
-    <div class='description'> {{ props.description }}</div>
+    <div class='description' :style="{ fontSize: props.fontSize + 'px' }">{{ props.bio }}</div>
   </v-card>
 </template>
 
@@ -18,9 +18,10 @@ import {defineProps} from 'vue'
 
 const props = defineProps<{
   name: string
-  position: string
+  role: string
   photo: string
-  description: string
+  bio: string
+  fontSize?: number
 }>()
 </script>
 
@@ -50,7 +51,7 @@ const props = defineProps<{
 .avatar img {
   width: 100%;
   height: 100%;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
 }
 
 .card:hover .avatar {
@@ -93,6 +94,7 @@ const props = defineProps<{
 }
 
 .description {
-  padding: 10px 15px;
+  font-size: 14px;
+  padding: 10px;
 }
 </style>

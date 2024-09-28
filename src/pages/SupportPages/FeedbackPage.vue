@@ -108,7 +108,7 @@
 
 <script setup lang='ts'>
 import {ref, reactive} from 'vue'
-import {FormInstance, FormRules} from 'element-plus'
+import {ElNotification, FormInstance, FormRules} from 'element-plus'
 import countries from '@/countriesList.json'
 
 const feedbackRuleFormRef = ref<FormInstance>()
@@ -183,7 +183,12 @@ const submitFeedbackForm = async (formEl: FormInstance | undefined) => {
   }
   await formEl.validate(async (valid) => {
     if (valid) {
-    } else {
+      formEl.resetFields()
+      ElNotification({
+        title: 'Submitted Successfully',
+        message: 'Thank you for your feedback. It will help us continuously improve our Atlas.Y!',
+        type: 'success'
+      })
     }
   })
 }

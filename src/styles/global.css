@@ -1,6 +1,7 @@
 * {
     font-family: 'Inter', sans-serif !important;
     user-select: none;
+    -webkit-user-drag: none;
 }
 
 html, body {
@@ -11,4 +12,16 @@ html, body {
     overflow-x: auto;
     overflow-y: auto;
     box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #C7C9CC;
+    border-radius: 4px;
+    cursor: pointer;
 }

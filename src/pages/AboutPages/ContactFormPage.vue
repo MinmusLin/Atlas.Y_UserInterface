@@ -117,7 +117,7 @@
 
 <script setup lang='ts'>
 import {ref, reactive} from 'vue'
-import {FormInstance, FormRules} from 'element-plus'
+import {ElNotification, FormInstance, FormRules} from 'element-plus'
 import {useRouter} from 'vue-router'
 import countries from '@/countriesList.json'
 
@@ -202,7 +202,12 @@ const submitContactForm = async (formEl: FormInstance | undefined) => {
   }
   await formEl.validate(async (valid) => {
     if (valid) {
-    } else {
+      formEl.resetFields()
+      ElNotification({
+        title: 'Submitted Successfully',
+        message: 'Thank you for reaching out. We have received your message and will get back to you as soon as possible.',
+        type: 'success'
+      })
     }
   })
 }
