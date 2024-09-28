@@ -107,25 +107,25 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/DocumentationPages/TechnicalResourcesPage.vue'),
     meta: {title: 'Atlas.Y - Technical Resources'}
   },
-  // Team Pages
+  // About Pages
   {
     path: '/team',
-    component: () => import('@/pages/TeamPages/TeamPage.vue'),
+    component: () => import('@/pages/AboutPages/TeamPage.vue'),
     meta: {title: 'Atlas.Y - Team'}
   },
   {
     path: '/wiki',
-    component: () => import('@/pages/TeamPages/WikiPage.vue'),
+    component: () => import('@/pages/AboutPages/WikiPage.vue'),
     meta: {title: 'Atlas.Y - Wiki'}
   },
   {
     path: '/contact-us',
-    component: () => import('@/pages/TeamPages/ContactUsPage.vue'),
+    component: () => import('@/pages/AboutPages/ContactUsPage.vue'),
     meta: {title: 'Atlas.Y - Contact Us'}
   },
   {
     path: '/contact-us/form',
-    component: () => import('@/pages/TeamPages/ContactFormPage.vue'),
+    component: () => import('@/pages/AboutPages/ContactFormPage.vue'),
     meta: {title: 'Atlas.Y - Contact Form'}
   },
   // Support Pages

@@ -48,7 +48,7 @@
           <div class='score-a-a-section'>
             <p>CAD A-A Score
               <InfoTooltip width='310px' height='90px'>
-                <div style='text-align: justify'>
+                <div>
                   <p class='info-title'>CAD A-A Score</p>
                   <p class='info-content'>
                     measures the difference in contact areas between all atoms of the central residue and surrounding
@@ -63,7 +63,7 @@
           <div class='score-a-s-section'>
             <p>CAD A-S Score
               <InfoTooltip width='324px' height='90px'>
-                <div style='text-align: justify'>
+                <div>
                   <p class='info-title'>CAD A-S Score</p>
                   <p class='info-content'>
                     assesses the difference in contact areas between the central residue's atoms and surrounding
