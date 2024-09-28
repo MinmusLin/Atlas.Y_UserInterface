@@ -214,11 +214,17 @@ const selectPdbFile = () => {
   pdbInput.value.click()
 }
 
-const fileToBase64 = (file) => {
+const fileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
-    reader.onload = () => resolve(reader.result as string)
+    reader.onload = () => {
+      const result = reader.result
+      if (typeof result == 'string') {
+        const base64Data = result.split(',')[1]
+        resolve(base64Data);
+      }
+    }
     reader.onerror = error => reject(error)
   })
 }

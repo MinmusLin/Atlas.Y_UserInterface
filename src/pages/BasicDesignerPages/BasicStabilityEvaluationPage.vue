@@ -6,17 +6,17 @@
 
     <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Fusion Protein: </span>{{ fusionProtein }}
+        <span class='sub-content'>Fusion Protein: </span>{{ currentResult.fpId }}
       </span>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Signal: </span>{{ signal }}
+        <span class='sub-content'>Signal: </span>{{ currentResult.signalId }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>Linker: </span>{{ linker }}
+        <span class='sub-content'>Linker: </span>{{ currentResult.linkerId }}
       </span>
     </div>
 
-    <el-table :data='currentPageData'
+    <el-table :data='tableData'
               style='width: 1093px; max-height: 470px; overflow-y: auto'
               class="table-style"
               :header-cell-style='headerCellStyle'
@@ -36,7 +36,10 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed} from 'vue'
+import {onMounted, ref, watch} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
+import {g_matchingResults, g_queryLogId} from '@/global'
+import axiosInstance from '@/plugins/axios'
 
 interface TableData {
   item: string
@@ -49,33 +52,140 @@ interface CellStyleParams {
   columnIndex: number
 }
 
-const fusionProtein = ref('FP_001')
-const signal = ref('SG_001')
-const linker = ref('LK_001')
-const row = ref(25)
-const pageSize = ref(100)
-const currentPage = ref(1)
-const tableData = ref<TableData[]>([])
-
-for (let i = 0; i < row.value; i++) {
-  tableData.value.push({
-    item: 'fa_art',
-    scoreValue: -2525.13,
-    explanation: 'Favorable atomic attraction',
-  })
+interface PredictionResult {
+  fpId: string
+  signalId: string
+  linkerId: string
+  fusionProtein: string
+  stabilityScore: number
+  linker: string
+  signal: string
 }
 
-tableData.value[0] = {
-  item: 'Total Score',
-  scoreValue: -254.71,
-  explanation: 'Overall stability score',
+const route = useRoute()
+const router = useRouter()
+const fpId = ref(route.params.id)
+const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
+const tableData = ref<TableData[]>([
+  {
+    item: 'Total Score',
+    scoreValue: 0,
+    explanation: 'Overall stability score'
+  },
+  {
+    item: 'fa_atr',
+    scoreValue: 0,
+    explanation: 'Favorable atomic attraction'
+  },
+  {
+    item: 'fa_rep',
+    scoreValue: 0,
+    explanation: 'Unfavorable atomic repulsion'
+  },
+  {
+    item: 'fa_sol',
+    scoreValue: 0,
+    explanation: 'Solvation energy'
+  },
+  {
+    item: 'fa_intra_rep',
+    scoreValue: 0,
+    explanation: 'Intra-residue repulsion'
+  },
+  {
+    item: 'fa_intra_sol_xover4',
+    scoreValue: 0,
+    explanation: 'Intra-residue solvation energy'
+  },
+  {
+    item: 'lk_ball_wtd',
+    scoreValue: 0,
+    explanation: 'Weighted Lennard-Jones potential'
+  },
+  {
+    item: 'fa_elec',
+    scoreValue: 0,
+    explanation: 'Electrostatic interactions'
+  },
+  {
+    item: 'pro_close',
+    scoreValue: 0,
+    explanation: 'Proline closure energy'
+  },
+  {
+    item: 'hbond_sr_bb',
+    scoreValue: 0,
+    explanation: 'Short-range backbone-backbone hydrogen bonding'
+  },
+  {
+    item: 'hbond_lr_bb',
+    scoreValue: 0,
+    explanation: 'Long-range backbone-backbone hydrogen bonding'
+  },
+  {
+    item: 'hbond_bb_sc',
+    scoreValue: 0,
+    explanation: 'Backbone-sidechain hydrogen bonding'
+  },
+  {
+    item: 'hbond_sc',
+    scoreValue: 0,
+    explanation: 'Sidechain-sidechain hydrogen bonding'
+  },
+  {
+    item: 'dslf_fa13',
+    scoreValue: 0,
+    explanation: 'Disulfide bonds energy'
+  },
+  {
+    item: 'omega',
+    scoreValue: 0,
+    explanation: 'Omega dihedral angle energy'
+  },
+  {
+    item: 'fa_dun',
+    scoreValue: 0,
+    explanation: 'Dunbrack rotamer library energy'
+  },
+  {
+    item: 'p_aa_pp',
+    scoreValue: 0,
+    explanation: 'Probability of amino acid pairs in phi/psi angles'
+  },
+  {
+    item: 'yhh_planarity',
+    scoreValue: 0,
+    explanation: 'Explanation": "Aromatic ring planarity energy'
+  },
+  {
+    item: 'ref',
+    scoreValue: 0,
+    explanation: 'Reference energy'
+  },
+  {
+    item: 'rama_prepro',
+    scoreValue: 0,
+    explanation: 'Ramachandran plot energy for pre-proline residues'
+  }
+])
+
+function findEntryByFpId(fpId): PredictionResult {
+  return <PredictionResult>g_matchingResults.value.find(entry => entry.fpId == fpId)
 }
 
-const currentPageData = computed(() => {
-  const start = (currentPage.value - 1) * pageSize.value
-  const end = start + pageSize.value
-  return tableData.value.slice(start, end)
+onMounted(() => {
+  fetchStability()
 })
+
+const fetchStability = async () => {
+  try {
+    const response = await axiosInstance.get(`/basic-prediction/get-stability/${g_queryLogId.value}/pdb/${currentResult.value.fpId}.pdb`)
+    for (let i = 0; i < 20; i++) {
+      tableData.value[i].scoreValue = response.data[i]
+    }
+  } catch (error) {
+  }
+}
 
 const baseHeaderStyle = {
   backgroundColor: '#2F62D7',
@@ -135,6 +245,12 @@ const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
   }
   return style
 }
+
+watch(() => route.params.id, (newId) => {
+  fpId.value = newId
+  currentResult.value = findEntryByFpId(newId)
+  fetchStability()
+}, {immediate: true})
 </script>
 
 <style scoped>

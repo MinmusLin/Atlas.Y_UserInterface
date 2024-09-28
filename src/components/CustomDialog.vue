@@ -15,7 +15,7 @@
           v-for="(price, index) in prices"
           :key="index"
           class="price-card"
-          :class="{ 'selected': selectedPrice === index }"
+          :class="{ 'selected': selectedPrice == index }"
           @click="selectPrice(index)"
         >
           <span class="price-amount">{{ price.amount }}</span>

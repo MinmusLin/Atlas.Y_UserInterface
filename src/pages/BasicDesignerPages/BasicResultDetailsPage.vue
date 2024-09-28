@@ -18,7 +18,11 @@
     </div>
     <div style='margin-top: 29px'>
       <DefaultButton width='488px' text='Function Evaluation' height='40px' :active='true' style='margin-right: 7px'/>
-      <DefaultButton width='488px' text='Stability Evaluation' height='40px' :active='true'/>
+      <DefaultButton width='488px'
+                     text='Stability Evaluation'
+                     height='40px'
+                     @click="router.push(`/basic-designer/stability-evaluation/${fpId}`)"
+                     :active='true'/>
     </div>
     <div style='display: flex; flex-direction: row; margin-top: 23px'>
       <ToggleButton v-model='sequenceOptimization'
