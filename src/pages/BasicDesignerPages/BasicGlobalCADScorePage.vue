@@ -9,13 +9,13 @@
 
         <div class='subtitle'>
           <span style='margin-right: 50px'>
-            <strong>Fusion Protein: </strong>FP_0001
+            <strong>Fusion Protein: </strong>{{ currentResult.fpId }}
           </span>
           <span style='margin-right: 50px'>
-            <strong>Signal: </strong>SG_0001
+            <strong>Signal: </strong>{{ currentResult.signalId }}
           </span>
           <span>
-            <strong>Linker: </strong>LK_0001
+            <strong>Linker: </strong>{{ currentResult.linkerId }}
           </span>
         </div>
       </div>
@@ -29,13 +29,13 @@
         <div class='right-section'>
           <div class='score-section'>
             <p>Global CAD Score</p>
-            <p class='score'>{{ score }}</p>
+            <p class='score'>{{ cadScore }}</p>
             <div class='score-info'>
               <div class='info-title'>
                 <v-icon :size='14' color='#8F9396'>mdi-information-variant-circle</v-icon>
                 <p>Scoring Instructions</p>
               </div>
-              <p style='text-align: justify'>
+              <p>
                 CAD-score values range from 0 to 1, where values close to 1 indicate that the fusion protein is highly
                 similar to the original protein and retains its function intact,while values close to 0 indicate that
                 the structure is more different and the function is significantly changed.
@@ -60,12 +60,32 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed, onMounted} from 'vue'
+import {ref, computed, onMounted, watch} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import {Stage} from 'ngl'
+import {g_matchingResults, g_queryLogId} from '@/global'
+import axiosInstance from '@/plugins/axios'
+import {useRoute, useRouter} from "vue-router";
 
+interface PredictionResult {
+  fpId: string
+  signalId: string
+  linkerId: string
+  fusionProtein: string
+  stabilityScore: number
+  linker: string
+  signal: string
+}
+
+const route = useRoute()
+const router = useRouter()
+const fpId = ref(route.params.id)
+const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const cadScore = ref(0.0)
-const score = computed(() => cadScore.value)
+
+function findEntryByFpId(fpId): PredictionResult {
+  return <PredictionResult>g_matchingResults.value.find(entry => entry.fpId == fpId)
+}
 
 const evaluation = computed(() => {
   if (cadScore.value > 0.8) {
@@ -78,7 +98,7 @@ const evaluation = computed(() => {
 })
 
 const evaluationColor = computed(() => {
-  if (cadScore.value > 0.8) {
+  if (cadScore.value >= 0.8) {
     return '#13986B'
   } else if (cadScore.value >= 0.4) {
     return '#FFC931'
@@ -88,7 +108,7 @@ const evaluationColor = computed(() => {
 })
 
 const evaluationDescription = computed(() => {
-  if (cadScore.value > 0.8) {
+  if (cadScore.value >= 0.8) {
     return 'The structural integrity of your protein suggests that its original function is well maintained.'
   } else if (cadScore.value >= 0.4) {
     return 'The structural integrity of your protein shows moderate differences, indicating potential variations in function.'
@@ -96,8 +116,6 @@ const evaluationDescription = computed(() => {
     return 'Significant structural differences suggest that the protein\'s original function may be compromised.'
   }
 })
-
-cadScore.value = 0.9329434924
 
 onMounted(() => {
   const stage = new Stage('global-pdb-container')
@@ -108,6 +126,24 @@ onMounted(() => {
     }
   })
 })
+
+onMounted(() => {
+  fetchStability()
+})
+
+const fetchStability = async () => {
+  try {
+    const response = await axiosInstance.get(`/basic-prediction/get-global-cad-score/${g_queryLogId.value}/${currentResult.value.fpId}`)
+    cadScore.value = response.data
+  } catch (error) {
+  }
+}
+
+watch(() => route.params.id, (newId) => {
+  fpId.value = newId
+  currentResult.value = findEntryByFpId(newId)
+  fetchStability()
+}, {immediate: true})
 </script>
 
 <style scoped>

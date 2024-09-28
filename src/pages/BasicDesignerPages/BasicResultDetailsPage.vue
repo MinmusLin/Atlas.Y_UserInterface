@@ -17,7 +17,12 @@
       </div>
     </div>
     <div style='margin-top: 29px'>
-      <DefaultButton width='488px' text='Function Evaluation' height='40px' :active='true' style='margin-right: 7px'/>
+      <DefaultButton width='488px'
+                     text='Function Evaluation'
+                     height='40px'
+                     :active='true'
+                     @click="router.push(`/basic-designer/global-cad-score/${fpId}`)"
+                     style='margin-right: 7px'/>
       <DefaultButton width='488px'
                      text='Stability Evaluation'
                      height='40px'

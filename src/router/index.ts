@@ -50,7 +50,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/global-cad-score',
+    path: '/basic-designer/global-cad-score/:id',
     component: () => import('@/pages/BasicDesignerPages/BasicGlobalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
@@ -65,7 +65,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/local-cad-score',
+    path: '/basic-designer/local-cad-score/:id',
     component: () => import('@/pages/BasicDesignerPages/BasicLocalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
