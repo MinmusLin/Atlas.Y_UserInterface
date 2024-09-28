@@ -97,13 +97,10 @@ const openDialog = (item) => {
 const router = useRouter()
 
 watch(isToggled, (newValue) => {
-  console.log('isToggled:', newValue);
   if (!newValue) {
-    console.log("Switched to Membership Mode");
     router.push('/membership-plan')
     // 这里可以处理切换到 Membership 时的逻辑，例如加载数据、切换页面等
   } else {
-    console.log("An error occurred,toggle false")
   }
 });
 </script>

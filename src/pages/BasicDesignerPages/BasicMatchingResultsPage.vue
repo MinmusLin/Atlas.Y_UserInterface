@@ -3,19 +3,19 @@
     <div class='title-container'>
       <h1 class='title'>Matching Results</h1>
       <span class='results'>
-        <span class='row-number'>{{ row }}</span> results
+        <span class='row-number'>{{ g_matchingResults.length }}</span> results
       </span>
     </div>
 
     <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>SEQUNCE / FASTA: </span>{{ fastaFile }}
+        <span class='sub-content'>SEQUNCE / FASTA: </span>{{ g_fastaFileName }}
       </span>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>PDB: </span>{{ pdbFile }}
+        <span class='sub-content'>PDB: </span>{{ g_pdbFileName }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ subcellularPosition }}
+        <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ g_positioningDemand }}
       </span>
     </div>
 
@@ -26,17 +26,18 @@
               class='table-style'
               :header-cell-style='headerCellStyle'
               :cell-style='cellStyle'
+              @row-click='handleRowClick'
               height='470'>
-      <el-table-column prop='fusionProtein'
+      <el-table-column prop='fpId'
                        label='Fusion Protein'
                        width='200'/>
-      <el-table-column prop='signal'
+      <el-table-column prop='signalId'
                        label='Signal'
                        width='387'/>
-      <el-table-column prop='linker'
+      <el-table-column prop='linkerId'
                        label='Linker'
                        width='306'/>
-      <el-table-column prop='stability'
+      <el-table-column prop='stabilityScore'
                        label='Stability'
                        width='200'/>
     </el-table>
@@ -44,7 +45,7 @@
     <div class='pagination-container'>
       <el-pagination v-model:currentPage='currentPage'
                      :page-size='pageSize'
-                     :total='row'
+                     :total='g_matchingResults.length'
                      background
                      pager-count='6'
                      layout='prev, pager, next'
@@ -56,40 +57,22 @@
 
 <script setup lang='ts'>
 import {ref, computed} from 'vue'
-
-interface TableData {
-  fusionProtein: string
-  signal: string
-  linker: string
-  stability: string
-}
+import {g_matchingResults, g_fastaFileName, g_pdbFileName, g_positioningDemand} from '@/global'
+import {useRouter} from 'vue-router'
 
 interface CellStyleParams {
   rowIndex: number
   columnIndex: number
 }
 
-const fastaFile = ref('ABC.fasta')
-const pdbFile = ref('jhbcc.pdb')
-const subcellularPosition = ref('NLS')
-const row = ref(1050)
+const router = useRouter()
 const pageSize = ref(100)
 const currentPage = ref(1)
-const tableData = ref<TableData[]>([])
-
-for (let i = 0; i < row.value; i++) {
-  tableData.value.push({
-    fusionProtein: `FP_000${i + 1}`,
-    signal: `SG_000${i + 1}`,
-    linker: `LK_000${i + 1}`,
-    stability: '87.0'
-  })
-}
 
 const currentPageData = computed(() => {
   const start = (currentPage.value - 1) * pageSize.value
   const end = start + pageSize.value
-  return tableData.value.slice(start, end)
+  return g_matchingResults.value.slice(start, end)
 })
 
 const handlePageChange = (page: number) => {
@@ -150,6 +133,10 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
     style.paddingRight = '90px'
   }
   return style
+}
+
+function handleRowClick(row, column, event) {
+  router.push(`/basic-designer/result-details/${row.fpId}`);
 }
 </script>
 

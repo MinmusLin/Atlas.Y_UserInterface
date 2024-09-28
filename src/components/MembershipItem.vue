@@ -33,7 +33,6 @@ const openDialog = () => {
   emit('open-dialog', {
     title: props.title
   });
-  console.log("openDialog:emit")
 }; // 通知父组件打开对话框
 </script>
 

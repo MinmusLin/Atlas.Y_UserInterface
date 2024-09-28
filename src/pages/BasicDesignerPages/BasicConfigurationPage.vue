@@ -133,6 +133,14 @@ import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
+import {
+  g_matchingResults,
+  g_fastaFileName,
+  g_pdbFileName,
+  g_mechanicalProperties,
+  g_solubility,
+  g_positioningDemand, g_targetProtein, g_queryLogId
+} from '@/global'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
 import NES_Basic from '/PositioningDemand/NES_Basic.mp4'
 import SP_Basic from '/PositioningDemand/SP_Basic.mp4'
@@ -241,6 +249,7 @@ const handleFastaFileChange = async (event) => {
     }
     fastaBase64.value = sequence
     fastaName.value = file.name
+    g_fastaFileName.value = file.name
     fastaWarning.value = false
   } catch (error) {
   }
@@ -255,6 +264,7 @@ const handlePdbFileChange = async (event) => {
     const base64String = await fileToBase64(file)
     pdbBase64.value = base64String as string
     pdbName.value = file.name
+    g_pdbFileName.value = file.name
     pdbWarning.value = false
   } catch (error) {
   }
@@ -296,9 +306,14 @@ async function submitQueryLog() {
       linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
       linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
     }
-    // await router.push('/basic-designer/matching-results')
-    console.log(body.targetPosition)
-    await axiosInstance.post('basic-prediction', body)
+    g_queryLogId.value = body.logId
+    g_mechanicalProperties.value = body.linkerMech
+    g_solubility.value = body.linkerSolu
+    g_positioningDemand.value = body.targetPosition
+    g_targetProtein.value = body.targetProSeq
+    // const response = await axiosInstance.post('basic-prediction', body)
+    // g_matchingResults.value = response.data
+    await router.push('/basic-designer/matching-results')
   } catch (error) {
   }
 }

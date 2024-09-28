@@ -183,9 +183,7 @@ const submitFeedbackForm = async (formEl: FormInstance | undefined) => {
   }
   await formEl.validate(async (valid) => {
     if (valid) {
-      console.log('valid')
     } else {
-      console.log('error in form validation')
     }
   })
 }

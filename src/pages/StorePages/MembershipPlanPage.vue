@@ -89,23 +89,18 @@ const dialogTitle = ref(''); // dynamically set title
 
 // 处理订阅的逻辑
 const handleSubscribe = (selectedPrice: number | null) => {
-  console.log('Subscribed with price option:', selectedPrice);
 };
 
 // Open dialog with a specific title
 const openDialog = ({ title }) => {
-  console.log("father:openDialog:", title);
   dialogTitle.value = title;  // 设置弹窗的标题
   isDialogVisible.value = true;  // 打开弹窗
 };
 
 watch(isToggled, (newValue) => {
-  console.log('isToggled:', newValue);
   if (newValue) {
-    console.log("Switched to Algorithm Store");
     router.push("/algorithm-store");
   } else {
-    console.log("An error occured");
   }
 });
 </script>

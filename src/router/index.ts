@@ -70,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/result-details',
+    path: '/basic-designer/result-details/:id',
     component: () => import('@/pages/BasicDesignerPages/BasicResultDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
