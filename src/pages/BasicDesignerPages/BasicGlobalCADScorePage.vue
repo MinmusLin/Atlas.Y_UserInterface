@@ -129,10 +129,10 @@ onMounted(() => {
 })
 
 onMounted(() => {
-  fetchStability()
+  fetchScore()
 })
 
-const fetchStability = async () => {
+const fetchScore = async () => {
   try {
     const response = await axiosInstance.get(`/basic-prediction/get-global-cad-score/${g_queryLogId.value}/${currentResult.value.fpId}`)
     cadScore.value = response.data
@@ -143,7 +143,7 @@ const fetchStability = async () => {
 watch(() => route.params.id, (newId) => {
   fpId.value = newId
   currentResult.value = findEntryByFpId(newId)
-  fetchStability()
+  fetchScore()
 }, {immediate: true})
 </script>
 

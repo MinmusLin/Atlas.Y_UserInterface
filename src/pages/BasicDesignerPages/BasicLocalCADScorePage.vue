@@ -8,13 +8,13 @@
         </div>
         <div class='subtitle'>
           <span style='margin-right: 50px'>
-            <strong>Fusion Protein: </strong>FP_0001
+            <strong>Fusion Protein: </strong>{{ currentResult.fpId }}
           </span>
           <span style='margin-right: 50px'>
-            <strong>Signal: </strong>SG_0001
+            <strong>Signal: </strong>{{ currentResult.signalId }}
           </span>
           <span>
-            <strong>Linker: </strong>LK_0001
+            <strong>Linker: </strong>{{ currentResult.linkerId }}
           </span>
         </div>
       </div>
@@ -91,7 +91,7 @@
                 </div>
               </InfoTooltip>
             </p>
-            <p class='score'>{{ score_A }}</p>
+            <p class='score'>{{ cad_AScore }}</p>
           </div>
 
           <div class='score-a-s-section'>
@@ -106,7 +106,7 @@
                 </div>
               </InfoTooltip>
             </p>
-            <p class='score'>{{ score_S }}</p>
+            <p class='score'>{{ cad_SScore }}</p>
           </div>
 
           <DefaultButton width='488px'
@@ -121,24 +121,56 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed, onMounted, watchEffect} from 'vue'
+import {ref, onMounted, watchEffect, watch} from 'vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
 import {Stage} from 'ngl'
+import {useRoute, useRouter} from 'vue-router'
+import {g_matchingResults, g_queryLogId} from "@/global";
+import axiosInstance from "@/plugins/axios";
 
-const cad_AScore = ref(0.0)
-const score_A = computed(() => cad_AScore.value)
-const cad_SScore = ref(0.0)
-const score_S = computed(() => cad_SScore.value)
+const cad_AScore = ref(-1)
+const cad_SScore = ref(-1)
 const currentResidueIndex = ref('null')
 const currentResidueName = ref('null')
 const radiusValue = ref(10.00)
 const isCalculated = ref(false)
 const residueSiteError = ref(false)
 const residueNameError = ref(false)
+const chainName = ref('')
+const route = useRoute()
+const router = useRouter()
+const fpId = ref(route.params.id)
+const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 
-cad_AScore.value = 0.970826775404717
-cad_SScore.value = 0.9217568423111843
+interface PredictionResult {
+  fpId: string
+  signalId: string
+  linkerId: string
+  fusionProtein: string
+  stabilityScore: number
+  linker: string
+  signal: string
+}
+
+function findEntryByFpId(fpId): PredictionResult {
+  return <PredictionResult>g_matchingResults.value.find(entry => entry.fpId == fpId)
+}
+
+const fetchScore = async () => {
+  try {
+    const response = await axiosInstance.get(`/basic-prediction/get-local-cad-score/${g_queryLogId.value}/${currentResult.value.fpId}/${chainName.value}/${currentResidueIndex.value+1}/${radiusValue.value}`)
+    cad_AScore.value = response.data[0]
+    cad_SScore.value = response.data[1]
+  } catch (error) {
+  }
+}
+
+watch(() => route.params.id, (newId) => {
+  fpId.value = newId
+  currentResult.value = findEntryByFpId(newId)
+  fetchScore()
+}, {immediate: true})
 
 const handleCalculate = () => {
   residueSiteError.value = currentResidueIndex.value == 'null'
@@ -147,6 +179,7 @@ const handleCalculate = () => {
     return
   }
   isCalculated.value = !isCalculated.value
+  fetchScore()
 }
 
 const handleCalculateAnotherSite = () => {
@@ -154,6 +187,8 @@ const handleCalculateAnotherSite = () => {
   currentResidueName.value = 'null'
   isCalculated.value = !isCalculated.value
   radiusValue.value = 10.00
+  cad_AScore.value = -1
+  cad_SScore.value = -1
 }
 
 watchEffect(() => {
@@ -203,6 +238,7 @@ onMounted(() => {
           const atom = pickingProxy.atom
           currentResidueIndex.value = atom.residueIndex
           currentResidueName.value = atom.resname
+          chainName.value = atom.chainname
         }
       })
       component.autoView()
