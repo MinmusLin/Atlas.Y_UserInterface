@@ -5,7 +5,9 @@
     </div>
     <div class='content-wrapper'>
       <div class='text-background'>
-        <h3 class='name'>{{ props.name }}</h3>
+        <h3 class='name'>
+          <slot name='name'>{{ props.name }}</slot>
+        </h3>
         <p class='position'>{{ props.role }}</p>
       </div>
     </div>

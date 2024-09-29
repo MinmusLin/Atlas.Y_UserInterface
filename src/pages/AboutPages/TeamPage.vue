@@ -111,20 +111,30 @@
       <div class='group-name'>PI</div>
       <div class='group'>
         <MemberCard photo='https://static.igem.wiki/teams/5503/test/jingzhang.webp'
-                    name='Dr. Jing Zhang'
+                    name='Prof. Jing Zhang'
                     role='Primary PI'
-                    bio='Fundraising'/>
+                    bio='Fundraising'>
+          <template v-slot:name>
+            <span>Prof.</span><br/>
+            <span>Jing Zhang</span>
+          </template>
+        </MemberCard>
         <MemberCard photo='https://static.igem.wiki/teams/5503/test/guohuichuai.webp'
-                    name='Dr. Guohui Chuai'
+                    name='Asst.Prof. Guohui Chuai'
                     role='Secondary PI'
-                    bio='Safety, Conceptualization'/>
+                    bio='Safety, Conceptualization'>
+          <template v-slot:name>
+            <span>Asst.Prof.</span><br/>
+            <span>Guohui Chuai</span>
+          </template>
+        </MemberCard>
       </div>
     </div>
     <div class='group-section'>
       <div class='group-name'>Instructor</div>
       <div class='group'>
         <MemberCard photo='https://static.igem.wiki/teams/5503/test/yunzhekang.webp'
-                    name='Dr. Yunzhe Kang'
+                    name='Yunzhe Kang'
                     role='Instructor'
                     bio='Safety, Conceptualization'/>
       </div>
