@@ -60,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/directed-evolution-results',
+    path: '/basic-designer/directed-evolution-results/:id',
     component: () => import('@/pages/BasicDesignerPages/BasicDirectedEvolutionResultsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
@@ -75,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/variant-details',
+    path: '/basic-designer/variant-details/:fpid/:vrid',
     component: () => import('@/pages/BasicDesignerPages/BasicVariantDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },

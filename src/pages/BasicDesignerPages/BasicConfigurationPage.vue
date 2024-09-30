@@ -317,8 +317,8 @@ async function submitQueryLog() {
     g_solubility.value = body.linkerSolu
     g_positioningDemand.value = body.targetPosition
     g_targetProtein.value = body.targetProSeq
-    // const response = await axiosInstance.post('basic-prediction', body)
-    // g_matchingResults.value = response.data
+    const response = await axiosInstance.post('basic-prediction', body)
+    g_matchingResults.value = response.data
     await router.push('/basic-designer/matching-results')
   } catch (error) {
   }

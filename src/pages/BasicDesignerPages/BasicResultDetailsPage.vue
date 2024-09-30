@@ -36,7 +36,9 @@
                     style='margin-right: 7px'
                     width='400px'
                     height='50px'/>
-      <ShadowButton width="576px" height='50px'>
+      <ShadowButton width='576px'
+                    height='50px'
+                    @click="router.push(`/basic-designer/directed-evolution-results/${fpId}`)">
         Sequence Optimization
       </ShadowButton>
     </div>

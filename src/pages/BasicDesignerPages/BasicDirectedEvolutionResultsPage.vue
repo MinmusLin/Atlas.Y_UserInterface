@@ -3,24 +3,11 @@
     <div class='title-container'>
       <h1 class='title'>Directed Evolution Results</h1>
       <span class='results'>
-        <span class='row-number'>{{ row }}</span> results
+        <span class='row-number'>{{ g_directedEvolutionResults.length }}</span> results
       </span>
     </div>
 
-    <div class='subtitle-container'>
-      <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Fusion Protein: </span>{{ fusionProtein }}
-      </span>
-      <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Signal: </span>{{ signal }}
-      </span>
-      <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>Linker: </span>{{ linker }}
-      </span>
-      <span class='subtitle'>
-        <span class='sub-content'>Function: </span>{{ algoFuntion }}
-      </span>
-    </div>
+    <div class='subtitle-container'/>
 
     <div class='hint-container'>Click to select an entry</div>
 
@@ -29,21 +16,22 @@
               class='table-style'
               :header-cell-style='headerCellStyle'
               :cell-style='cellStyle'
+              @row-click='handleRowClick'
               height='470'>
-      <el-table-column prop='variantID'
-                       label='variant ID'
+      <el-table-column prop='variantId'
+                       label='Variant ID'
                        width='290'/>
-      <el-table-column prop='evolutionScore'
-                       label='Evolution Score'
+      <el-table-column prop='mutationSite'
+                       label='Mutant'
                        width='470'/>
-      <el-table-column prop='evolutionRate'
-                       label='Evolution Rate'
+      <el-table-column prop='predScore'
+                       label='Evolution Score'
                        width='333'/>
     </el-table>
     <div class='pagination-container'>
       <el-pagination v-model:currentPage='currentPage'
                      :page-size='pageSize'
-                     :total='row'
+                     :total='g_directedEvolutionResults.length'
                      background
                      pager-count='6'
                      layout='prev, pager, next'
@@ -54,43 +42,59 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, computed} from 'vue'
-
-interface TableData {
-  variantID: string
-  evolutionScore: number
-  evolutionRate: string
-}
+import {ref, computed, onMounted, watch} from 'vue'
+import {g_directedEvolutionResults, g_queryLogId, g_targetProtein} from '@/global'
+import {useRoute, useRouter} from 'vue-router'
+import axiosInstance from '@/plugins/axios'
 
 interface CellStyleParams {
   columnIndex: number
 }
 
-const fusionProtein = ref('FP_001')
-const signal = ref('SG_001')
-const linker = ref('LK_001')
-const algoFuntion = ref('Solubility')
-const row = ref(1050)
 const pageSize = ref(100)
 const currentPage = ref(1)
-const tableData = ref<TableData[]>([])
-
-for (let i = 0; i < row.value; i++) {
-  tableData.value.push({
-    variantID: 'VR_0001',
-    evolutionScore: 76.5,
-    evolutionRate: '20%'
-  })
-}
+const route = useRoute()
+const router = useRouter()
+const fpId = ref(route.params.id)
 
 const currentPageData = computed(() => {
   const start = (currentPage.value - 1) * pageSize.value
   const end = start + pageSize.value
-  return tableData.value.slice(start, end)
+  return g_directedEvolutionResults.value.slice(start, end)
 })
 
 const handlePageChange = (page: number) => {
   currentPage.value = page
+}
+
+onMounted(() => {
+  fetchData()
+})
+
+const fetchData = async () => {
+  g_directedEvolutionResults.value = []
+  console.log(1111)
+  try {
+    const response = await axiosInstance.post('/basic-prediction/sequence-optimization', {
+      fastaSequence: g_targetProtein.value,
+      logId: g_queryLogId.value,
+      fpId: fpId.value,
+      modelName: true ? 'ProtLGN' : 'ProtLGN_Loc'
+    })
+    console.log(response.status)
+    console.log(response.data)
+    g_directedEvolutionResults.value = response.data
+  } catch (error) {
+  }
+}
+
+watch(() => route.params.id, (newId) => {
+  fpId.value = newId
+  fetchData()
+}, {immediate: true})
+
+function handleRowClick(row, column, event) {
+  router.push(`/basic-designer/variant-details/${fpId.value}/${row.variantId}`);
 }
 
 const baseHeaderStyle = {
@@ -191,16 +195,6 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   text-align: center;
   margin-bottom: 24px;
   border-bottom: 1px solid #C5C9CD;
-}
-
-.subtitle {
-  color: #2F3235;
-  font-weight: 400;
-}
-
-.sub-content {
-  color: #16396E;
-  font-weight: 600;
 }
 
 .hint-container {
