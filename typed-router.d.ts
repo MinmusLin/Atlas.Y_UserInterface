@@ -31,7 +31,6 @@ declare module 'vue-router/auto-routes' {
     '/BasicDesignerPages/BasicLocalCADScorePage': RouteRecordInfo<'/BasicDesignerPages/BasicLocalCADScorePage', '/BasicDesignerPages/BasicLocalCADScorePage', Record<never, never>, Record<never, never>>,
     '/BasicDesignerPages/BasicMatchingResultsPage': RouteRecordInfo<'/BasicDesignerPages/BasicMatchingResultsPage', '/BasicDesignerPages/BasicMatchingResultsPage', Record<never, never>, Record<never, never>>,
     '/BasicDesignerPages/BasicResultDetailsPage': RouteRecordInfo<'/BasicDesignerPages/BasicResultDetailsPage', '/BasicDesignerPages/BasicResultDetailsPage', Record<never, never>, Record<never, never>>,
-    '/BasicDesignerPages/BasicSequenceOptimizationPage': RouteRecordInfo<'/BasicDesignerPages/BasicSequenceOptimizationPage', '/BasicDesignerPages/BasicSequenceOptimizationPage', Record<never, never>, Record<never, never>>,
     '/BasicDesignerPages/BasicStabilityEvaluationPage': RouteRecordInfo<'/BasicDesignerPages/BasicStabilityEvaluationPage', '/BasicDesignerPages/BasicStabilityEvaluationPage', Record<never, never>, Record<never, never>>,
     '/BasicDesignerPages/BasicVariantDetailsPage': RouteRecordInfo<'/BasicDesignerPages/BasicVariantDetailsPage', '/BasicDesignerPages/BasicVariantDetailsPage', Record<never, never>, Record<never, never>>,
     '/DocumentationPages/TechnicalResourcesPage': RouteRecordInfo<'/DocumentationPages/TechnicalResourcesPage', '/DocumentationPages/TechnicalResourcesPage', Record<never, never>, Record<never, never>>,

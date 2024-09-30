@@ -45,11 +45,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
   {
-    path: '/basic-designer/sequence-optimization',
-    component: () => import('@/pages/BasicDesignerPages/BasicSequenceOptimizationPage.vue'),
-    meta: {title: 'Atlas.Y - Basic Designer'}
-  },
-  {
     path: '/basic-designer/global-cad-score/:id',
     component: () => import('@/pages/BasicDesignerPages/BasicGlobalCADScorePage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
