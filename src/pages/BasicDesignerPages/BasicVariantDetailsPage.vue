@@ -30,8 +30,9 @@
             <TextArea :text='currentVariantResult.variantSeq' width='502px' height='181px'/>
           </div>
         </div>
-        <p>{{ primaryStability }}</p>
-        <p>{{ variantStability }}</p>
+        <p>Primary Protein Stability Score: {{ primaryStability }}</p>
+        <p>Variant Protein Stability Score: {{ variantStability }}</p>
+        <p>Functionality Score: {{ functionalityScore }}</p>
       </div>
     </div>
   </div>
@@ -59,6 +60,7 @@ const vrId = ref(route.params.vrid)
 const currentVariantResult = ref<DirectedEvolutionResult>(findEntryByVrId(fpId.value))
 const primaryStability = ref(-1)
 const variantStability = ref(-1)
+const functionalityScore = ref(-1)
 
 function findEntryByVrId(vrId): DirectedEvolutionResult {
   return <DirectedEvolutionResult>g_directedEvolutionResults.value.find(entry => entry.variantId == vrId)
@@ -71,9 +73,16 @@ onMounted(() => {
 const fetchData = async () => {
   try {
     const primaryResponse = await axiosInstance.get(`/basic-prediction/get-primary-stability/${g_queryLogId.value}/pdb/${fpId.value}.pdb`)
-    const variantResponse = await axiosInstance.get(`/basic-prediction/get-variant-stability/${g_queryLogId.value}/DATASET/DATASET/${fpId.value}/${fpId.value}.pdb`)
     primaryStability.value = primaryResponse.data
+    const variantResponse = await axiosInstance.post('/basic-prediction/get-variant-stability', {
+      sequence: currentVariantResult.value.variantSeq,
+      variantId: vrId.value,
+      logId: g_queryLogId.value,
+      fpId: fpId.value
+    })
     variantStability.value = variantResponse.data
+    const functionalityResponse = await axiosInstance.get(`/basic-prediction/get-functionality-score/${g_queryLogId.value}/${fpId.value}/${vrId.value}`)
+    functionalityScore.value = functionalityResponse.data
   } catch (error) {
   }
 }

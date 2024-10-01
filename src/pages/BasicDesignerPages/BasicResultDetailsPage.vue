@@ -38,7 +38,7 @@
                     height='50px'/>
       <ShadowButton width='576px'
                     height='50px'
-                    @click="router.push(`/basic-designer/directed-evolution-results/${fpId}`)">
+                    @click="router.push(`/basic-designer/directed-evolution-results/${fpId}`); g_currentFusionProtein=currentResult.fusionProtein">
         Sequence Optimization
       </ShadowButton>
     </div>
@@ -48,7 +48,7 @@
 <script setup lang='ts'>
 import {onMounted, ref, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-import {g_matchingResults, g_queryLogId, g_targetProtein} from '@/global'
+import {g_currentFusionProtein, g_matchingResults, g_queryLogId, g_targetProtein} from '@/global'
 import TextArea from '@/components/TextArea.vue'
 import {Stage} from 'ngl'
 import axiosInstance from '@/plugins/axios'

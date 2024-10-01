@@ -43,7 +43,7 @@
 
 <script setup lang='ts'>
 import {ref, computed, onMounted, watch} from 'vue'
-import {g_directedEvolutionResults, g_queryLogId, g_targetProtein} from '@/global'
+import {g_currentFusionProtein, g_directedEvolutionResults, g_queryLogId, g_targetProtein} from '@/global'
 import {useRoute, useRouter} from 'vue-router'
 import axiosInstance from '@/plugins/axios'
 
@@ -73,16 +73,13 @@ onMounted(() => {
 
 const fetchData = async () => {
   g_directedEvolutionResults.value = []
-  console.log(1111)
   try {
     const response = await axiosInstance.post('/basic-prediction/sequence-optimization', {
-      fastaSequence: g_targetProtein.value,
+      fastaSequence: g_currentFusionProtein.value,
       logId: g_queryLogId.value,
       fpId: fpId.value,
       modelName: true ? 'ProtLGN' : 'ProtLGN_Loc'
     })
-    console.log(response.status)
-    console.log(response.data)
     g_directedEvolutionResults.value = response.data
   } catch (error) {
   }
