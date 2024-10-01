@@ -44,7 +44,7 @@
           </div>
 
           <div class='evaluation-section'>
-            <div class='overlay' v-show='cadScore == 0'/>
+            <div class='overlay' v-show='cadScore==0'/>
             <p>Evaluation</p>
             <p :style='{ color: evaluationColor }' class='evaluation-comment'>{{ evaluation }}</p>
             <p class='evaluation-description'>{{ evaluationDescription }}</p>
