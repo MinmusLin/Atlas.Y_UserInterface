@@ -76,8 +76,7 @@ const menus = ref([
     title: 'Documentation',
     icon: Document,
     items: [
-      {name: 'User Guide', route: '/user-guide'},
-      {name: 'Technical Resources', route: '/technical-resources'}
+      {name: 'User Guide', route: '/user-guide'}
     ]
   },
   {

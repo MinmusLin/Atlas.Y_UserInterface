@@ -18,7 +18,7 @@ interface DirectedEvolutionResult {
   variantSeq: string
 }
 
-export const apiBaseUrl = 'http://localhost:5101/api/'
+export const apiBaseUrl = 'http://162.62.213.36:5101/api/'
 
 export const g_queryLogId = ref('')
 export const g_fastaFileName = ref('')
