@@ -7,7 +7,7 @@
         </div>
       </el-carousel-item>
     </el-carousel>
-    <div style='display: flex; flex-direction: column; align-items: center'>
+    <div style='display: flex; flex-direction: column; align-items: center; margin-top: 27px'>
       <p style='color: #2F3235; font-size: 40px; font-weight: 600'>Our WIKI provides a comprehensive overview of</p>
       <p style='color: #7AA8F3; font-size: 40px; font-weight: 600'>Atlas.Y toolkit's development</p>
       <div style='display: flex; flex-direction: row; margin-top: 8px'>
@@ -65,20 +65,17 @@ p {
   line-height: 1.2;
 }
 
-.el-carousel {
-  width: 4000px;
-  height: 980px;
-  max-width: 1440px;
-  overflow: hidden;
-  margin-bottom: 100px;
-}
-
 .carousel-item {
-  height: 350px;
+  height: 290px;
 }
 
 .carousel-image {
   width: 100%;
   height: auto;
+}
+
+/* noinspection CssUnusedSymbol */
+.el-carousel {
+  width: 1190px;
 }
 </style>
