@@ -1,6 +1,13 @@
 <template>
   <div class='page-container'>
     <v-container class='custom-container'>
+      <InfoTooltip height='95px'
+                   width='320px'
+                   style='position: absolute; top: 52px; left: 422px'>
+        <p style='font-size: 14px'>
+          This registration page is for demonstration purposes only. You can close this page and freely browse Atlas.Y.
+        </p>
+      </InfoTooltip>
       <div class='login-title'>Create an Account</div>
       <v-form>
         <v-text-field label='Your Name' variant='outlined' placeholder='Enter your name'/>
@@ -35,6 +42,7 @@
 <script setup lang='ts'>
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
+import InfoTooltip from "@/components/InfoTooltip.vue";
 
 const visible = ref(false)
 const router = useRouter()
@@ -54,6 +62,7 @@ const router = useRouter()
   border-radius: 10px;
   width: 600px;
   height: 608px;
+  position: relative;
 }
 
 .login-title {
