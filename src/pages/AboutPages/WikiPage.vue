@@ -41,12 +41,12 @@
 import {ElCarousel} from 'element-plus'
 
 const images = [
-  {src: 'public/Wiki/Presentation1.jpg', alt: 'Presentation1'},
-  {src: 'public/Wiki/Presentation2.jpg', alt: 'Presentation2'},
-  {src: 'public/Wiki/Presentation3.jpg', alt: 'Presentation3'},
-  {src: 'public/Wiki/Presentation4.jpg', alt: 'Presentation4'},
-  {src: 'public/Wiki/Presentation5.jpg', alt: 'Presentation5'},
-  {src: 'public/Wiki/Presentation6.jpg', alt: 'Presentation6'}
+  {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation1.webp', alt: 'Presentation1'},
+  {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation2.webp', alt: 'Presentation2'},
+  {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation3.webp', alt: 'Presentation3'},
+  {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation4.webp', alt: 'Presentation4'},
+  {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation5.webp', alt: 'Presentation5'},
+  {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation6.webp', alt: 'Presentation6'}
 ]
 </script>
 
