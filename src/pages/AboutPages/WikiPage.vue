@@ -1,5 +1,12 @@
 <template>
   <div class='page-container'>
+    <el-carousel :interval='3000' type='card'>
+      <el-carousel-item v-for='(item, index) in images' :key='index' class='carousel-item'>
+        <div class='image-container'>
+          <img :src='item.src' :alt='item.alt' class='carousel-image'/>
+        </div>
+      </el-carousel-item>
+    </el-carousel>
     <div style='display: flex; flex-direction: column; align-items: center'>
       <p style='color: #2F3235; font-size: 40px; font-weight: 600'>Our WIKI provides a comprehensive overview of</p>
       <p style='color: #7AA8F3; font-size: 40px; font-weight: 600'>Atlas.Y toolkit's development</p>
@@ -31,6 +38,16 @@
 </template>
 
 <script setup lang='ts'>
+import {ElCarousel} from 'element-plus'
+
+const images = [
+  {src: 'public/Wiki/Presentation1.jpg', alt: 'Presentation1'},
+  {src: 'public/Wiki/Presentation2.jpg', alt: 'Presentation2'},
+  {src: 'public/Wiki/Presentation3.jpg', alt: 'Presentation3'},
+  {src: 'public/Wiki/Presentation4.jpg', alt: 'Presentation4'},
+  {src: 'public/Wiki/Presentation5.jpg', alt: 'Presentation5'},
+  {src: 'public/Wiki/Presentation6.jpg', alt: 'Presentation6'}
+]
 </script>
 
 <style scoped>
@@ -39,11 +56,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 p {
   color: #8F9396;
   font-weight: 500;
   line-height: 1.2;
+}
+
+.el-carousel {
+  width: 4000px;
+  height: 980px;
+  max-width: 1440px;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+.carousel-item {
+  height: 350px;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
 }
 </style>
