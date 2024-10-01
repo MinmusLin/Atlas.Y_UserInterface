@@ -32,14 +32,21 @@
                        label='Explanation'
                        width='533'/>
     </el-table>
+    <div class='loading-overlay' v-show='allScoresAreZero'>
+      <el-icon v-loading='true' style='left: 90px; top: -70px'/>
+    </div>
   </div>
 </template>
 
 <script setup lang='ts'>
-import {onMounted, ref, watch} from 'vue'
+import {onMounted, ref, watch, computed} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import {g_matchingResults, g_queryLogId} from '@/global'
 import axiosInstance from '@/plugins/axios'
+
+const allScoresAreZero = computed(() => {
+  return tableData.value.every(data => data.scoreValue == 0)
+})
 
 interface TableData {
   item: string
@@ -321,5 +328,18 @@ watch(() => route.params.id, (newId) => {
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   border-left: none !important;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 510px;
+  left: 500px;
+  width: 1400px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
 </style>

@@ -91,7 +91,9 @@
                 </div>
               </InfoTooltip>
             </p>
-            <p class='score'>{{ cad_AScore }}</p>
+            <p class='score'>
+              {{ cad_AScore === -1 ? 'Calculating...' : cad_AScore }}
+            </p>
           </div>
 
           <div class='score-a-s-section'>
@@ -106,7 +108,9 @@
                 </div>
               </InfoTooltip>
             </p>
-            <p class='score'>{{ cad_SScore }}</p>
+            <p class='score'>
+              {{ cad_SScore == -1 ? 'Calculating...' : cad_SScore }}
+            </p>
           </div>
 
           <DefaultButton width='488px'
@@ -126,8 +130,8 @@ import DefaultButton from '@/components/DefaultButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
 import {Stage} from 'ngl'
 import {useRoute, useRouter} from 'vue-router'
-import {g_matchingResults, g_queryLogId} from "@/global";
-import axiosInstance from "@/plugins/axios";
+import {g_matchingResults, g_queryLogId} from '@/global'
+import axiosInstance from '@/plugins/axios'
 
 const cad_AScore = ref(-1)
 const cad_SScore = ref(-1)
@@ -390,7 +394,7 @@ p {
   flex-direction: column;
   gap: 16px;
   max-width: 675px;
-  margin-bottom: 154px;
+  margin-bottom: 153px;
 }
 
 .input-section {

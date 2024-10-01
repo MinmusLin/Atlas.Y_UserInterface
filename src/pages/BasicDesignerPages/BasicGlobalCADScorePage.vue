@@ -29,7 +29,7 @@
         <div class='right-section'>
           <div class='score-section'>
             <p>Global CAD Score</p>
-            <p class='score'>{{ cadScore }}</p>
+            <p class='score'>{{ cadScore == 0 ? 'Calculating...' : cadScore }}</p>
             <div class='score-info'>
               <div class='info-title'>
                 <v-icon :size='14' color='#8F9396'>mdi-information-variant-circle</v-icon>
@@ -37,13 +37,14 @@
               </div>
               <p>
                 CAD-score values range from 0 to 1, where values close to 1 indicate that the fusion protein is highly
-                similar to the original protein and retains its function intact,while values close to 0 indicate that
+                similar to the original protein and retains its function intact, while values close to 0 indicate that
                 the structure is more different and the function is significantly changed.
               </p>
             </div>
           </div>
 
           <div class='evaluation-section'>
+            <div class='overlay' v-show='cadScore == 0'/>
             <p>Evaluation</p>
             <p :style='{ color: evaluationColor }' class='evaluation-comment'>{{ evaluation }}</p>
             <p class='evaluation-description'>{{ evaluationDescription }}</p>
@@ -66,7 +67,7 @@ import DefaultButton from '@/components/DefaultButton.vue'
 import {Stage} from 'ngl'
 import {g_matchingResults, g_queryLogId} from '@/global'
 import axiosInstance from '@/plugins/axios'
-import {useRoute, useRouter} from "vue-router";
+import {useRoute, useRouter} from 'vue-router'
 
 interface PredictionResult {
   fpId: string
@@ -272,7 +273,23 @@ p {
   line-height: 18px;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 180px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #555;
+  z-index: 10;
+}
+
 .evaluation-section {
+  position: relative;
   margin-bottom: 88px;
 }
 
