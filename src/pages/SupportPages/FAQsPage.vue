@@ -4,32 +4,27 @@
       <h1>FAQs</h1>
       <h2>Q : How to select the appropriate signal peptide or linker peptide?</h2>
       <p><b>A :</b> You can reset your password in the account sign-in page. When you reset your password, instructions
-        are sent to
-        the email address associated with your Atlas.Y Web Services account. You can follow the instructions in the
-        email to reset your password.</p>
-
+        are sent to the email address associated with your Atlas.Y Web Services account. You can follow the instructions
+        in the email to reset your password.</p>
       <h2>Q : What is the difference in the calculations of CAD A-A score and CAD A-S score in the Site-Specific CAD
         Scoring System?</h2>
       <p><b>A :</b> Understanding the difference in calculations between CAD A-A score and CAD A-S score in the CAD
-        scoring
-        system is crucial for assessing the preservation of fusion protein functionality. Here are the key points to
-        help you grasp this distinction:</p>
+        scoring system is crucial for assessing the preservation of fusion protein functionality. Here are the key
+        points to help you grasp this distinction:</p>
       <ol>
         <li><b>CAD A-A score</b>: This score calculates the contact area difference between the designated central
-          residue
-          and all surrounding atoms. This calculation method provides a comprehensive perspective, showcasing the
-          interactions of the central residue and its environmental changes.
+          residue and all surrounding atoms. This calculation method provides a comprehensive perspective, showcasing
+          the interactions of the central residue and its environmental changes.
         </li>
         <li><b>CAD A-S score</b>: This score, on the other hand, calculates the contact area difference between the
-          central
-          residue and the side chains of nearby residues, focusing on critical side chain interactions. This calculation
-          method highlights the importance of side chains for protein function, especially near active sites.
+          central residue and the side chains of nearby residues, focusing on critical side chain interactions. This
+          calculation method highlights the importance of side chains for protein function, especially near active
+          sites.
         </li>
       </ol>
       <p>Due to the differences in these calculations, the A-A score provides a more holistic interaction assessment,
         while the A-S score emphasizes significant interactions among side chains. By understanding this, you can delve
         deeper into the characteristics of both scores and apply this information more effectively in your research.</p>
-
       <h2>Q : How to interpret the table shown in the sequence optimization function page?</h2>
       <p><b>A :</b> In the Sequence Optimization function page, the information displayed in the table can be understood
         as follows:</p>
@@ -47,23 +42,19 @@
           directed evolution.
         </li>
       </ol>
-
       <h2>Q : What experimental organisms does Atlas.Y support?</h2>
       <p><b>A :</b> Currently, Atlas.Y primarily focuses on the subcellular localization systems of yeast, providing
-        users with
-        robust tools for the design and validation of protein targeting and localization within this model organism.
-        However, we are actively working to expand our support to include additional species. Future iterations of
-        Atlas.Y will consider the integration of mammalian cells, plant cells, and other experimental organisms to cater
-        to a broader scientific community.</p>
+        users with robust tools for the design and validation of protein targeting and localization within this model
+        organism. However, we are actively working to expand our support to include additional species. Future
+        iterations of Atlas.Y will consider the integration of mammalian cells, plant cells, and other experimental
+        organisms to cater to a broader scientific community.</p>
       <p>Our goal is to establish Atlas.Y as a versatile and powerful tool for protein localization research, regardless
         of the experimental systems employed by users. By accommodating a diverse range of organisms, we aim to enhance
         the utility and applicability of Atlas.Y in various biological research contexts, ultimately facilitating
         advances in the understanding of protein dynamics across different cellular environments.</p>
-
       <h2>Q : What is the potential application of Atlas.Y in industrial and research settings?</h2>
       <p><b>A :</b> Atlas.Y possesses significant application value not only in fundamental research, aiding scientists
-        in
-        elucidating the mechanisms of protein subcellular localization, but also in various fields such as
+        in elucidating the mechanisms of protein subcellular localization, but also in various fields such as
         biomanufacturing, drug delivery, and disease treatment. For instance, researchers can leverage Atlas.Y to target
         proteins with specific functions to cellular organelles such as mitochondria or the endoplasmic reticulum,
         thereby optimizing metabolic or synthetic pathways within cells.</p>
@@ -76,9 +67,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang='ts'>
-</script>
 
 <style scoped>
 .page-container {
