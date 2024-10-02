@@ -1,5 +1,8 @@
 <template>
   <div class='page-container'>
+    <div class='membership-plan-info'>
+      <p>Membership Plan</p>
+    </div>
     <div class='subscription-info'>
       <p>Current Subcribtion: Free</p>
     </div>
@@ -22,7 +25,7 @@
           :disabled='index == 0'
           v-if='index != 0'
           @click='openDialog(index)'>
-          {{ index == 0 ? 'Your current subscription' : 'Subscribe' }}
+          Subscribe
         </button>
         <button
           :class="['subscribe-button', index == 0 ? 'disabled-button' : '']"
@@ -37,7 +40,7 @@
       <div class='dialog-content'>
         <h2 class='dialog-title'>{{ dialogTitle }}</h2>
         <p class='dialog-description'>
-          Copy and paste it into the Text Box or upload the Fasta file.
+          Please select the subscription plan that suits you!
         </p>
         <div class='price-cards' v-if='dialogPrices.length'>
           <button v-for='(price, index) in dialogPrices' :key='index' class='price-card'>
@@ -134,7 +137,7 @@ function openDialog(index: number) {
   background-color: white;
   border: 1px solid #7AA8F3;
   border-radius: 8px;
-  padding: 40px 40px 20px 40px;
+  padding: 40px 40px 30px 40px;
   width: 358px;
   height: 428px;
   display: flex;
@@ -178,7 +181,7 @@ function openDialog(index: number) {
   border-radius: 10px;
   cursor: pointer;
   width: 100%;
-  height: 35px;
+  height: 36px;
   transition: background-color 0.5s ease;
 }
 
@@ -272,6 +275,14 @@ function openDialog(index: number) {
 
 .subscribe-btn:hover {
   background-color: #2F62D7;
+}
+
+.membership-plan-info{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #5182F8;
 }
 
 .subscription-info {

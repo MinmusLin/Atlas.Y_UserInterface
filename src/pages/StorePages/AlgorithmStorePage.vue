@@ -1,5 +1,8 @@
 <template>
   <div class='page-container'>
+    <div class='algorithm-store-info'>
+      <p>Algorithm Store</p>
+    </div>
     <div class='subscription-info'>
       <p>Current Subcribtion: Free</p>
     </div>
@@ -226,10 +229,19 @@ onMounted(() => {
   margin-top: 5px;
 }
 
+.algorithm-store-info {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #5182F8;
+}
+
 .subscription-info {
   text-align: center;
   margin-bottom: 20px;
   font-size: 16px;
   color: #8F9396;
+  font-weight: bold;
 }
 </style>
