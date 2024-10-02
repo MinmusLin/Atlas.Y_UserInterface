@@ -9,7 +9,7 @@
     <div class='cards-grid'>
       <div class='card-container' v-for='(card, index) in cards' :key='index'>
         <h2 class='title' ref='titles'>{{ card.title }}</h2>
-        <p class='description'>{{ truncatedDescriptions[index] }}</p>
+        <p class='description'>{{ card.truncatedDescription }}</p>
         <div class='info-container'>
           <span class='times-left'>
             <span class='number'>{{ card.timesLeft }} </span>
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 292px'>
+    <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 310px'>
       <div class='dialog-content'>
         <h2 class='title'>{{ cards[selectedIndex].title }}</h2>
         <p class='description'>{{ currentDialogContent }}</p>
@@ -42,53 +42,41 @@
 </template>
 
 <script setup lang='ts'>
-import {ref, onMounted} from 'vue'
+import {ref} from 'vue'
 import Dialog from '@/components/Dialog.vue'
 
 const dialogVisible = ref(false)
 const currentDialogContent = ref('')
 const selectedIndex = ref(0)
 const titles = ref<HTMLElement[]>([])
-const truncatedDescriptions = ref<string[]>([])
-
 const cards = [
   {
     title: 'Site-Specific CAD Scoring System',
-    description: `The CAD scoring algorithm provides a quantitative evaluation of the structural similarity between a
-    protein's active site and a reference model. This algorithm assesses the accuracy and physical realism of a protein
-    model by calculating the differences in residue-residue contact areas. By selecting specific sites in the protein,
-    users can obtain CAD scores for these locations, enabling precise evaluation of the structural fidelity and potential
-     functionality of the site.`,
+    description: 'The CAD scoring algorithm provides a quantitative evaluation of the structural similarity between a protein\'s active site and a reference model. This algorithm assesses the accuracy and physical realism of a protein model by calculating the differences in residue-residue contact areas. By selecting specific sites in the protein, users can obtain CAD scores for these locations, enabling precise evaluation of the structural fidelity and potential functionality of the site.',
+    truncatedDescription: 'The CAD scoring algorithm provides a quantitative evaluation of the structural similarity between a protein\'s active site and a reference model. This algorithm assesses the accuracy and physical realism of a protein model by calculating the...',
     timesLeft: 3,
-    price: 10,
+    price: 10
   },
   {
     title: 'Temporal Dynamic Localization Design System',
-    description: `The Temporal Dynamic Localization Design System utilizes light-sensitive components and localization
-    tags to achieve time-controlled regulation of protein localization. This system can precisely manipulate the
-    positioning of proteins within cells or other environments, aiding in the study of protein behavior, interactions,
-    and functions over time.`,
+    description: 'The Temporal Dynamic Localization Design System utilizes light-sensitive components and localization tags to achieve time-controlled regulation of protein localization. This system can precisely manipulate the positioning of proteins within cells or other environments, aiding in the study of protein behavior, interactions, and functions over time.',
+    truncatedDescription: 'The Temporal Dynamic Localization Design System utilizes light-sensitive components and localization tags to achieve time-controlled regulation of protein localization. This system can ...',
     timesLeft: 3,
-    price: 15,
+    price: 15
   },
   {
     title: 'Optimized Protein Evolution Localization System',
-    description: `The Optimized Protein Evolution Localization System uses computational algorithms to assist in protein
-     evolution. Based on the user's selection of a specific organelle, the system evolves the user's fusion protein to be
-     suitable for localization within that organelle. This system is a powerful tool in the field of protein engineering,
-     aiding in the design of proteins with enhanced localization capabilities and functionality tailored to specific
-     cellular environments.`,
+    description: 'The Optimized Protein Evolution Localization System uses computational algorithms to assist in protein evolution. Based on the user\'s selection of a specific organelle, the system evolves the user\'s fusion protein to be suitable for localization within that organelle. This system is a powerful tool in the field of protein engineering, aiding in the design of proteins with enhanced localization capabilities and functionality tailored to specific cellular environments.',
+    truncatedDescription: 'The Optimized Protein Evolution Localization System uses computational algorithms to assist in protein evolution. Based on the user\'s selection of a specific organelle, the system evolves ...',
     timesLeft: 3,
-    price: 20,
+    price: 20
   },
   {
     title: 'Protein Localization Prediction System',
-    description: `The Protein Localization Prediction System analyzes protein sequences and structural features using
-    advanced algorithms to predict protein localization within cells. This system helps optimize research workflows,
-    supports the design of novel proteins, enhances experimental efficiency, and improves protein design for specific
-    cellular applications.`,
+    description: 'The Protein Localization Prediction System analyzes protein sequences and structural features using advanced algorithms to predict protein localization within cells. This system helps optimize research workflows, supports the design of novel proteins, enhances experimental efficiency, and improves protein design for specific cellular applications.',
+    truncatedDescription: 'The Protein Localization Prediction System analyzes protein sequences and structural features using advanced algorithms to predict protein localization within cells. This system helps ...',
     timesLeft: 3,
-    price: 10,
+    price: 10
   }
 ]
 
@@ -97,25 +85,6 @@ function openDialog(index: number) {
   currentDialogContent.value = cards[index].description
   dialogVisible.value = true
 }
-
-function getShortDescription(description: string, maxHeight: number, fontSize: number): string {
-  const lineHeight = fontSize * 1.3
-  const charsPerLine = Math.floor(470 / (fontSize * 0.6))
-  const maxLines = Math.floor(maxHeight / lineHeight)
-  const maxChars = charsPerLine * maxLines
-  if (description.length > maxChars) {
-    return description.slice(0, maxChars - 3) + '...'
-  }
-  return description
-}
-
-onMounted(() => {
-  cards.forEach((card, index) => {
-    const titleHeight = titles.value[index]?.offsetHeight || 0
-    const maxHeight = 140 - titleHeight
-    truncatedDescriptions.value[index] = getShortDescription(card.description, maxHeight, 16)
-  })
-})
 </script>
 
 <style scoped>
@@ -132,7 +101,7 @@ onMounted(() => {
   border-radius: 8px;
   padding: 20px;
   width: 540px;
-  height: 218px;
+  height: 234px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -150,8 +119,8 @@ onMounted(() => {
   font-size: 24px;
   font-weight: bold;
   color: #2F3235;
-  line-height: 25px;
   margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .description {
