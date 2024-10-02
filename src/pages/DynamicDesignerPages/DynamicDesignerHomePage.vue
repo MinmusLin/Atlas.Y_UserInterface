@@ -2,12 +2,14 @@
   <div class='page-container'>
     <div style='display: flex; align-items: flex-end; margin-bottom: 35px; margin-top: 150px'>
       <img src='/Logos/DefaultLogo.png' style='width: 486px' alt='DefaultLogo'>
-      <img src='/DesignMaterials/DynamicVersionFrame.png'
+      <img src='https://static.igem.wiki/teams/5503/software-materials/dynamicversionframe.webp'
            alt='DynamicVersionFrame'
            style='height: 42px; margin-left: 18px'>
     </div>
 
-    <img src='/DesignMaterials/TitlePrompt.png' style='width: 815px; margin-bottom: 34px' alt='TitlePrompt'>
+    <img src='https://static.igem.wiki/teams/5503/software-materials/titleprompt.webp'
+         style='width: 815px; margin-bottom: 34px'
+         alt='TitlePrompt'>
 
     <ShadowButton width='875px'
                   height='60px'
@@ -56,19 +58,23 @@
       </div>
       <div class='privileges-icons'>
         <div class='privilege-item' style='width: 96px; height: 62px'>
-          <img src='/DesignMaterials/DataSecurity.png' alt='DataSecurity'/>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/datasecurity.webp'
+               alt='DataSecurity'/>
           <p>Data Security</p>
         </div>
         <div class='privilege-item' style='width: 93px; height: 62px'>
-          <img src='/DesignMaterials/TeamManagement.png' alt='TeamManagement'/>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/teammanagement.webp'
+               alt='TeamManagement'/>
           <p>Team Management</p>
         </div>
         <div class='privilege-item' style='width: 105px; height: 62px'>
-          <img src='/DesignMaterials/AdvancedAlgorithms.png' alt='AdvancedAlgorithms'/>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/advancedalgorithms.webp'
+               alt='AdvancedAlgorithms'/>
           <p>Advanced Algorithms</p>
         </div>
         <div class='privilege-item' style='width: 105px; height: 62px'>
-          <img src='/DesignMaterials/CustomDevelopment.png' alt='CustomDevelopment'/>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/customdevelopment.webp'
+               alt='CustomDevelopment'/>
           <p>Custom Development</p>
         </div>
       </div>

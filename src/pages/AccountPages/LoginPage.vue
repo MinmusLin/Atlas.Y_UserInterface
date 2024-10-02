@@ -33,9 +33,9 @@
           <hr class='line' style='margin-right: 0'/>
         </div>
         <div class='login-group'>
-          <img src='/DesignMaterials/Google.png' alt='Google'>
-          <img src='/DesignMaterials/Apple.png' alt='Apple'>
-          <img src='/DesignMaterials/Facebook.png' alt='Facebook'>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/google.webp' alt='Google'>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/apple.webp' alt='Apple'>
+          <img src='https://static.igem.wiki/teams/5503/software-materials/facebook.webp' alt='Facebook'>
         </div>
         <div class='login-prompt'>
           New User? <a href='#' @click="router.push('/register')">SIGN UP HERE</a>

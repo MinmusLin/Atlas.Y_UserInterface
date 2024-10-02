@@ -5,7 +5,7 @@
     <h2>Contact Information</h2>
 
     <div class='contact-content-group'>
-      <img src='/DesignMaterials/Email.png' alt='Email'>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/email.webp' alt='Email'>
       <p>E-mail:&nbsp;</p>
       <a href='mailto:tongji_china2019@163.com'>tongji_china2019@163.com</a>
     </div>
@@ -13,7 +13,7 @@
     <h2>Social Media</h2>
 
     <div class='contact-content-group'>
-      <img src='/DesignMaterials/SmartPhone.png' alt='SmartPhone'>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/smartphone.webp' alt='SmartPhone'>
       <p>WeChat Official Account:</p>
     </div>
     <img src='https://static.igem.wiki/teams/5503/design-materials/wechatqrcode.webp'
@@ -21,13 +21,13 @@
          style='width: 150px; height: auto; margin: 14px 0 8px 33px'>
 
     <div class='contact-content-group'>
-      <img src='/DesignMaterials/TikTok.png' alt='TikTok'>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/tiktok.webp' alt='TikTok'>
       <p>TikTok:&nbsp;</p>
       <a href='https://www.douyin.com/user/MS4wLjABAAAAv-bx0_ifEkA6KWMDaoB1eXeNspQPeVZUY4pR3Qfp0UBqo5NEo4QLNwVAdHZLFgA2' target='_blank'>https://www.douyin.com/user/MS4wLjABAAAAv-<br>bx0_ifEkA6KWMDaoB1eXeNspQPeVZUY4pR3Qfp0UBqo5NEo4QLNwVAdHZLFgA2</a>
     </div>
 
     <div class='contact-content-group'>
-      <img src='/DesignMaterials/Bilibili.png' alt='Bilibili'>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/bilibili.webp' alt='Bilibili'>
       <p>Bilibili:&nbsp;</p>
       <a href='https://space.bilibili.com/696914648' target='_blank'>https://space.bilibili.com/696914648</a>
     </div>
@@ -41,7 +41,7 @@
     </p>
 
     <div class='contact-content-group'>
-      <img src='/DesignMaterials/MapMarker.png' alt='MapMarker'>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/mapmarker.webp' alt='MapMarker'>
       <p>Office Address: Tongji University, No.1239 Siping Road, Yangpu District, Shanghai, P.R. China</p>
     </div>
   </div>
