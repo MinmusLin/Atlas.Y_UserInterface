@@ -91,7 +91,7 @@ const baseHeaderStyle = {
   fontSize: '16px',
   color: 'white',
   textAlign: 'center',
-  fontWeight: 600,
+  fontWeight: 600
 }
 
 const baseCellStyle = {
@@ -104,7 +104,7 @@ const baseCellStyle = {
   paddingBottom: '7px',
   fontWeight: 400,
   borderTop: '1px solid #FFFFFF',
-  borderBottom: '1px solid #5182F8',
+  borderBottom: '1px solid #5182F8'
 }
 
 const headerCellStyle = ({columnIndex}: CellStyleParams) => {
@@ -248,7 +248,7 @@ function handleRowClick(row, column, event) {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 51px;
 }
 </style>

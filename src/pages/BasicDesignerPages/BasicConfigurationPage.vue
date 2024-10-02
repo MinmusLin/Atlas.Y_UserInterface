@@ -467,7 +467,7 @@ p {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 102px;
 }
 </style>

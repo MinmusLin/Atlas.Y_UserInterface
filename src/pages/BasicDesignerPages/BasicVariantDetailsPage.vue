@@ -21,10 +21,10 @@
             <strong>Variant ID: </strong>{{ currentVariantResult.variantId }}
           </span>
           <span style='margin-right: 50px'>
-            <strong>Mutant: </strong>{{ currentVariantResult.predScore }}
+            <strong>Mutant: </strong>{{ currentVariantResult.mutationSite }}
           </span>
           <span>
-            <strong>Evolution Score: </strong>{{ currentVariantResult.mutationSite }}
+            <strong>Evolution Score: </strong>{{ currentVariantResult.predScore }}
           </span>
         </div>
       </div>
@@ -34,17 +34,28 @@
         <div style='display: flex; flex-direction: row; gap: 21px'>
           <div>
             <p style='margin-bottom: 4px; font-weight: 400'>Primary Sequence</p>
-            <TextArea :text='currentVariantResult.primarySeq' width='502px' height='181px'/>
+            <TextArea :text='currentVariantResult.primarySeq' width='502px' height='300px'/>
           </div>
           <div>
             <p style='margin-bottom: 4px; font-weight: 400'>Variant Sequence</p>
-            <TextArea :text='currentVariantResult.variantSeq' width='502px' height='181px'/>
+            <TextArea :text='currentVariantResult.variantSeq' width='502px' height='300px'/>
           </div>
         </div>
-        <p style='margin-top: 22px'>Score</p>
-        <p>Primary Protein Stability Score: {{ primaryStability == -1 ? 'Calculating...' : primaryStability }}</p>
-        <p>Variant Protein Stability Score: {{ variantStability == -1 || variantStability == 3 ? 'Calculating...' : variantStability }}</p>
-        <p>Functionality Score: {{ functionalityScore == -1 ? 'Calculating...' : functionalityScore }}</p>
+        <p style='margin-top: 22px; margin-bottom: 10px'>Score</p>
+        <div>
+          <p style='margin-bottom: 4px'>
+            <span>Primary Protein Stability Score:&nbsp;</span>
+            <span style='font-weight: 400'>{{ primaryStability == -1 ? 'Calculating...' : primaryStability }}</span>
+          </p>
+          <p style='margin-bottom: 4px'>
+            <span>Variant Protein Stability Score:&nbsp;</span>
+            <span style='font-weight: 400'>{{ variantStability == -1 || variantStability == 3 ? 'Calculating...' : variantStability }}</span>
+          </p>
+          <p style='margin-bottom: 4px'>
+            <span>Functionality Score:&nbsp;</span>
+            <span style='font-weight: 400'>{{ functionalityScore == -1 ? 'Calculating...' : functionalityScore }}</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -174,7 +185,7 @@ p {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 22px;
 }
 </style>

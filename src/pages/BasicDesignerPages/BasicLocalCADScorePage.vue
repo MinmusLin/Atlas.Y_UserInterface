@@ -32,7 +32,20 @@
 
       <div class='content-section'>
         <div class='left-section'>
-          <p>Interactive 3D Structure</p>
+          <p>
+            Interactive 3D Structure
+            <InfoTooltip height='129px'
+                         width='450px'
+                         style='transform: translateY(1px); z-index: 1000; font-size: 14px; font-weight: 400'>
+              <span>You can interact with the 3D protein model:</span>
+              <ul style='margin-left: 20px'>
+                <li><span style='font-weight: 600'>Rotate</span>: Hold down the left mouse button and drag.</li>
+                <li><span style='font-weight: 600'>Pan</span>: Hold down the mouse wheel and drag.</li>
+                <li><span style='font-weight: 600'>Zoom</span>: Hold down the right mouse button and drag.</li>
+                <li><span style='font-weight: 600'>Select</span>: Click the left mouse button to select a residue site.</li>
+              </ul>
+            </InfoTooltip>
+          </p>
           <div id='local-pdb-container' class='threeD-picture'/>
         </div>
 
@@ -435,7 +448,7 @@ p {
   flex-direction: column;
   gap: 16px;
   max-width: 675px;
-  margin-bottom: 153px;
+  margin-bottom: 150px;
 }
 
 .input-section {
@@ -473,7 +486,7 @@ input:focus {
 }
 
 input:read-only {
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   color: #999;
 }
 
@@ -510,7 +523,7 @@ input.error-border:focus {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 23px;
 }
 </style>

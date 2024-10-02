@@ -28,13 +28,13 @@
               height='470'>
       <el-table-column prop='variantId'
                        label='Variant ID'
-                       width='290'/>
+                       width='364'/>
       <el-table-column prop='mutationSite'
                        label='Mutant'
-                       width='470'/>
+                       width='365'/>
       <el-table-column prop='predScore'
                        label='Evolution Score'
-                       width='333'/>
+                       width='364'/>
     </el-table>
     <div class='pagination-container'>
       <el-pagination v-model:currentPage='currentPage'
@@ -63,7 +63,7 @@ interface CellStyleParams {
   columnIndex: number
 }
 
-const pageSize = ref(100)
+const pageSize = ref(50)
 const currentPage = ref(1)
 const route = useRoute()
 const router = useRouter()
@@ -135,12 +135,8 @@ const headerCellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseHeaderStyle} as any
   if (columnIndex == 0) {
     style.borderTopLeftRadius = '10px'
-    style.paddingRight = '60px'
   } else if (columnIndex == 2) {
     style.borderTopRightRadius = '10px'
-    style.paddingLeft = '70px'
-  } else if (columnIndex == 1) {
-    style.paddingLeft = '50px'
   }
   return style
 }
@@ -149,15 +145,9 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseCellStyle} as any
   if (columnIndex == 0) {
     style.borderLeft = '2px solid #EEF3FE'
-    style.paddingRight = '60px'
-
   }
   if (columnIndex == 2) {
     style.borderRight = '2px solid #EEF3FE'
-    style.paddingLeft = '70px'
-  }
-  if (columnIndex == 1) {
-    style.paddingLeft = '50px'
   }
   return style
 }
@@ -255,8 +245,8 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 51px;
 }
 
 .loading-overlay {

@@ -32,13 +32,13 @@
               height='470'>
       <el-table-column prop='item'
                        label='Item'
-                       width='290'/>
+                       width='250'/>
       <el-table-column prop='scoreValue'
                        label='Score Value'
-                       width='270'/>
+                       width='320'/>
       <el-table-column prop='explanation'
                        label='Explanation'
-                       width='533'/>
+                       width='523'/>
     </el-table>
 
     <div class='loading-overlay' v-show='allScoresAreZero'>
@@ -172,7 +172,7 @@ const tableData = ref<TableData[]>([
   {
     item: 'yhh_planarity',
     scoreValue: 0,
-    explanation: 'Explanation": "Aromatic ring planarity energy'
+    explanation: 'Aromatic ring planarity energy'
   },
   {
     item: 'ref',
@@ -210,7 +210,7 @@ const baseHeaderStyle = {
   fontSize: '16px',
   color: 'white',
   textAlign: 'center',
-  fontWeight: 600,
+  fontWeight: 600
 }
 
 const baseCellStyle = {
@@ -222,21 +222,17 @@ const baseCellStyle = {
   paddingTop: '7px',
   paddingBottom: '7px',
   fontWeight: 400,
-  borderTop: '1px solid #ffffff',
-  borderBottom: '1px solid #5182F8',
+  borderTop: '1px solid #FFFFFF',
+  borderBottom: '1px solid #5182F8'
 }
 
 const headerCellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseHeaderStyle} as any
   if (columnIndex == 0) {
     style.borderTopLeftRadius = '10px'
-    style.paddingRight = '160px'
   } else if (columnIndex == 2) {
     style.borderTopRightRadius = '10px'
-    style.paddingLeft = '40px'
     style.textAlign = 'left'
-  } else if (columnIndex == 1) {
-    style.paddingRight = '120px'
   }
   return style
 }
@@ -249,16 +245,11 @@ const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
   }
   if (columnIndex == 0) {
     style.borderLeft = '2px solid #EEF3FE'
-    style.paddingRight = '160px'
   }
   if (columnIndex == 2) {
     style.borderRight = '2px solid #EEF3FE'
-    style.paddingLeft = '40px'
     style.textAlign = 'left'
     style.color = '#8F9396'
-  }
-  if (columnIndex == 1) {
-    style.paddingRight = '120px'
   }
   return style
 }
@@ -357,7 +348,7 @@ watch(() => route.params.id, (newId) => {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 50px;
 }
 </style>

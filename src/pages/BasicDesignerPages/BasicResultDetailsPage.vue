@@ -11,7 +11,19 @@
       <div style='width: 543px; margin-right: 22px'>
         <p>Fusion Protein</p>
         <TextArea :text='currentResult.fusionProtein' width='509px' height='106px'/>
-        <p>Interactive 3D Structure</p>
+        <p>
+          Interactive 3D Structure
+          <InfoTooltip height='117px'
+                       width='395px'
+                       style='transform: translateY(1px); z-index: 1000; font-size: 14px; font-weight: 400'>
+            <span>You can interact with the 3D protein model:</span>
+            <ul style='margin-left: 20px'>
+              <li><span style='font-weight: 600'>Rotate</span>: Hold down the left mouse button and drag.</li>
+              <li><span style='font-weight: 600'>Pan</span>: Hold down the mouse wheel and drag.</li>
+              <li><span style='font-weight: 600'>Zoom</span>: Hold down the right mouse button and drag.</li>
+            </ul>
+          </InfoTooltip>
+        </p>
         <div id='current-pdb-container' class='threeD-picture'/>
       </div>
       <div style='width: 418px'>
@@ -63,6 +75,7 @@ import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import {ArrowRight} from '@element-plus/icons-vue'
+import InfoTooltip from "@/components/InfoTooltip.vue";
 
 interface PredictionResult {
   fpId: string
@@ -156,7 +169,7 @@ p {
 
 .breadcrumb {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 104px;
 }
 </style>
