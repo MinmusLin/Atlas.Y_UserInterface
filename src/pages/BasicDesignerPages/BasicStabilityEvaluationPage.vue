@@ -40,6 +40,7 @@
                        label='Explanation'
                        width='533'/>
     </el-table>
+
     <div class='loading-overlay' v-show='allScoresAreZero'>
       <el-icon v-loading='true'/>
     </div>
@@ -80,7 +81,7 @@ interface PredictionResult {
 
 const route = useRoute()
 const router = useRouter()
-const fpId = ref(route.params.id)
+const fpId = ref(<string>route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const tableData = ref<TableData[]>([
   {
@@ -263,7 +264,7 @@ const cellStyle = ({rowIndex, columnIndex}: CellStyleParams) => {
 }
 
 watch(() => route.params.id, (newId) => {
-  fpId.value = newId
+  fpId.value = <string>newId
   currentResult.value = findEntryByFpId(newId)
   fetchStability()
 }, {immediate: true})

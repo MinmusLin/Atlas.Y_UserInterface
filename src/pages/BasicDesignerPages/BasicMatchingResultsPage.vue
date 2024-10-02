@@ -55,7 +55,6 @@
                      background
                      pager-count='6'
                      layout='prev, pager, next'
-                     hide-on-single-page
                      @current-change='handlePageChange'/>
     </div>
   </div>

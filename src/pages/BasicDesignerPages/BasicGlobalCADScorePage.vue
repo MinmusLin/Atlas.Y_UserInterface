@@ -90,7 +90,7 @@ interface PredictionResult {
 
 const route = useRoute()
 const router = useRouter()
-const fpId = ref(route.params.id)
+const fpId = ref(<string>route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const cadScore = ref(0.0)
 const pdbFile = ref('')
@@ -186,7 +186,7 @@ const fetchScore = async () => {
 }
 
 watch(() => route.params.id, (newId) => {
-  fpId.value = newId
+  fpId.value = <string>newId
   currentResult.value = findEntryByFpId(newId)
   fetchScore()
 }, {immediate: true})

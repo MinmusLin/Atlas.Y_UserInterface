@@ -76,7 +76,7 @@ interface PredictionResult {
 
 const route = useRoute()
 const router = useRouter()
-const fpId = ref(route.params.id)
+const fpId = ref(<string>route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const pdbFile = ref('')
 const sequenceOptimization = ref(true)
@@ -130,7 +130,7 @@ function b64toBlob(b64Data, contentType = 'application/octet-stream', sliceSize 
 }
 
 watch(() => route.params.id, (newId) => {
-  fpId.value = newId
+  fpId.value = <string>newId
   currentResult.value = findEntryByFpId(newId)
   fetchPdb()
 }, {immediate: true})

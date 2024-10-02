@@ -41,9 +41,10 @@
             <TextArea :text='currentVariantResult.variantSeq' width='502px' height='181px'/>
           </div>
         </div>
-        <p>Primary Protein Stability Score: {{ primaryStability }}</p>
-        <p>Variant Protein Stability Score: {{ variantStability }}</p>
-        <p>Functionality Score: {{ functionalityScore }}</p>
+        <p style='margin-top: 22px'>Score</p>
+        <p>Primary Protein Stability Score: {{ primaryStability == -1 ? 'Calculating...' : primaryStability }}</p>
+        <p>Variant Protein Stability Score: {{ variantStability == -1 ? 'Calculating...' : variantStability }}</p>
+        <p>Functionality Score: {{ functionalityScore == -1 ? 'Calculating...' : functionalityScore }}</p>
       </div>
     </div>
   </div>
@@ -67,8 +68,8 @@ interface DirectedEvolutionResult {
 
 const route = useRoute()
 const router = useRouter()
-const fpId = ref(route.params.fpid)
-const vrId = ref(route.params.vrid)
+const fpId = ref(<string>route.params.fpid)
+const vrId = ref(<string>route.params.vrid)
 const currentVariantResult = ref<DirectedEvolutionResult>(findEntryByVrId(fpId.value))
 const primaryStability = ref(-1)
 const variantStability = ref(-1)
@@ -100,12 +101,12 @@ const fetchData = async () => {
 }
 
 watch(() => route.params.fpid, (newId) => {
-  fpId.value = newId
+  fpId.value = <string>newId
   fetchData()
 }, {immediate: true})
 
 watch(() => route.params.vrid, (newId) => {
-  vrId.value = newId
+  vrId.value = <string>newId
   currentVariantResult.value = findEntryByVrId(newId)
   fetchData()
 }, {immediate: true})

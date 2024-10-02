@@ -43,15 +43,18 @@
                      background
                      pager-count='6'
                      layout='prev, pager, next'
-                     hide-on-single-page
                      @current-change='handlePageChange'/>
+    </div>
+
+    <div class='loading-overlay' v-if='g_directedEvolutionResults.length==0'>
+      <el-icon v-loading='true'/>
     </div>
   </div>
 </template>
 
 <script setup lang='ts'>
 import {ref, computed, onMounted, watch} from 'vue'
-import {g_currentFusionProtein, g_directedEvolutionResults, g_queryLogId, g_targetProtein} from '@/global'
+import {g_currentFusionProtein, g_directedEvolutionResults, g_lastFpId, g_queryLogId} from '@/global'
 import {useRoute, useRouter} from 'vue-router'
 import axiosInstance from '@/plugins/axios'
 import {ArrowRight} from '@element-plus/icons-vue'
@@ -64,7 +67,7 @@ const pageSize = ref(100)
 const currentPage = ref(1)
 const route = useRoute()
 const router = useRouter()
-const fpId = ref(route.params.id)
+const fpId = ref(<string>route.params.id)
 
 const currentPageData = computed(() => {
   const start = (currentPage.value - 1) * pageSize.value
@@ -82,20 +85,23 @@ onMounted(() => {
 
 const fetchData = async () => {
   try {
+    if (g_lastFpId.value != fpId.value) {
+      g_directedEvolutionResults.value = []
+    }
     const response = await axiosInstance.post('/basic-prediction/sequence-optimization', {
       fastaSequence: g_currentFusionProtein.value,
       logId: g_queryLogId.value,
       fpId: fpId.value,
       modelName: true ? 'ProtLGN' : 'ProtLGN_Loc'
     })
+    g_lastFpId.value = fpId.value
     g_directedEvolutionResults.value = response.data
   } catch (error) {
   }
 }
 
 watch(() => route.params.id, (newId) => {
-  fpId.value = newId
-  g_directedEvolutionResults.value = []
+  fpId.value = <string>newId
   fetchData()
 }, {immediate: true})
 
@@ -251,5 +257,19 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 252px;
+  left: 48px;
+  width: 1093px;
+  height: 429px;
+  background-color: white;
+  opacity: 0.75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
 </style>
