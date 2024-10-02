@@ -1,5 +1,11 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Basic Designer</el-breadcrumb-item>
+      <el-breadcrumb-item>Start Matching</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='inner-layer'>
       <div class='upload-button'>
         <div>
@@ -146,6 +152,7 @@ import {
   g_solubility,
   g_positioningDemand, g_targetProtein, g_queryLogId
 } from '@/global'
+import {ArrowRight} from '@element-plus/icons-vue'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
 import NES_Basic from '/PositioningDemand/NES_Basic.mp4'
 import SP_Basic from '/PositioningDemand/SP_Basic.mp4'
@@ -456,5 +463,11 @@ p {
 
 .positioning-demand-table td:last-child {
   font-weight: 400;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

@@ -1,5 +1,12 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item>/{{ fpId }}</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div style='display: flex; flex-direction: row'>
       <div style='width: 543px; margin-right: 22px'>
         <p>Fusion Protein</p>
@@ -55,6 +62,7 @@ import axiosInstance from '@/plugins/axios'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 interface PredictionResult {
   fpId: string
@@ -134,6 +142,7 @@ watch(() => route.params.id, (newId) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .threeD-picture {
@@ -143,5 +152,12 @@ watch(() => route.params.id, (newId) => {
 
 p {
   font-weight: 600;
+  color: #2F3235;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

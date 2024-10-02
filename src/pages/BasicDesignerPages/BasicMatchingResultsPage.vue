@@ -1,5 +1,11 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item>Matching Results</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='title-container'>
       <h1 class='title'>Matching Results</h1>
       <span class='results'>
@@ -59,6 +65,7 @@
 import {ref, computed} from 'vue'
 import {g_matchingResults, g_fastaFileName, g_pdbFileName, g_positioningDemand} from '@/global'
 import {useRouter} from 'vue-router'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 interface CellStyleParams {
   rowIndex: number
@@ -148,6 +155,7 @@ function handleRowClick(row, column, event) {
   align-items: center;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .title-container {
@@ -237,5 +245,11 @@ function handleRowClick(row, column, event) {
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   border-left: none !important;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

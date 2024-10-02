@@ -1,5 +1,13 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
+      <el-breadcrumb-item>Function Evaluation (Global)</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='inner-layer'>
       <div class='title-section'>
         <div class='title'>
@@ -68,6 +76,7 @@ import {Stage} from 'ngl'
 import {g_matchingResults, g_queryLogId} from '@/global'
 import axiosInstance from '@/plugins/axios'
 import {useRoute, useRouter} from 'vue-router'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 interface PredictionResult {
   fpId: string
@@ -154,6 +163,7 @@ watch(() => route.params.id, (newId) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .inner-layer {
@@ -305,5 +315,11 @@ p {
   font-weight: 400;
   line-height: 18px;
   color: #2F3235;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

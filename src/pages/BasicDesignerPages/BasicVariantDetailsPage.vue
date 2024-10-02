@@ -1,5 +1,16 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/directed-evolution-results/${fpId}`'>
+        Directed Evolution Results
+      </el-breadcrumb-item>
+      <el-breadcrumb-item>/{{ vrId }}</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='inner-layer'>
       <div class='title-section'>
         <div class='title'>
@@ -44,6 +55,7 @@ import {useRoute, useRouter} from 'vue-router'
 import {g_directedEvolutionResults, g_queryLogId} from '@/global'
 import TextArea from '@/components/TextArea.vue'
 import axiosInstance from '@/plugins/axios'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 interface DirectedEvolutionResult {
   variantId: string

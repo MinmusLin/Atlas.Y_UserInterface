@@ -11,6 +11,8 @@ declare module 'vue' {
     CustomDialog: typeof import('./src/components/CustomDialog.vue')['default']
     DefaultButton: typeof import('./src/components/DefaultButton.vue')['default']
     Dialog: typeof import('./src/components/Dialog.vue')['default']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElDialog: typeof import('element-plus/es')['ElDialog']

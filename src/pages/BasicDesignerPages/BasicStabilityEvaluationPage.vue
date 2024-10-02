@@ -1,5 +1,13 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
+      <el-breadcrumb-item>Stability Evaluation</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='title-container'>
       <h1 class='title'>Stability Evaluation</h1>
     </div>
@@ -33,7 +41,7 @@
                        width='533'/>
     </el-table>
     <div class='loading-overlay' v-show='allScoresAreZero'>
-      <el-icon v-loading='true' style='left: 90px; top: -70px'/>
+      <el-icon v-loading='true'/>
     </div>
   </div>
 </template>
@@ -43,6 +51,7 @@ import {onMounted, ref, watch, computed} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import {g_matchingResults, g_queryLogId} from '@/global'
 import axiosInstance from '@/plugins/axios'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 const allScoresAreZero = computed(() => {
   return tableData.value.every(data => data.scoreValue == 0)
@@ -268,6 +277,7 @@ watch(() => route.params.id, (newId) => {
   align-items: center;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .title-container {
@@ -332,14 +342,21 @@ watch(() => route.params.id, (newId) => {
 
 .loading-overlay {
   position: absolute;
-  top: 510px;
-  left: 500px;
-  width: 1400px;
-  height: 500px;
-  background: rgba(255, 255, 255, 0.8);
+  top: 265px;
+  left: 48px;
+  width: 1093px;
+  height: 429px;
+  background-color: white;
+  opacity: 0.75;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

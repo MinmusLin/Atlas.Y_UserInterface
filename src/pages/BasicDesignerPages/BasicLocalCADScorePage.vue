@@ -1,5 +1,16 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/global-cad-score/${fpId}`'>
+        Function Evaluation (Global)
+      </el-breadcrumb-item>
+      <el-breadcrumb-item>Function Evaluation (Local)</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='inner-layer'>
       <div class='title-section'>
         <div class='title'>
@@ -132,6 +143,7 @@ import {Stage} from 'ngl'
 import {useRoute, useRouter} from 'vue-router'
 import {g_matchingResults, g_queryLogId} from '@/global'
 import axiosInstance from '@/plugins/axios'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 const cad_AScore = ref(-1)
 const cad_SScore = ref(-1)
@@ -163,7 +175,7 @@ function findEntryByFpId(fpId): PredictionResult {
 
 const fetchScore = async () => {
   try {
-    const response = await axiosInstance.get(`/basic-prediction/get-local-cad-score/${g_queryLogId.value}/${currentResult.value.fpId}/${chainName.value}/${currentResidueIndex.value+1}/${radiusValue.value}`)
+    const response = await axiosInstance.get(`/basic-prediction/get-local-cad-score/${g_queryLogId.value}/${currentResult.value.fpId}/${chainName.value}/${currentResidueIndex.value + 1}/${radiusValue.value}`)
     cad_AScore.value = response.data[0]
     cad_SScore.value = response.data[1]
   } catch (error) {
@@ -257,6 +269,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .inner-layer {
@@ -465,5 +478,11 @@ input.error-border:focus {
 
 .error-border + .error-message {
   visibility: visible;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

@@ -1,5 +1,13 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item :to='`/basic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
+      <el-breadcrumb-item>Directed Evolution Results</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div class='title-container'>
       <h1 class='title'>Directed Evolution Results</h1>
       <span class='results'>
@@ -46,6 +54,7 @@ import {ref, computed, onMounted, watch} from 'vue'
 import {g_currentFusionProtein, g_directedEvolutionResults, g_queryLogId, g_targetProtein} from '@/global'
 import {useRoute, useRouter} from 'vue-router'
 import axiosInstance from '@/plugins/axios'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 interface CellStyleParams {
   columnIndex: number
@@ -156,6 +165,7 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   align-items: center;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .title-container {
@@ -235,5 +245,11 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   border-left: none !important;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>
