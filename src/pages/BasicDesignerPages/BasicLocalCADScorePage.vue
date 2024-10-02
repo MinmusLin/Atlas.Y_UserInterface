@@ -116,7 +116,7 @@
               </InfoTooltip>
             </p>
             <p class='score'>
-              {{ cad_AScore === -1 ? 'Calculating...' : cad_AScore }}
+              {{ cad_AScore == -1 ? 'Calculating...' : cad_AScore }}
             </p>
           </div>
 
