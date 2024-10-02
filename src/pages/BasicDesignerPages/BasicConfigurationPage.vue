@@ -380,7 +380,7 @@ p {
 .videos {
   width: 640px;
   height: 320px;
-  background: url('/PositioningDemand/Default.png');
+  background: url('https://static.igem.wiki/teams/5503/software-materials/default.webp');
   background-size: cover;
 }
 

@@ -1,7 +1,9 @@
 <template>
   <div class='page-container'>
     <div style='display: flex; align-items: flex-end; margin-bottom: 35px; margin-top: 150px'>
-      <img src='/Logos/DefaultLogo.png' style='width: 486px' alt='DefaultLogo'>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/defaultlogo.webp'
+           style='width: 486px'
+           alt='DefaultLogo'>
       <img src='https://static.igem.wiki/teams/5503/software-materials/basicversionframe.webp'
            alt='BasicVersionFrame'
            style='height: 42px; margin-left: 18px'>

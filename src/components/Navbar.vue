@@ -1,9 +1,17 @@
 <template>
   <nav class='menu' :class="{ 'collapsed': isCollapsed }" @mouseenter='isCollapsed=false' @mouseleave='collapseMenu'>
     <div class='logo-container'>
-      <img src='/Logos/LightIcon.png' class='nav-icon' alt='LightIcon' :style='iconStyle' @click="router.push('/')">
+      <img src='https://static.igem.wiki/teams/5503/software-materials/lighticon.webp'
+           class='nav-icon'
+           alt='LightIcon'
+           :style='iconStyle'
+           @click="router.push('/')">
       <transition name='fade'>
-        <img v-if='!isCollapsed' src='/Logos/LightLogo.png' class='nav-logo' alt='LightLogo' @click="router.push('/')">
+        <img v-if='!isCollapsed'
+             src='https://static.igem.wiki/teams/5503/software-materials/lightlogo.webp'
+             class='nav-logo'
+             alt='LightLogo'
+             @click="router.push('/')">
       </transition>
     </div>
 
