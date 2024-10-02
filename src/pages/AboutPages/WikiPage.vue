@@ -39,8 +39,6 @@
 </template>
 
 <script setup lang='ts'>
-import {ElCarousel} from 'element-plus'
-
 const images = [
   {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation1.webp', alt: 'Presentation1'},
   {src: 'https://static.igem.wiki/teams/5503/wiki-presentations/presentation3.webp', alt: 'Presentation3'},
@@ -77,6 +75,6 @@ p {
 
 /* noinspection CssUnusedSymbol */
 .el-carousel {
-  width: 1190px;
+  width: 1150px;
 }
 </style>

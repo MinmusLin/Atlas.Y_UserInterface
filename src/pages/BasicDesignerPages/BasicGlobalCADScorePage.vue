@@ -8,6 +8,10 @@
       <el-breadcrumb-item>Function Evaluation (Global)</el-breadcrumb-item>
     </el-breadcrumb>
 
+    <img src='https://static.igem.wiki/teams/5503/software-materials/inclinedcrown.webp'
+         alt='InclinedCrown'
+         style='position: absolute; height: 35px; bottom: 130px; right: 6px'/>
+
     <div class='inner-layer'>
       <div class='title-section'>
         <div class='title'>
