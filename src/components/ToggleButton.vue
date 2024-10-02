@@ -14,7 +14,6 @@
 import {ref, computed, defineProps, defineEmits, onMounted, CSSProperties, watch} from 'vue'
 
 const backgroundColor = ref('white')
-
 let timerId: ReturnType<typeof setTimeout> | null = null
 
 const props = defineProps({
