@@ -158,6 +158,8 @@ const route = useRoute()
 const router = useRouter()
 const fpId = ref(route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
+const pdbFile = ref('')
+let stage
 
 interface PredictionResult {
   fpId: string
@@ -231,36 +233,62 @@ const handleBlur = (event: Event) => {
 }
 
 onMounted(() => {
-  const stage = new Stage('local-pdb-container', {
+  stage = new Stage('local-pdb-container', {
     impostor: false,
     quality: 'high',
     mousePreset: 'pymol'
   })
-  stage.loadFile('/PDB/6uzq.pdb').then(function (component) {
-    if (component) {
-      component.addRepresentation('ball+stick', {
-        sele: '.CA',
-        radius: 0.5,
-        aspectRatio: 1.5,
-        colorScheme: 'uniform',
-        colorValue: '#ADD8E6'
-      })
-      component.addRepresentation('line', {
-        disablePicking: true,
-        multipleBond: 'offset'
-      })
-      stage.signals.clicked.add((pickingProxy) => {
-        if (pickingProxy && pickingProxy.atom && pickingProxy.atom.atomname == 'CA') {
-          const atom = pickingProxy.atom
-          currentResidueIndex.value = atom.residueIndex
-          currentResidueName.value = atom.resname
-          chainName.value = atom.chainname
-        }
-      })
-      component.autoView()
-    }
-  })
+  fetchPdb()
 })
+
+const fetchPdb = async () => {
+  try {
+    const response = await axiosInstance.get(`/basic-prediction/get-file/${g_queryLogId.value}/pdb/${currentResult.value.fpId}.pdb`)
+    pdbFile.value = response.data
+    const blob = b64toBlob(pdbFile.value)
+    const url = URL.createObjectURL(blob)
+    stage.loadFile(url, {ext: 'pdb'}).then(function (component) {
+      if (component) {
+        component.addRepresentation('ball+stick', {
+          sele: '.CA',
+          radius: 0.5,
+          aspectRatio: 1.5,
+          colorScheme: 'uniform',
+          colorValue: '#ADD8E6'
+        })
+        component.addRepresentation('line', {
+          disablePicking: true,
+          multipleBond: 'offset'
+        })
+        stage.signals.clicked.add((pickingProxy) => {
+          if (pickingProxy && pickingProxy.atom && pickingProxy.atom.atomname == 'CA') {
+            const atom = pickingProxy.atom
+            currentResidueIndex.value = atom.residueIndex
+            currentResidueName.value = atom.resname
+            chainName.value = atom.chainname
+          }
+        })
+        component.autoView()
+      }
+    })
+  } catch (error) {
+  }
+}
+
+function b64toBlob(b64Data, contentType = 'application/octet-stream', sliceSize = 512) {
+  const byteCharacters = atob(b64Data)
+  const byteArrays = []
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize)
+    const byteNumbers = new Array(slice.length)
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i)
+    }
+    const byteArray = new Uint8Array(byteNumbers)
+    byteArrays.push(byteArray)
+  }
+  return new Blob(byteArrays, {type: contentType})
+}
 </script>
 
 <style scoped>
