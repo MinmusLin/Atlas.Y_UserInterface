@@ -109,7 +109,7 @@ h2 {
   font-size: 16px;
   font-weight: 600;
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 p {
