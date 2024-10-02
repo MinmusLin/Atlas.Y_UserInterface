@@ -114,6 +114,8 @@ watch(() => router.currentRoute.value.path, (newPath) => currentRoute.value = ne
 function handleRoute(route: string) {
   if (route == '/user-guide') {
     window.open('https://static.igem.wiki/teams/5503/userguide.pdf', '_blank')
+  } else if (route == '/video-tutorials') {
+    window.open('https://video.igem.org/w/tjMyxGhNrzGdEjokW5i7Ah', '_blank')
   } else {
     router.push(route)
   }

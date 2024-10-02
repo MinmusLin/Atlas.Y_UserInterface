@@ -39,6 +39,5 @@ declare module 'vue-router/auto-routes' {
     '/StorePages/MembershipPlanPage': RouteRecordInfo<'/StorePages/MembershipPlanPage', '/StorePages/MembershipPlanPage', Record<never, never>, Record<never, never>>,
     '/SupportPages/FAQsPage': RouteRecordInfo<'/SupportPages/FAQsPage', '/SupportPages/FAQsPage', Record<never, never>, Record<never, never>>,
     '/SupportPages/FeedbackPage': RouteRecordInfo<'/SupportPages/FeedbackPage', '/SupportPages/FeedbackPage', Record<never, never>, Record<never, never>>,
-    '/SupportPages/VideoTutorialsPage': RouteRecordInfo<'/SupportPages/VideoTutorialsPage', '/SupportPages/VideoTutorialsPage', Record<never, never>, Record<never, never>>,
   }
 }
