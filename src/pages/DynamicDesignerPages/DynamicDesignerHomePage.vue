@@ -17,7 +17,8 @@
                   @click='showContinueDialog=true'>
       <p style='font-size: 24px; margin-right: 10px'>START</p>
       <v-icon size='26px'>mdi-arrow-right</v-icon>
-      <img class='icon' src='/DesignMaterials/InclinedCrown.png' alt='InclinedCrown'/>
+      <img class='icon' src='https://static.igem.wiki/teams/5503/software-materials/inclinedcrown.webp'
+           alt='InclinedCrown'/>
     </ShadowButton>
 
     <el-table :data='tableData'
@@ -41,7 +42,9 @@
 
   <Dialog v-model='showContinueDialog' style='padding: 14px 40px 0 40px; width: 543px; height: 299px'>
     <div class='dialog-header'>
-      <img src='/DesignMaterials/DefaultCrown.png' class='crown-icon' alt='DefaultCrown'/>
+      <img src='https://static.igem.wiki/teams/5503/software-materials/defaultcrown.webp'
+           class='crown-icon'
+           alt='DefaultCrown'/>
       <p class='dialog-title'>Experience Membership Features</p>
     </div>
     <div class='dialog-description'>
