@@ -1,6 +1,6 @@
 <template>
   <div ref='toggleContainer' :style='containerStyle' class='toggle-container' @click='toggle'>
-    <div :style='buttonStyle' class='toggle-button'></div>
+    <div :style='buttonStyle' class='toggle-button'/>
     <div :style='leftBoxStyle'>
       <span :style='leftLabelStyle'>{{ leftLabel }}</span>
     </div>
@@ -12,9 +12,6 @@
 
 <script setup lang='ts'>
 import {ref, computed, defineProps, defineEmits, onMounted, CSSProperties, watch} from 'vue'
-
-const backgroundColor = ref('white')
-let timerId: ReturnType<typeof setTimeout> | null = null
 
 const props = defineProps({
   modelValue: {
@@ -48,6 +45,8 @@ const props = defineProps({
 })
 
 const isOnRight = ref(!props.modelValue)
+const backgroundColor = ref('white')
+let timerId: ReturnType<typeof setTimeout> | null = null
 
 onMounted(() => {
   backgroundColor.value = props.modelValue

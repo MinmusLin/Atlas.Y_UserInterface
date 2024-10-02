@@ -20,7 +20,7 @@
         <div>
           <label class='custom-checkbox-container'>
             <input type='checkbox' class='custom-checkbox-input'>
-            <span class='custom-checkbox'></span>
+            <span class='custom-checkbox'/>
             <span class='remember-me'>Remember me</span>
           </label>
         </div>

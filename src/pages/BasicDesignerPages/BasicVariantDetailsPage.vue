@@ -117,6 +117,7 @@ watch(() => route.params.vrid, (newId) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
 }
 
 .inner-layer {
@@ -168,5 +169,11 @@ p {
   display: flex;
   flex-direction: column;
   height: 470px;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>
