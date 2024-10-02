@@ -31,10 +31,10 @@
           <Clock/>
         </el-icon>
       </el-table-column>
-      <el-table-column width='250' prop='time' label='TIME'/>
-      <el-table-column width='190' prop='sequenceOrFasta' label='SEQUENCE / FASTA'/>
-      <el-table-column width='190' prop='pdb' label='PDB'/>
-      <el-table-column width='190' prop='subcellularPosition' label='SUBCELLULAR POSITION'/>
+      <el-table-column width='206' prop='time' label='TIME'/>
+      <el-table-column width='206' prop='sequenceOrFasta' label='SEQUENCE / FASTA'/>
+      <el-table-column width='206' prop='pdb' label='PDB'/>
+      <el-table-column width='206' prop='subcellularPosition' label='SUBCELLULAR POSITION'/>
     </el-table>
 
     <v-dialog v-model='showDialog' width='85%' min-width='1270px' persistent transition='dialog-bottom-transition'>
@@ -46,7 +46,7 @@
           <span style='font-size: 18px'>
             Our website uses cookies. By continuing to navigate, we assume your permission to deploy cookies as detailed in our Privacy Policy.
           </span>
-          <v-btn class='accept-btn' @click='showDialog=false'>
+          <v-btn class='accept-btn' @click='acceptCookies'>
             <v-icon size='22px' style='margin-right: 4px'>mdi-cookie</v-icon>
             Accept cookies
           </v-btn>
@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang='ts'>
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 import {Clock} from '@element-plus/icons-vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import {useRouter} from 'vue-router'
@@ -73,30 +73,34 @@ const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px
 
 const tableData = ref([
   {
-    time: 'January, 1 2024 22:01',
-    sequenceOrFasta: 'ABC.DEF',
-    pdb: 'pdb1.pdb',
-    subcellularPosition: 'cell nucleus 1'
+    time: '1 Oct. 2024 09:50',
+    sequenceOrFasta: 'KQC45421_1.fasta',
+    pdb: 'KQC45421_1.pdb',
+    subcellularPosition: 'MT'
   },
   {
-    time: 'February, 2 2024 22:02',
-    sequenceOrFasta: 'GHI.JKL',
-    pdb: 'pdb2.pdb',
-    subcellularPosition: 'cell nucleus 2'
+    time: '1 Oct. 2024 10:32',
+    sequenceOrFasta: 'NP_011802.fasta',
+    pdb: 'NP_011802.pdb',
+    subcellularPosition: 'SP'
   },
   {
-    time: 'Wednesday, 30 2024 22:03',
-    sequenceOrFasta: 'MNO.PQR',
-    pdb: 'pdb3.pdb',
-    subcellularPosition: 'cell nucleus 3'
-  },
-  {
-    time: 'April, 4 2024 22:04',
-    sequenceOrFasta: 'STU.VWX',
-    pdb: 'pdb4.pdb',
-    subcellularPosition: 'cell nucleus 4'
+    time: '1 Oct. 2024 10:54',
+    sequenceOrFasta: 'BAA01255_1.fasta',
+    pdb: 'BAA01255_1.pdb',
+    subcellularPosition: 'GPI'
   }
 ])
+
+onMounted(() => {
+  const storedValue = localStorage.getItem('showDialog')
+  showDialog.value = storedValue != 'false'
+})
+
+function acceptCookies() {
+  showDialog.value = false
+  localStorage.setItem('showDialog', 'false')
+}
 </script>
 
 <style scoped>

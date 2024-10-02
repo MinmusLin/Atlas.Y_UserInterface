@@ -35,10 +35,11 @@
           <Clock/>
         </el-icon>
       </el-table-column>
-      <el-table-column width='250' prop='time' label='TIME'/>
-      <el-table-column width='190' prop='sequenceOrFasta' label='SEQUENCE / FASTA'/>
-      <el-table-column width='190' prop='pdb' label='PDB'/>
-      <el-table-column width='190' prop='subcellularPosition' label='SUBCELLULAR POSITION'/>
+      <el-table-column width='174' prop='time' label='TIME'/>
+      <el-table-column width='170' prop='sequenceOrFasta' label='SEQUENCE / FASTA'/>
+      <el-table-column width='170' prop='pdb' label='PDB'/>
+      <el-table-column width='180' prop='subcellularPosition' label='SUBCELLULAR POSITION'/>
+      <el-table-column width='130' prop='lightDemand' label='LIGHT DEMAND'/>
     </el-table>
   </div>
 
@@ -109,28 +110,25 @@ const cellStyle = () => ({color: '#2F3235', textAlign: 'center', fontSize: '16px
 
 const tableData = ref([
   {
-    time: 'January, 1 2024 22:01',
-    sequenceOrFasta: 'ABC.DEF',
-    pdb: 'pdb1.pdb',
-    subcellularPosition: 'cell nucleus 1'
+    time: '1 Oct. 2024 09:50',
+    sequenceOrFasta: 'KQC45421_1.fasta',
+    pdb: 'KQC45421_1.pdb',
+    subcellularPosition: 'MT',
+    lightDemand: 'Blue'
   },
   {
-    time: 'February, 2 2024 22:02',
-    sequenceOrFasta: 'GHI.JKL',
-    pdb: 'pdb2.pdb',
-    subcellularPosition: 'cell nucleus 2'
+    time: '1 Oct. 2024 10:32',
+    sequenceOrFasta: 'NP_011802.fasta',
+    pdb: 'NP_011802.pdb',
+    subcellularPosition: 'SP',
+    lightDemand: 'Red'
   },
   {
-    time: 'Wednesday, 30 2024 22:03',
-    sequenceOrFasta: 'MNO.PQR',
-    pdb: 'pdb3.pdb',
-    subcellularPosition: 'cell nucleus 3'
-  },
-  {
-    time: 'April, 4 2024 22:04',
-    sequenceOrFasta: 'STU.VWX',
-    pdb: 'pdb4.pdb',
-    subcellularPosition: 'cell nucleus 4'
+    time: '1 Oct. 2024 10:54',
+    sequenceOrFasta: 'BAA01255_1.fasta',
+    pdb: 'BAA01255_1.pdb',
+    subcellularPosition: 'GPI',
+    lightDemand: 'Far-red'
   }
 ])
 </script>
