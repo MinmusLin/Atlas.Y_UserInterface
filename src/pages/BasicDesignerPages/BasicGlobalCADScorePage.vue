@@ -148,8 +148,7 @@ const fetchPdb = async () => {
     stage.loadFile(url, {ext: 'pdb'}).then(function (component) {
       if (component) {
         component.addRepresentation('cartoon', {
-          colorScheme: 'uniform',
-          colorValue: '#ADD8E6'
+          colorScheme: 'atomindex'
         })
         component.autoView()
       }

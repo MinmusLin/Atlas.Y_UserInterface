@@ -219,5 +219,6 @@ const tableData = ref([
   padding-top: 38px;
   padding-bottom: 30px;
   transform: translateY(calc(50vh - 130px)) translateX(42px);
+  max-width: 1700px;
 }
 </style>

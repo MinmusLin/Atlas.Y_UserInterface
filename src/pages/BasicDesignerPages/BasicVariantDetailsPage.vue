@@ -43,7 +43,7 @@
         </div>
         <p style='margin-top: 22px'>Score</p>
         <p>Primary Protein Stability Score: {{ primaryStability == -1 ? 'Calculating...' : primaryStability }}</p>
-        <p>Variant Protein Stability Score: {{ variantStability == -1 ? 'Calculating...' : variantStability }}</p>
+        <p>Variant Protein Stability Score: {{ variantStability == -1 || variantStability == 3 ? 'Calculating...' : variantStability }}</p>
         <p>Functionality Score: {{ functionalityScore == -1 ? 'Calculating...' : functionalityScore }}</p>
       </div>
     </div>
