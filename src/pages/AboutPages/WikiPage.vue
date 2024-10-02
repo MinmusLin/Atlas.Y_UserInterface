@@ -25,6 +25,7 @@
       <p>and access a wealth of background information and resource support.</p>
       <div style='display: flex; flex-direction: row; margin-top: 35px'>
         <a href='https://2024.igem.wiki/tongji-software'
+           target='_blank'
            style='color: #5182F8; font-size: 40px; font-weight: 600; text-decoration: none; position: relative'>
           CLICK HERE
           <span style='position: absolute; bottom: 5px; left: 0; width: 100%; height: 3px; background-color: #5182F8'/>

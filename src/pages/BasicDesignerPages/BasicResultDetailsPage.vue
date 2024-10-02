@@ -79,7 +79,7 @@ const router = useRouter()
 const fpId = ref(route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const pdbFile = ref('')
-const sequenceOptimization = ref(false)
+const sequenceOptimization = ref(true)
 let stage
 
 function findEntryByFpId(fpId): PredictionResult {

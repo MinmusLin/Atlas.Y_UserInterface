@@ -93,6 +93,8 @@ const router = useRouter()
 const fpId = ref(route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const cadScore = ref(0.0)
+const pdbFile = ref('')
+let stage
 
 function findEntryByFpId(fpId): PredictionResult {
   return <PredictionResult>g_matchingResults.value.find(entry => entry.fpId == fpId)
@@ -129,14 +131,47 @@ const evaluationDescription = computed(() => {
 })
 
 onMounted(() => {
-  const stage = new Stage('global-pdb-container')
-  stage.loadFile('/PDB/6uzq.pdb').then(function (component) {
-    if (component) {
-      component.addRepresentation('cartoon', {})
-      component.autoView()
-    }
+  stage = new Stage('global-pdb-container', {
+    impostor: false,
+    quality: 'high',
+    mousePreset: 'pymol'
   })
+  fetchPdb()
 })
+
+const fetchPdb = async () => {
+  try {
+    const response = await axiosInstance.get(`/basic-prediction/get-file/${g_queryLogId.value}/pdb/${currentResult.value.fpId}.pdb`)
+    pdbFile.value = response.data
+    const blob = b64toBlob(pdbFile.value)
+    const url = URL.createObjectURL(blob)
+    stage.loadFile(url, {ext: 'pdb'}).then(function (component) {
+      if (component) {
+        component.addRepresentation('cartoon', {
+          colorScheme: 'uniform',
+          colorValue: '#ADD8E6'
+        })
+        component.autoView()
+      }
+    })
+  } catch (error) {
+  }
+}
+
+function b64toBlob(b64Data, contentType = 'application/octet-stream', sliceSize = 512) {
+  const byteCharacters = atob(b64Data)
+  const byteArrays = []
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize)
+    const byteNumbers = new Array(slice.length)
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i)
+    }
+    const byteArray = new Uint8Array(byteNumbers)
+    byteArrays.push(byteArray)
+  }
+  return new Blob(byteArrays, {type: contentType})
+}
 
 onMounted(() => {
   fetchScore()
