@@ -81,7 +81,6 @@ onMounted(() => {
 })
 
 const fetchData = async () => {
-  g_directedEvolutionResults.value = []
   try {
     const response = await axiosInstance.post('/basic-prediction/sequence-optimization', {
       fastaSequence: g_currentFusionProtein.value,
@@ -96,6 +95,7 @@ const fetchData = async () => {
 
 watch(() => route.params.id, (newId) => {
   fpId.value = newId
+  g_directedEvolutionResults.value = []
   fetchData()
 }, {immediate: true})
 

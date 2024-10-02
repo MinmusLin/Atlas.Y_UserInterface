@@ -49,12 +49,14 @@
            alt='DefaultCrown'/>
       <p class='dialog-title'>Experience Membership Features</p>
     </div>
+
     <div class='dialog-description'>
       <p>
         This is our membership feature. For more sophisticated algorithms and superior solutions, please go to our store
         to explore!
       </p>
     </div>
+
     <div class='dialog-privileges'>
       <div class='title'>
         <hr style='border: 1px solid #C5C9CD; width: 177px'/>
@@ -84,7 +86,10 @@
         </div>
       </div>
     </div>
-    <DefaultButton width='100%' height='40px' text='Learn More' :active='true'
+    <DefaultButton width='100%'
+                   height='40px'
+                   text='Learn More'
+                   :active='true'
                    @click="router.push('/algorithm-store')"/>
   </Dialog>
 </template>
