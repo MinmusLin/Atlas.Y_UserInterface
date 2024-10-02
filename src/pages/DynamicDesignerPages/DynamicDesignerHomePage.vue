@@ -84,7 +84,8 @@
         </div>
       </div>
     </div>
-    <DefaultButton width='100%' height='48px' text='Continue' :active='true'/>
+    <DefaultButton width='100%' height='40px' text='Learn More' :active='true'
+                   @click="router.push('/algorithm-store')"/>
   </Dialog>
 </template>
 
