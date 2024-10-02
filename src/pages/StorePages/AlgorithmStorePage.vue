@@ -2,7 +2,7 @@
   <div class="page-container">
     <!-- 个人信息部分 -->
     <div class="profile-section">
-      <img src="/Members/Example.png" alt="Avatar" class="avatar" />
+      <!--      <img src="/Members/Example.png" alt="Avatar" class="avatar" />-->
       <h2 class="name">NAME</h2>
       <p class="subscription-status">Current Subscription: Free</p>
     </div>
@@ -55,14 +55,14 @@
         v-model="isDialogVisible"
         width="732px"
         class="dialog-container">
-        <h1 class="dialog-title">{{selectedItem.title}}</h1>
-        <p class="dialog-description">{{selectedItem.description}}</p>
+        <h1 class="dialog-title">{{ selectedItem.title }}</h1>
+        <p class="dialog-description">{{ selectedItem.description }}</p>
         <div class="dialog-footer">
-          <span class="times-left">{{selectedItem.timesLeft}}
+          <span class="times-left">{{ selectedItem.timesLeft }}
             <span style="color:#8F9396 ;font-size: 16px"> times left</span>
           </span>
-          <div class = "footer-button">
-            <span style="font-size: 16px;margin-right:16px ;color: #FFCA31; font-weight: 600;">{{selectedItem.price}} $</span>
+          <div class="footer-button">
+            <span style="font-size: 16px;margin-right:16px ;color: #FFCA31; font-weight: 600;">{{ selectedItem.price }} $</span>
             <button class="price-button">BUY</button>
           </div>
         </div>
@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,watch } from 'vue'
+import {ref, watch} from 'vue'
 import ToggleButton from "@/components/ToggleButton.vue";
 import AlgorithmItem from "@/components/AlgorithmItem.vue";
 import Dialog from "@/components/Dialog.vue";
@@ -150,7 +150,8 @@ watch(isToggled, (newValue) => {
   max-width: 1000px;
   justify-content: center;
 }
-.dialog-container{
+
+.dialog-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -165,32 +166,35 @@ watch(isToggled, (newValue) => {
   border-radius: 10px;
   z-index: 1000; /* 确保弹窗在最上层 */
 }
-.dialog-title{
+
+.dialog-title {
   font-size: 16px;
   margin-bottom: 16px;
-  margin-left:16px;
-}
-.dialog-description{
-  font-size: 16px;
-  margin-left:16px;
-  margin-right:16px;
+  margin-left: 16px;
 }
 
-.dialog-footer{
+.dialog-description {
+  font-size: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.dialog-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top:10px;
+  margin-top: 10px;
   margin-bottom: 10px;
-  margin-left:16px;
-  margin-right:16px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
-.times-left{
+
+.times-left {
   font-size: 16px;
   color: #5182F8;
 }
 
-.price-button{
+.price-button {
   padding: 8px 20px 8px 20px;
   background-color: #5182F8;
   color: white;

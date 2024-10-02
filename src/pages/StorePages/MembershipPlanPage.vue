@@ -2,7 +2,7 @@
   <div class='page-container'>
     <!-- 个人信息部分 -->
     <div class="profile-section">
-      <img src="/Members/Example.png" alt="Avatar" class="avatar" />
+      <!--      <img src="/Members/Example.png" alt="Avatar" class="avatar" />-->
       <h2 class="name">NAME</h2>
       <p class="subscription-status">Current Subscription: Free</p>
     </div>
@@ -21,7 +21,7 @@
 
     <!-- 选择服务部分 -->
     <div class="service-section">
-      <MembershipItem title="Free" :isSubscribed ="false">
+      <MembershipItem title="Free" :isSubscribed="false">
         <ul>
           <li>Basic protein localization design</li>
           <li>Overall functionality scoring</li>
@@ -29,12 +29,12 @@
         </ul>
       </MembershipItem>
 
-      <MembershipItem title="Professional" :isSubscribed ="true" @open-dialog="openDialog">
+      <MembershipItem title="Professional" :isSubscribed="true" @open-dialog="openDialog">
         <ul>
           <li>Includes all Free Version features</li>
           <li>
             Access to all algorithms in the algorithm store
-            <ul class = "inner-li">
+            <ul class="inner-li">
               <li style="font-size:14px">Specific site functionality scoring</li>
               <li style="font-size:14px">Protein localization prediction system</li>
               <li style="font-size:14px">Localization-optimized protein evolution system</li>
@@ -44,12 +44,12 @@
         </ul>
       </MembershipItem>
 
-      <MembershipItem title="Company" :isSubscribed ="true" @open-dialog="openDialog">
+      <MembershipItem title="Company" :isSubscribed="true" @open-dialog="openDialog">
         <ul>
           <li>Includes all Professional Version features</li>
           <li>
             Exclusive enterprise services and functions
-            <ul class = "inner-li">
+            <ul class="inner-li">
               <li style="font-size:14px">Custom Development</li>
               <li style="font-size:14px">Team Management</li>
               <li style="font-size:14px">Enterprise-level Data Security</li>
@@ -92,7 +92,7 @@ const handleSubscribe = (selectedPrice: number | null) => {
 };
 
 // Open dialog with a specific title
-const openDialog = ({ title }) => {
+const openDialog = ({title}) => {
   dialogTitle.value = title;  // 设置弹窗的标题
   isDialogVisible.value = true;  // 打开弹窗
 };
@@ -138,12 +138,14 @@ watch(isToggled, (newValue) => {
   font-size: 16px;
   color: #8F9396;
 }
-.service-section{
+
+.service-section {
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
 
 }
+
 .toggle-buttons {
   margin-bottom: 32px;
 }
@@ -153,10 +155,11 @@ watch(isToggled, (newValue) => {
   list-style-type: disc;
   padding-left: 20px;
 }
+
 .service-section ul > li {
   font-weight: 600;
   font-size: 16px;
-  color:#8F9396;
+  color: #8F9396;
   line-height: 20px;
 }
 </style>
