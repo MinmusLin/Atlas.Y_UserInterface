@@ -19,7 +19,8 @@
                   @click='showContinueDialog=true'>
       <p style='font-size: 24px; margin-right: 10px'>START</p>
       <v-icon size='26px'>mdi-arrow-right</v-icon>
-      <img class='icon' src='https://static.igem.wiki/teams/5503/software-materials/inclinedcrown.webp'
+      <img class='icon'
+           src='https://static.igem.wiki/teams/5503/software-materials/inclinedcrown.webp'
            alt='InclinedCrown'/>
     </ShadowButton>
 

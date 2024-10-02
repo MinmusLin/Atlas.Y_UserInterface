@@ -512,8 +512,9 @@ input.error-border:focus {
   top: 100%;
   left: 0;
   color: #DA2420;
-  font-size: 12px;
-  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 4px;
   visibility: hidden;
 }
 

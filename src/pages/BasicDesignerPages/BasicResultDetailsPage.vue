@@ -7,6 +7,10 @@
       <el-breadcrumb-item>/{{ fpId }}</el-breadcrumb-item>
     </el-breadcrumb>
 
+    <img src='https://static.igem.wiki/teams/5503/software-materials/inclinedcrown.webp'
+         alt='InclinedCrown'
+         style='position: absolute; height: 35px; bottom: 130px; right: 90px'/>
+
     <div style='display: flex; flex-direction: row'>
       <div style='width: 543px; margin-right: 22px'>
         <p>Fusion Protein</p>
