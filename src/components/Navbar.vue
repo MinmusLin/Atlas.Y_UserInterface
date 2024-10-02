@@ -24,7 +24,7 @@
                   :key='item.route'
                   style='font-size: 12px'
                   :class="{ 'highlighted': currentRoute.startsWith(item.route) }"
-                  @click='router.push(item.route)'>
+                  @click='handleRoute(item.route)'>
                 {{ item.name }}
               </li>
             </ul>
@@ -102,6 +102,14 @@ const menus = ref([
 ])
 
 watch(() => router.currentRoute.value.path, (newPath) => currentRoute.value = newPath)
+
+function handleRoute(route: string) {
+  if (route == '/user-guide') {
+    window.open('https://static.igem.wiki/teams/5503/userguide.pdf', '_blank')
+  } else {
+    router.push(route)
+  }
+}
 
 function toggleSubMenu(index: number) {
   if (isCollapsed.value) {

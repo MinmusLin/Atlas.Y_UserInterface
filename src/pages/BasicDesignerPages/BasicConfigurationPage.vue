@@ -122,6 +122,11 @@
         Start Matching
       </ShadowButton>
     </div>
+
+    <div class='mask' v-if='showMask'>
+      <el-icon v-loading='true'/>
+      <p style='margin-top: 40px'>The matching process will take some time. Thank you for your patience.</p>
+    </div>
   </div>
 </template>
 
@@ -162,6 +167,7 @@ import LYS_Initial from '/PositioningDemand/LYS_Initial.mp4'
 import MT_Initial from '/PositioningDemand/MT_Initial.mp4'
 import PTS_Initial from '/PositioningDemand/PTS_Initial.mp4'
 
+const showMask = ref(false)
 const mechanicalProperties = ref(true)
 const solubility = ref(true)
 const selectedIndex = ref<number | null>(null)
@@ -317,6 +323,7 @@ async function submitQueryLog() {
     g_solubility.value = body.linkerSolu
     g_positioningDemand.value = body.targetPosition
     g_targetProtein.value = body.targetProSeq
+    showMask.value = true
     const response = await axiosInstance.post('basic-prediction', body)
     g_matchingResults.value = response.data
     await router.push('/basic-designer/matching-results')
@@ -329,6 +336,22 @@ async function submitQueryLog() {
 .page-container {
   height: 800px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.75;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

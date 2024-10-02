@@ -91,12 +91,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/StorePages/MembershipPlanPage.vue'),
     meta: {title: 'Atlas.Y - Membership Plan'}
   },
-  // Documentation Pages
-  {
-    path: '/user-guide',
-    component: () => import('@/pages/DocumentationPages/UserGuidePage.vue'),
-    meta: {title: 'Atlas.Y - User Guide'}
-  },
   // About Pages
   {
     path: '/team',

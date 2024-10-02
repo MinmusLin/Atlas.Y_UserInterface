@@ -33,4 +33,7 @@ declare module 'vue' {
     TextArea: typeof import('./src/components/TextArea.vue')['default']
     ToggleButton: typeof import('./src/components/ToggleButton.vue')['default']
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
+  }
 }
