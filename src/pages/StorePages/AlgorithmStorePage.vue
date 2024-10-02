@@ -12,7 +12,7 @@
         <p class='description'>{{ truncatedDescriptions[index] }}</p>
         <div class='info-container'>
           <span class='times-left'>
-            <span class='number'>{{card.timesLeft}} </span>
+            <span class='number'>{{ card.timesLeft }} </span>
             <span class='text'> times left</span>
           </span>
           <div class='price-container'>
@@ -22,7 +22,6 @@
         </div>
       </div>
     </div>
-
     <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 292px'>
       <div class='dialog-content'>
         <h2 class='title'>{{ cards[selectedIndex].title }}</h2>
@@ -43,12 +42,14 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, onMounted } from 'vue'
+import {ref, onMounted} from 'vue'
 import Dialog from '@/components/Dialog.vue'
 
 const dialogVisible = ref(false)
 const currentDialogContent = ref('')
 const selectedIndex = ref(0)
+const titles = ref<HTMLElement[]>([])
+const truncatedDescriptions = ref<string[]>([])
 
 const cards = [
   {
@@ -91,9 +92,6 @@ const cards = [
   }
 ]
 
-const titles = ref<HTMLElement[]>([])
-const truncatedDescriptions = ref<string[]>([])
-
 function openDialog(index: number) {
   selectedIndex.value = index
   currentDialogContent.value = cards[index].description
@@ -105,21 +103,17 @@ function getShortDescription(description: string, maxHeight: number, fontSize: n
   const charsPerLine = Math.floor(470 / (fontSize * 0.6))
   const maxLines = Math.floor(maxHeight / lineHeight)
   const maxChars = charsPerLine * maxLines
-
   if (description.length > maxChars) {
     return description.slice(0, maxChars - 3) + '...'
   }
-
   return description
 }
 
 onMounted(() => {
-  const fontSize = 16
-
   cards.forEach((card, index) => {
     const titleHeight = titles.value[index]?.offsetHeight || 0
     const maxHeight = 140 - titleHeight
-    truncatedDescriptions.value[index] = getShortDescription(card.description, maxHeight, fontSize)
+    truncatedDescriptions.value[index] = getShortDescription(card.description, maxHeight, 16)
   })
 })
 </script>
@@ -239,7 +233,7 @@ onMounted(() => {
 
 .subscription-info {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 16px;
   color: #8F9396;
   font-weight: bold;

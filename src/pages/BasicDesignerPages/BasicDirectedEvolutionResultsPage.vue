@@ -105,6 +105,7 @@ watch(() => route.params.id, (newId) => {
   fetchData()
 }, {immediate: true})
 
+// noinspection JSUnusedLocalSymbols
 function handleRowClick(row, column, event) {
   router.push(`/basic-designer/variant-details/${fpId.value}/${row.variantId}`);
 }

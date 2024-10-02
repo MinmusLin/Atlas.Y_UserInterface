@@ -141,6 +141,7 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   return style
 }
 
+// noinspection JSUnusedLocalSymbols
 function handleRowClick(row, column, event) {
   router.push(`/basic-designer/result-details/${row.fpId}`);
 }

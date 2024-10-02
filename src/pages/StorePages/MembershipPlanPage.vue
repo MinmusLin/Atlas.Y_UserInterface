@@ -20,23 +20,20 @@
             <div v-else>{{ item }}</div>
           </li>
         </ul>
-        <button
-          :class="['subscribe-button', index == 0 ? 'disabled-button' : '']"
-          :disabled='index == 0'
-          v-if='index != 0'
-          @click='openDialog(index)'>
+        <button :class="['subscribe-button', index == 0 ? 'disabled-button' : '']"
+                :disabled='index == 0'
+                v-if='index != 0'
+                @click='openDialog(index)'>
           Subscribe
         </button>
-        <button
-          :class="['subscribe-button', index == 0 ? 'disabled-button' : '']"
-          :disabled='index == 0'
-          v-else>
+        <button :class="['subscribe-button', index == 0 ? 'disabled-button' : '']"
+                :disabled='index == 0'
+                v-else>
           Your current subscription
         </button>
       </div>
     </div>
-
-    <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 292px'>
+    <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 295px'>
       <div class='dialog-content'>
         <h2 class='dialog-title'>{{ dialogTitle }}</h2>
         <p class='dialog-description'>
@@ -44,8 +41,8 @@
         </p>
         <div class='price-cards' v-if='dialogPrices.length'>
           <button v-for='(price, index) in dialogPrices' :key='index' class='price-card'>
-            <div class='price-amount'>{{ price.amount }}</div>
-            <div class='price-duration'>{{ price.duration }}</div>
+            <span class='price-amount'>{{ price.amount }}</span>
+            <span class='price-duration'>{{ price.duration }}</span>
           </button>
         </div>
         <button class='subscribe-btn'>Subscribe</button>
@@ -171,7 +168,7 @@ function openDialog(index: number) {
 
 .description ul {
   list-style-type: disc;
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 .subscribe-button {
@@ -187,14 +184,6 @@ function openDialog(index: number) {
 
 .subscribe-button:hover {
   background-color: #2F62D7;
-}
-
-.disabled-button {
-  background-color: white;
-  color: #8F9396;
-  border: 1px solid #D3D3D3;
-  cursor: not-allowed;
-  pointer-events: none;
 }
 
 .dialog-content {
@@ -277,7 +266,7 @@ function openDialog(index: number) {
   background-color: #2F62D7;
 }
 
-.membership-plan-info{
+.membership-plan-info {
   text-align: center;
   margin-bottom: 20px;
   font-size: 50px;
@@ -287,9 +276,18 @@ function openDialog(index: number) {
 
 .subscription-info {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 16px;
   font-weight: bold;
   color: #8F9396;
+}
+
+/* noinspection CssUnusedSymbol */
+.disabled-button {
+  background-color: white;
+  color: #8F9396;
+  border: 1px solid #D3D3D3;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 </style>
