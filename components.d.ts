@@ -9,6 +9,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     DefaultButton: typeof import('./src/components/DefaultButton.vue')['default']
     Dialog: typeof import('./src/components/Dialog.vue')['default']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
@@ -30,5 +32,8 @@ declare module 'vue' {
     ShadowButton: typeof import('./src/components/ShadowButton.vue')['default']
     TextArea: typeof import('./src/components/TextArea.vue')['default']
     ToggleButton: typeof import('./src/components/ToggleButton.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
