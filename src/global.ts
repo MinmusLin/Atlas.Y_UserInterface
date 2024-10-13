@@ -36,6 +36,7 @@ export const g_directedEvolutionResults = ref<DirectedEvolutionResult[]>([])
 
 // Dynamic Designer
 
+export const g_lightInduction_dynamic = ref('')
 export const g_queryLogId_dynamic = ref('')
 export const g_fastaFileName_dynamic = ref('')
 export const g_pdbFileName_dynamic = ref('')

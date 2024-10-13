@@ -11,7 +11,7 @@
         <div>
           <p>Protein Sequence Demand</p>
           <DefaultButton @click='selectFastaFile'
-                         width='488px'
+                         width='323px'
                          height='40px'
                          :active="fastaBase64!=''"
                          :warning='fastaWarning'
@@ -21,12 +21,16 @@
         <div>
           <p>PDB Demand</p>
           <DefaultButton @click='selectPdbFile'
-                         width='488px'
+                         width='323px'
                          height='40px'
                          :active="pdbBase64!=''"
                          :warning='pdbWarning'
                          :text='pdbName'/>
           <input type='file' ref='pdbInput' style='display: none' @change='handlePdbFileChange' accept='.pdb'/>
+        </div>
+        <div>
+          <p>Light Induction Demand</p>
+          <LightInduction v-model='g_lightInduction_dynamic' :warning='lightWarning'/>
         </div>
       </div>
 
@@ -137,13 +141,14 @@
 </template>
 
 <script setup lang='ts'>
-import {ref} from 'vue'
+import {ref, watch} from 'vue'
 import {useRouter} from 'vue-router'
 import axiosInstance from '@/plugins/axios'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
+import LightInduction from '@/components/LightInduction.vue'
 import {
   g_matchingResults_dynamic,
   g_fastaFileName_dynamic,
@@ -152,7 +157,8 @@ import {
   g_solubility_dynamic,
   g_positioningDemand_dynamic,
   g_targetProtein_dynamic,
-  g_queryLogId_dynamic
+  g_queryLogId_dynamic,
+  g_lightInduction_dynamic
 } from '@/global'
 import {ArrowRight} from '@element-plus/icons-vue'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
@@ -192,6 +198,7 @@ const fastaName = ref('Upload Fasta File')
 const pdbName = ref('Upload PDB File')
 const fastaWarning = ref(false)
 const pdbWarning = ref(false)
+const lightWarning = ref(false)
 
 const items = ref([
   {name: 'NLS', basic: NLS_Basic, initial: NLS_Initial, warning: false},
@@ -301,6 +308,12 @@ function generateRandomHash() {
   return result
 }
 
+watch(g_lightInduction_dynamic, (newValue) => {
+  if (newValue != '') {
+    lightWarning.value = false
+  }
+})
+
 async function submitQueryLog() {
   fastaWarning.value = fastaBase64.value == ''
   pdbWarning.value = pdbBase64.value == ''
@@ -313,6 +326,10 @@ async function submitQueryLog() {
     items.value.forEach(item => {
       item.warning = false
     })
+  }
+  if (g_lightInduction_dynamic.value == '') {
+    lightWarning.value = true
+    return
   }
   if (fastaWarning.value || pdbWarning.value || !isItemSelected) {
     return

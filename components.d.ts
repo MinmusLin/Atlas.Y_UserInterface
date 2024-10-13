@@ -26,6 +26,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElText: typeof import('element-plus/es')['ElText']
     InfoTooltip: typeof import('./src/components/InfoTooltip.vue')['default']
+    LightInduction: typeof import('./src/components/LightInduction.vue')['default']
     MemberCard: typeof import('./src/components/MemberCard.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
