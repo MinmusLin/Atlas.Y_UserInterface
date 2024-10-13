@@ -2,7 +2,7 @@
   <div class='page-container'>
     <!--suppress TypeScriptValidateTypes-->
     <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
-      <el-breadcrumb-item to='/basic-designer'>Basic Designer</el-breadcrumb-item>
+      <el-breadcrumb-item to='/dynamic-designer'>Dynamic Designer</el-breadcrumb-item>
       <el-breadcrumb-item>Start Matching</el-breadcrumb-item>
     </el-breadcrumb>
 
@@ -145,14 +145,14 @@ import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
 import {
-  g_matchingResults,
-  g_fastaFileName,
-  g_pdbFileName,
-  g_mechanicalProperties,
-  g_solubility,
-  g_positioningDemand,
-  g_targetProtein,
-  g_queryLogId
+  g_matchingResults_dynamic,
+  g_fastaFileName_dynamic,
+  g_pdbFileName_dynamic,
+  g_mechanicalProperties_dynamic,
+  g_solubility_dynamic,
+  g_positioningDemand_dynamic,
+  g_targetProtein_dynamic,
+  g_queryLogId_dynamic
 } from '@/global'
 import {ArrowRight} from '@element-plus/icons-vue'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
@@ -270,7 +270,7 @@ const handleFastaFileChange = async (event) => {
     }
     fastaBase64.value = sequence
     fastaName.value = file.name
-    g_fastaFileName.value = file.name
+    g_fastaFileName_dynamic.value = file.name
     fastaWarning.value = false
   } catch (error) {
   }
@@ -285,7 +285,7 @@ const handlePdbFileChange = async (event) => {
     const base64String = await fileToBase64(file)
     pdbBase64.value = base64String as string
     pdbName.value = file.name
-    g_pdbFileName.value = file.name
+    g_pdbFileName_dynamic.value = file.name
     pdbWarning.value = false
   } catch (error) {
   }
@@ -318,24 +318,24 @@ async function submitQueryLog() {
     return
   }
   try {
-    const body = {
-      logId: generateRandomHash().toString(),
-      queryTime: new Date(),
-      targetProSeq: fastaBase64.value,
-      targetProPdb: pdbBase64.value,
-      targetPosition: items.value[selectedIndex.value].name,
-      linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
-      linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
-    }
-    g_queryLogId.value = body.logId
-    g_mechanicalProperties.value = body.linkerMech
-    g_solubility.value = body.linkerSolu
-    g_positioningDemand.value = body.targetPosition
-    g_targetProtein.value = body.targetProSeq
+    // const body = {
+    //   logId: generateRandomHash().toString(),
+    //   queryTime: new Date(),
+    //   targetProSeq: fastaBase64.value,
+    //   targetProPdb: pdbBase64.value,
+    //   targetPosition: items.value[selectedIndex.value].name,
+    //   linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
+    //   linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
+    // }
+    // g_queryLogId_dynamic.value = body.logId
+    // g_mechanicalProperties_dynamic.value = body.linkerMech
+    // g_solubility_dynamic.value = body.linkerSolu
+    // g_positioningDemand_dynamic.value = body.targetPosition
+    // g_targetProtein_dynamic.value = body.targetProSeq
     showMask.value = true
-    const response = await axiosInstance.post('basic-prediction', body)
-    g_matchingResults.value = response.data
-    await router.push('/basic-designer/matching-results')
+    // const response = await axiosInstance.post('basic-prediction', body)
+    // g_matchingResults_dynamic.value = response.data
+    await router.push('/dynamic-designer/matching-results')
   } catch (error) {
   }
 }

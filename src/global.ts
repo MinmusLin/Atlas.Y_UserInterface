@@ -20,6 +20,8 @@ interface DirectedEvolutionResult {
 
 export const apiBaseUrl = 'http://162.62.213.36:5101/api/'
 
+// Basic Designer
+
 export const g_queryLogId = ref('')
 export const g_fastaFileName = ref('')
 export const g_pdbFileName = ref('')
@@ -29,24 +31,19 @@ export const g_positioningDemand = ref('')
 export const g_targetProtein = ref('')
 export const g_currentFusionProtein = ref('')
 export const g_lastFpId = ref('')
-// export const g_queryLogId = ref('tx3pnrnecobyo9tlqaojr4cj9tt90so3')
-// export const g_fastaFileName = ref('protein.fasta')
-// export const g_pdbFileName = ref('protein.pdb')
-// export const g_mechanicalProperties = ref('rigid')
-// export const g_solubility = ref('hydrophilic')
-// export const g_positioningDemand = ref('NLS')
-// export const g_targetProtein = ref('MGKKLRPPGTMTISNLLKQRVRYAPYLKKVKEAHELIPLFKNGQYLGWSGFTGVGTPKAVPEALIDHVEKNNLQGKLRFNLFVGASAGPEENRWAEHDMIIKRAPHQVGKPIAKAINQGRIEFFDKHLSMFPQDLTYGFYTRERKDNKILDYTIIEATAIKEDGSIVPGPSVGGSPEFITVSDKVIIEVNTATPSFEGIHDIDMPVNPPFRKPYPYLKVDDKCGVDSIPVDPEKVVAIVESTMRDQVPPNTPSDDMSRAIAGHLVEFFRNEVKHGRLPENLLPLQSGIGNIANAVIEGLAGAQFKHLTVWTEVLQDSFLDLFENGSLDYATATSVRLTEKGFDRAFANWENFKHRLCLRSQVVSNNPEMIRRLGVIAMNTPVEVDIYAHANSTNVNGSRMLNGLGGSADFLRNAKLSIMHAPSARPTKVDPTGISTIVPMASHVDQTEHDLDILVTDQGLADLRGLSPKERAREIINKCAHPDYQALLTDYLDRAEHYAKKHNCLHEPHMLKNAFKFHTNLAEKGTMKVDSWEPVD')
-
-export const g_matchingResults = ref<PredictionResult[]>([
-  {
-    fpId: 'FP0001',
-    signalId: 'SP0088',
-    linkerId: 'LK0015',
-    fusionProtein: 'KKRKKDAEAAAKEAAAKMGKKLRPPGTMTISNLLKQRVRYAPYLKKVKEAHELIPLFKNGQYLGWSGFTGVGTPKAVPEALIDHVEKNNLQGKLRFNLFVGASAGPEENRWAEHDMIIKRAPHQVGKPIAKAINQGRIEFFDKHLSMFPQDLTYGFYTRERKDNKILDYTIIEATAIKEDGSIVPGPSVGGSPEFITVSDKVIIEVNTATPSFEGIHDIDMPVNPPFRKPYPYLKVDDKCGVDSIPVDPEKVVAIVESTMRDQVPPNTPSDDMSRAIAGHLVEFFRNEVKHGRLPENLLPLQSGIGNIANAVIEGLAGAQFKHLTVWTEVLQDSFLDLFENGSLDYATATSVRLTEKGFDRAFANWENFKHRLCLRSQVVSNNPEMIRRLGVIAMNTPVEVDIYAHANSTNVNGSRMLNGLGGSADFLRNAKLSIMHAPSARPTKVDPTGISTIVPMASHVDQTEHDLDILVTDQGLADLRGLSPKERAREIINKCAHPDYQALLTDYLDRAEHYAKKHNCLHEPHMLKNAFKFHTNLAEKGTMKVDSWEPVD',
-    stabilityScore: 2784.17,
-    linker: 'AEAAAKEAAAK',
-    signal: 'KKRKKD'
-  }
-])
-
+export const g_matchingResults = ref<PredictionResult[]>([])
 export const g_directedEvolutionResults = ref<DirectedEvolutionResult[]>([])
+
+// Dynamic Designer
+
+export const g_queryLogId_dynamic = ref('')
+export const g_fastaFileName_dynamic = ref('')
+export const g_pdbFileName_dynamic = ref('')
+export const g_mechanicalProperties_dynamic = ref('')
+export const g_solubility_dynamic = ref('')
+export const g_positioningDemand_dynamic = ref('')
+export const g_targetProtein_dynamic = ref('')
+export const g_currentFusionProtein_dynamic = ref('')
+export const g_lastFpId_dynamic = ref('')
+export const g_matchingResults_dynamic = ref<PredictionResult[]>([])
+export const g_directedEvolutionResults_dynamic = ref<DirectedEvolutionResult[]>([])
