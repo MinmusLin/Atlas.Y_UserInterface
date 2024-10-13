@@ -26,7 +26,7 @@
       <div class='dialog-content'>
         <h2 class='title'>{{ cards[selectedIndex].title }}</h2>
         <p class='description'>{{ currentDialogContent }}</p>
-        <div class='info-container'>
+        <div class='info-container' style='position: absolute; width: 652px; bottom: 30px'>
           <span class='times-left'>
             <span class='number'>{{ cards[selectedIndex].timesLeft }} </span>
             <span class='text'> times left</span>

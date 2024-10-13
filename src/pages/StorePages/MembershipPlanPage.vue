@@ -33,7 +33,7 @@
         </button>
       </div>
     </div>
-    <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 295px'>
+    <Dialog v-model='dialogVisible' style='padding: 14px 40px 0 40px; width: 732px; height: 300px'>
       <div class='dialog-content'>
         <h2 class='dialog-title'>{{ dialogTitle }}</h2>
         <p class='dialog-description'>
@@ -69,7 +69,7 @@ const cards = [
     description: [
       'Basic protein localization design',
       'Overall functionality scoring',
-      'Overall stability scoring',
+      'Overall stability scoring'
     ],
     prices: []
   },
@@ -103,7 +103,7 @@ const cards = [
           'Custom Development',
           'Team Management',
           'Enterprise-level Data Security',
-          'Sustainability Reports',
+          'Sustainability Reports'
         ]
       }
     ],
@@ -136,7 +136,7 @@ function openDialog(index: number) {
   border-radius: 8px;
   padding: 40px 40px 30px 40px;
   width: 358px;
-  height: 428px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -155,7 +155,7 @@ function openDialog(index: number) {
   font-weight: bold;
   color: #2F3235;
   line-height: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .description {
@@ -198,16 +198,16 @@ function openDialog(index: number) {
   border: none;
   border-radius: 8px;
   width: 100%;
-  height: 34px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.5s ease;
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 0;
 }
 

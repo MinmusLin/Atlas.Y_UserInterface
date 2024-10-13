@@ -74,10 +74,15 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/BasicDesignerPages/BasicVariantDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Basic Designer'}
   },
-  // Tag Designer - Basic Designer Pages
+  // Tag Designer - Dynamic Designer Pages
   {
     path: '/dynamic-designer',
     component: () => import('@/pages/DynamicDesignerPages/DynamicDesignerHomePage.vue'),
+    meta: {title: 'Atlas.Y - Dynamic Designer'}
+  },
+  {
+    path: '/dynamic-designer/configuration',
+    component: () => import('@/pages/DynamicDesignerPages/DynamicConfigurationPage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
   // Store Pages

@@ -90,9 +90,9 @@
     </div>
     <DefaultButton width='100%'
                    height='40px'
-                   text='Learn More'
+                   text='Continue'
                    :active='true'
-                   @click="router.push('/algorithm-store')"/>
+                   @click="router.push('/dynamic-designer/configuration')"/>
   </Dialog>
 </template>
 
