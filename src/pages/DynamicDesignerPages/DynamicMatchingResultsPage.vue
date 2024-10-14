@@ -24,7 +24,7 @@
         <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ g_positioningDemand_dynamic }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>PHOTOINDUCIBLE DIMER: </span>DIMER-DIMER
+        <span class='sub-content'>PHOTOINDUCIBLE DIMER: </span>{{ g_report[0] }}-{{ g_report[1] }}
       </span>
     </div>
 
@@ -41,7 +41,7 @@
                        label='Fusion Protein'
                        width='220'/>
       <el-table-column prop='linkerId'
-                       label='Linker'
+                       label='Linker ID'
                        width='220'/>
       <el-table-column prop='linker'
                        label='Linker'
@@ -69,7 +69,8 @@ import {
   g_matchingResults_dynamic,
   g_fastaFileName_dynamic,
   g_pdbFileName_dynamic,
-  g_positioningDemand_dynamic
+  g_positioningDemand_dynamic,
+  g_report
 } from '@/global'
 import {useRouter} from 'vue-router'
 import {ArrowRight} from '@element-plus/icons-vue'
@@ -139,7 +140,7 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
 
 // noinspection JSUnusedLocalSymbols
 function handleRowClick(row, column, event) {
-  router.push(`/dynamic-designer/result-details/${row.fpId}`);
+  router.push(`/dynamic-designer/result-details/${row.dfpId}`);
 }
 </script>
 

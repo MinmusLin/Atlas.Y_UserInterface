@@ -90,6 +90,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/DynamicDesignerPages/DynamicMatchingResultsPage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
+  {
+    path: '/dynamic-designer/result-details/:id',
+    component: () => import('@/pages/DynamicDesignerPages/DynamicResultDetailsPage.vue'),
+    meta: {title: 'Atlas.Y - Dynamic Designer'}
+  },
   // Store Pages
   {
     path: '/algorithm-store',
