@@ -2,8 +2,7 @@
   <div class='page-container'>
     <!--suppress TypeScriptValidateTypes-->
     <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
-      <el-breadcrumb-item to='/dynamic-designer'>Dynamic Designer</el-breadcrumb-item>
-      <el-breadcrumb-item>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item><span style='font-weight: 700; color: #303133'>Start Matching</span></el-breadcrumb-item>
     </el-breadcrumb>
 
     <div class='inner-layer'>
@@ -158,7 +157,8 @@ import {
   g_positioningDemand_dynamic,
   g_targetProtein_dynamic,
   g_queryLogId_dynamic,
-  g_lightInduction_dynamic
+  g_lightInduction_dynamic,
+  g_report
 } from '@/global'
 import {ArrowRight} from '@element-plus/icons-vue'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
@@ -334,23 +334,48 @@ async function submitQueryLog() {
   if (fastaWarning.value || pdbWarning.value || !isItemSelected) {
     return
   }
+  if (g_lightInduction_dynamic.value == 'blue') {
+    g_report.value = [
+      'CIBN',
+      'CRY2',
+      'Signal Peptide-CIBN-mCherry',
+      'CRY2-linker-Target Protein-eGFP'
+    ]
+  }
+  if (g_lightInduction_dynamic.value == 'red') {
+    g_report.value = [
+      'PhyB',
+      'PIF3',
+      'Signal Peptide-PhyB-mTagBFP',
+      'PIF3-linker-Target Protein-mKO'
+    ]
+  }
+  if (g_lightInduction_dynamic.value == 'far-red') {
+    g_report.value = [
+      'BphP1',
+      'QPAS1',
+      'Signal Peptide-BphP1-mKate',
+      'QPAS1-linker-Target Protein-mVenus'
+    ]
+  }
   try {
-    // const body = {
-    //   logId: generateRandomHash().toString(),
-    //   queryTime: new Date(),
-    //   targetProSeq: fastaBase64.value,
-    //   targetProPdb: pdbBase64.value,
-    //   targetPosition: items.value[selectedIndex.value].name,
-    //   linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
-    //   linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic'
-    // }
-    // g_queryLogId_dynamic.value = body.logId
-    // g_mechanicalProperties_dynamic.value = body.linkerMech
-    // g_solubility_dynamic.value = body.linkerSolu
-    // g_positioningDemand_dynamic.value = body.targetPosition
-    // g_targetProtein_dynamic.value = body.targetProSeq
+    const body = {
+      logId: generateRandomHash().toString(),
+      queryTime: new Date(),
+      targetProSeq: fastaBase64.value,
+      targetProPdb: pdbBase64.value,
+      targetPosition: items.value[selectedIndex.value].name,
+      linkerMech: mechanicalProperties.value ? 'rigid' : 'flexible',
+      linkerSolu: solubility.value ? 'hydrophilic' : 'hydrophobic',
+      lightInduction: g_lightInduction_dynamic.value
+    }
+    g_queryLogId_dynamic.value = body.logId
+    g_mechanicalProperties_dynamic.value = body.linkerMech
+    g_solubility_dynamic.value = body.linkerSolu
+    g_positioningDemand_dynamic.value = body.targetPosition
+    g_targetProtein_dynamic.value = body.targetProSeq
     showMask.value = true
-    // const response = await axiosInstance.post('basic-prediction', body)
+    // const response = await axiosInstance.post('dynamic-prediction', body)
     // g_matchingResults_dynamic.value = response.data
     await router.push('/dynamic-designer/matching-results')
   } catch (error) {
