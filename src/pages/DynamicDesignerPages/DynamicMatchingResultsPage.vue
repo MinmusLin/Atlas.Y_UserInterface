@@ -39,16 +39,16 @@
               height='470'>
       <el-table-column prop='dfpId'
                        label='Fusion Protein'
-                       width='220'/>
+                       width='230'/>
       <el-table-column prop='linkerId'
                        label='Linker ID'
-                       width='220'/>
+                       width='230'/>
       <el-table-column prop='linker'
                        label='Linker'
-                       width='433'/>
+                       width='403'/>
       <el-table-column prop='stabilityScore'
                        label='Stability'
-                       width='220'/>
+                       width='230'/>
     </el-table>
 
     <div class='pagination-container'>

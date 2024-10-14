@@ -29,7 +29,7 @@
     <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
       <div style='width: 488px'>
         <p style='margin-bottom: 4px'>Navigator Protein Sequence</p>
-        <TextArea :text='currentResult.fusionProtein' width='509px' height='176px'/>
+        <TextArea :text='currentResult.dfpId' width='509px' height='176px'/>
       </div>
       <div style='width: 488px'>
         <p style='margin-bottom: 4px'>Sensor Protein Sequence</p>
