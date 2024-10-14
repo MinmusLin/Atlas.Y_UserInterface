@@ -2,7 +2,7 @@
   <div class='page-container'>
     <!--suppress TypeScriptValidateTypes-->
     <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
-      <el-breadcrumb-item to='/basic-designer'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/basic-designer/configuration'>Start Matching</el-breadcrumb-item>
       <el-breadcrumb-item>Matching Results</el-breadcrumb-item>
     </el-breadcrumb>
 
