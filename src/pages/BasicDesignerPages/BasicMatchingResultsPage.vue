@@ -111,12 +111,15 @@ const headerCellStyle = ({columnIndex}: CellStyleParams) => {
   const style = {...baseHeaderStyle} as any
   if (columnIndex == 0) {
     style.borderTopLeftRadius = '10px'
-  } else if (columnIndex == 3) {
+  }
+  if (columnIndex == 3) {
     style.borderTopRightRadius = '10px'
-  } else if (columnIndex == 1) {
+  }
+  if (columnIndex == 1) {
     style.paddingLeft = '40px'
     style.paddingRight = '0px'
-  } else if (columnIndex == 2) {
+  }
+  if (columnIndex == 2) {
     style.paddingLeft = '0px'
     style.paddingRight = '90px'
   }
@@ -134,7 +137,8 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
   if (columnIndex == 1) {
     style.paddingLeft = '40px'
     style.paddingRight = '0px'
-  } else if (columnIndex == 2) {
+  }
+  if (columnIndex == 2) {
     style.paddingLeft = '0px'
     style.paddingRight = '90px'
   }
