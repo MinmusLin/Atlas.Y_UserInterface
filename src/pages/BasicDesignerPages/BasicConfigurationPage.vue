@@ -2,8 +2,7 @@
   <div class='page-container'>
     <!--suppress TypeScriptValidateTypes-->
     <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
-      <el-breadcrumb-item to='/basic-designer'>Basic Designer</el-breadcrumb-item>
-      <el-breadcrumb-item>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item><span style='font-weight: 700; color: #303133'>Start Matching</span></el-breadcrumb-item>
     </el-breadcrumb>
 
     <div class='inner-layer'>
