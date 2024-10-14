@@ -93,7 +93,7 @@ import {g_matchingResults, g_queryLogId} from '@/global'
 import axiosInstance from '@/plugins/axios'
 import {useRoute, useRouter} from 'vue-router'
 import {ArrowRight} from '@element-plus/icons-vue'
-import InfoTooltip from "@/components/InfoTooltip.vue";
+import InfoTooltip from '@/components/InfoTooltip.vue'
 
 interface PredictionResult {
   fpId: string

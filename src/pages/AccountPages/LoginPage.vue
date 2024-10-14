@@ -48,7 +48,7 @@
 <script setup lang='ts'>
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
-import InfoTooltip from "@/components/InfoTooltip.vue";
+import InfoTooltip from '@/components/InfoTooltip.vue'
 
 const visible = ref(false)
 const router = useRouter()

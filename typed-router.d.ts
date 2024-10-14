@@ -36,6 +36,7 @@ declare module 'vue-router/auto-routes' {
     '/DynamicDesignerPages/DynamicConfigurationPage': RouteRecordInfo<'/DynamicDesignerPages/DynamicConfigurationPage', '/DynamicDesignerPages/DynamicConfigurationPage', Record<never, never>, Record<never, never>>,
     '/DynamicDesignerPages/DynamicDesignerHomePage': RouteRecordInfo<'/DynamicDesignerPages/DynamicDesignerHomePage', '/DynamicDesignerPages/DynamicDesignerHomePage', Record<never, never>, Record<never, never>>,
     '/DynamicDesignerPages/DynamicMatchingResultsPage': RouteRecordInfo<'/DynamicDesignerPages/DynamicMatchingResultsPage', '/DynamicDesignerPages/DynamicMatchingResultsPage', Record<never, never>, Record<never, never>>,
+    '/DynamicDesignerPages/DynamicResultDetailsPage': RouteRecordInfo<'/DynamicDesignerPages/DynamicResultDetailsPage', '/DynamicDesignerPages/DynamicResultDetailsPage', Record<never, never>, Record<never, never>>,
     '/NotFoundPage': RouteRecordInfo<'/NotFoundPage', '/NotFoundPage', Record<never, never>, Record<never, never>>,
     '/StorePages/AlgorithmStorePage': RouteRecordInfo<'/StorePages/AlgorithmStorePage', '/StorePages/AlgorithmStorePage', Record<never, never>, Record<never, never>>,
     '/StorePages/MembershipPlanPage': RouteRecordInfo<'/StorePages/MembershipPlanPage', '/StorePages/MembershipPlanPage', Record<never, never>, Record<never, never>>,

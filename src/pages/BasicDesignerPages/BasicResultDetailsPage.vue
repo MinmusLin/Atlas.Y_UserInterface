@@ -79,7 +79,7 @@ import DefaultButton from '@/components/DefaultButton.vue'
 import ToggleButton from '@/components/ToggleButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
 import {ArrowRight} from '@element-plus/icons-vue'
-import InfoTooltip from "@/components/InfoTooltip.vue";
+import InfoTooltip from '@/components/InfoTooltip.vue'
 
 interface PredictionResult {
   fpId: string
