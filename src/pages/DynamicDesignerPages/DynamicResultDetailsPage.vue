@@ -1,5 +1,12 @@
 <template>
   <div class='page-container'>
+    <!--suppress TypeScriptValidateTypes-->
+    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+      <el-breadcrumb-item to='/dynamic-designer/configuration'>Start Matching</el-breadcrumb-item>
+      <el-breadcrumb-item to='/dynamic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+      <el-breadcrumb-item>/{{ fpId }}</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <div style='display: flex; flex-direction: row; gap: 7px'>
       <div style='width: 488px'>
         <p>Navigator Protein</p>
@@ -29,7 +36,10 @@
     <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
       <div style='width: 488px'>
         <p style='margin-bottom: 4px'>Navigator Protein Sequence</p>
-        <TextArea :text='currentResult.dfpId' width='509px' height='176px'/>
+        <!--suppress TypeScriptValidateTypes-->
+        <TextArea width='509px'
+                  height='176px'
+                  :text='g_csvRecord.find(r => r.position == g_positioningDemand_dynamic && r.light == g_lightInduction_dynamic)?.navigator_seq'/>
       </div>
       <div style='width: 488px'>
         <p style='margin-bottom: 4px'>Sensor Protein Sequence</p>
@@ -64,10 +74,17 @@
 <script setup lang='ts'>
 import {ref, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-import {g_lightInduction_dynamic, g_matchingResults_dynamic, g_report_dynamic} from '@/global'
+import {
+  g_csvRecord,
+  g_lightInduction_dynamic,
+  g_matchingResults_dynamic,
+  g_positioningDemand_dynamic,
+  g_report_dynamic
+} from '@/global'
 import TextArea from '@/components/TextArea.vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'
+import {ArrowRight} from '@element-plus/icons-vue'
 
 interface DynamicPredictionResult {
   dfpId: string
@@ -118,5 +135,11 @@ p {
 
 .image-container img {
   height: 38px;
+}
+
+.breadcrumb {
+  position: absolute;
+  top: 50px;
+  left: 104px;
 }
 </style>
