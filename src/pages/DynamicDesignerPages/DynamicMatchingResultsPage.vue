@@ -15,16 +15,16 @@
 
     <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 30px'>
-        <span class='sub-content'>SEQUNCE / FASTA: </span>{{ g_fastaFileName_dynamic }}
+        <span class='sub-content'>Sequence / Fasta: </span>{{ g_fastaFileName_dynamic }}
       </span>
       <span class='subtitle' style='margin-right: 30px'>
-        <span class='sub-content'>PDB: </span>{{ g_pdbFileName_dynamic }}
+        <span class='sub-content'>Pdb: </span>{{ g_pdbFileName_dynamic }}
       </span>
       <span class='subtitle' style='margin-right: 30px'>
-        <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ g_positioningDemand_dynamic }}
+        <span class='sub-content'>Subcellular Position: </span>{{ g_positioningDemand_dynamic }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>PHOTOINDUCIBLE DIMER: </span>{{ g_report_dynamic[0] }}-{{ g_report_dynamic[1] }}
+        <span class='sub-content'>Photoinducible Dimer: </span>{{ g_report_dynamic[0] }}-{{ g_report_dynamic[1] }}
       </span>
     </div>
 

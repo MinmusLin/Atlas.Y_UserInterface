@@ -15,13 +15,13 @@
 
     <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>SEQUNCE / FASTA: </span>{{ g_fastaFileName }}
+        <span class='sub-content'>Sequence / Fasta: </span>{{ g_fastaFileName }}
       </span>
       <span class='subtitle' style='margin-right: 50px'>
-        <span class='sub-content'>PDB: </span>{{ g_pdbFileName }}
+        <span class='sub-content'>Pdb: </span>{{ g_pdbFileName }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ g_positioningDemand }}
+        <span class='sub-content'>Subcellular Position: </span>{{ g_positioningDemand }}
       </span>
     </div>
 
