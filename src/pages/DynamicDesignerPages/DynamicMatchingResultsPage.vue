@@ -24,7 +24,7 @@
         <span class='sub-content'>SUBCELLULAR POSITION: </span>{{ g_positioningDemand_dynamic }}
       </span>
       <span class='subtitle'>
-        <span class='sub-content'>PHOTOINDUCIBLE DIMER: </span>{{ g_report[0] }}-{{ g_report[1] }}
+        <span class='sub-content'>PHOTOINDUCIBLE DIMER: </span>{{ g_report_dynamic[0] }}-{{ g_report_dynamic[1] }}
       </span>
     </div>
 
@@ -70,7 +70,7 @@ import {
   g_fastaFileName_dynamic,
   g_pdbFileName_dynamic,
   g_positioningDemand_dynamic,
-  g_report
+  g_report_dynamic
 } from '@/global'
 import {useRouter} from 'vue-router'
 import {ArrowRight} from '@element-plus/icons-vue'

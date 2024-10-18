@@ -54,7 +54,7 @@ export const g_mechanicalProperties_dynamic = ref('')
 export const g_solubility_dynamic = ref('')
 export const g_positioningDemand_dynamic = ref('')
 export const g_targetProtein_dynamic = ref('')
-export const g_report = ref([])
+export const g_report_dynamic = ref([])
 export const g_matchingResults_dynamic = ref<DynamicPredictionResult[]>([
   {
     dfpId: 'DFP0001',

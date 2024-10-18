@@ -3,11 +3,11 @@
     <div style='display: flex; flex-direction: row; gap: 7px'>
       <div style='width: 488px'>
         <p>Navigator Protein</p>
-        <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report[2] }}</p>
+        <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report_dynamic[2] }}</p>
       </div>
       <div style='width: 488px'>
         <p>Sensor Protein</p>
-        <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report[3] }}</p>
+        <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report_dynamic[3] }}</p>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
 <script setup lang='ts'>
 import {ref, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-import {g_lightInduction_dynamic, g_matchingResults_dynamic, g_report} from '@/global'
+import {g_lightInduction_dynamic, g_matchingResults_dynamic, g_report_dynamic} from '@/global'
 import TextArea from '@/components/TextArea.vue'
 import DefaultButton from '@/components/DefaultButton.vue'
 import ShadowButton from '@/components/ShadowButton.vue'

@@ -158,7 +158,7 @@ import {
   g_targetProtein_dynamic,
   g_queryLogId_dynamic,
   g_lightInduction_dynamic,
-  g_report
+  g_report_dynamic
 } from '@/global'
 import {ArrowRight} from '@element-plus/icons-vue'
 import NLS_Basic from '/PositioningDemand/NLS_Basic.mp4'
@@ -335,7 +335,7 @@ async function submitQueryLog() {
     return
   }
   if (g_lightInduction_dynamic.value == 'blue') {
-    g_report.value = [
+    g_report_dynamic.value = [
       'CIBN',
       'CRY2',
       'Signal Peptide-CIBN-mCherry',
@@ -343,7 +343,7 @@ async function submitQueryLog() {
     ]
   }
   if (g_lightInduction_dynamic.value == 'red') {
-    g_report.value = [
+    g_report_dynamic.value = [
       'PhyB',
       'PIF3',
       'Signal Peptide-PhyB-mTagBFP',
@@ -351,7 +351,7 @@ async function submitQueryLog() {
     ]
   }
   if (g_lightInduction_dynamic.value == 'far-red') {
-    g_report.value = [
+    g_report_dynamic.value = [
       'BphP1',
       'QPAS1',
       'Signal Peptide-BphP1-mKate',
