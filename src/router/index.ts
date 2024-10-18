@@ -95,6 +95,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/DynamicDesignerPages/DynamicResultDetailsPage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
+  {
+    path: '/dynamic-designer/detailed-report/:id',
+    component: () => import('@/pages/DynamicDesignerPages/DynamicDetailedReportPage.vue'),
+    meta: {title: 'Atlas.Y - Dynamic Designer'}
+  },
   // Store Pages
   {
     path: '/algorithm-store',
