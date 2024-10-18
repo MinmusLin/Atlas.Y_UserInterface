@@ -54,7 +54,13 @@
 
 <script setup lang='ts'>
 import {ref, computed, onMounted, watch} from 'vue'
-import {g_currentFusionProtein, g_directedEvolutionResults, g_lastFpId, g_queryLogId} from '@/global'
+import {
+  g_currentFusionProtein,
+  g_directedEvolutionResults,
+  g_lastFpId,
+  g_queryLogId,
+  g_sequenceOptimization
+} from '@/global'
 import {useRoute, useRouter} from 'vue-router'
 import axiosInstance from '@/plugins/axios'
 import {ArrowRight} from '@element-plus/icons-vue'
@@ -92,7 +98,7 @@ const fetchData = async () => {
       fastaSequence: g_currentFusionProtein.value,
       logId: g_queryLogId.value,
       fpId: fpId.value,
-      modelName: true ? 'ProtLGN' : 'ProtLGN_Loc'
+      modelName: g_sequenceOptimization.value ? 'ProtLGN' : 'ProtLGN_Loc'
     })
     g_lastFpId.value = fpId.value
     g_directedEvolutionResults.value = response.data

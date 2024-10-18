@@ -41,6 +41,7 @@ export const g_targetProtein = ref('')
 export const g_currentFusionProtein = ref('')
 export const g_lastFpId = ref('')
 export const g_matchingResults = ref<PredictionResult[]>([])
+export const g_sequenceOptimization = ref(true)
 export const g_directedEvolutionResults = ref<DirectedEvolutionResult[]>([])
 
 // Dynamic Designer

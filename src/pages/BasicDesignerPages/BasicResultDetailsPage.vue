@@ -53,7 +53,7 @@
                      :active='true'/>
     </div>
     <div style='display: flex; flex-direction: row; margin-top: 23px'>
-      <ToggleButton v-model='sequenceOptimization'
+      <ToggleButton v-model='g_sequenceOptimization'
                     left-label='Stability'
                     right-label='Locating Stability'
                     style='margin-right: 7px'
@@ -71,7 +71,13 @@
 <script setup lang='ts'>
 import {onMounted, ref, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-import {g_currentFusionProtein, g_matchingResults, g_queryLogId, g_targetProtein} from '@/global'
+import {
+  g_currentFusionProtein,
+  g_matchingResults,
+  g_queryLogId,
+  g_targetProtein,
+  g_sequenceOptimization
+} from '@/global'
 import TextArea from '@/components/TextArea.vue'
 import {Stage} from 'ngl'
 import axiosInstance from '@/plugins/axios'
@@ -96,7 +102,6 @@ const router = useRouter()
 const fpId = ref(<string>route.params.id)
 const currentResult = ref<PredictionResult>(findEntryByFpId(fpId.value))
 const pdbFile = ref('')
-const sequenceOptimization = ref(true)
 let stage
 
 function findEntryByFpId(fpId): PredictionResult {
