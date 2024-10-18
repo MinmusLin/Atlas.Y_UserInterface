@@ -129,7 +129,7 @@ const tableData = ref([
     sequenceOrFasta: 'BAA01255_1.fasta',
     pdb: 'BAA01255_1.pdb',
     subcellularPosition: 'GPI',
-    lightDemand: 'Far-red'
+    lightDemand: 'Far-Red'
   }
 ])
 </script>
