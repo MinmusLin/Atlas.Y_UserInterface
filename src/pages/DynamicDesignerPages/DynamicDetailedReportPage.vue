@@ -1,110 +1,126 @@
 <template>
   <div class='page-container'>
-    <!--suppress TypeScriptValidateTypes-->
-    <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
-      <el-breadcrumb-item to='/dynamic-designer/configuration'>Start Matching</el-breadcrumb-item>
-      <el-breadcrumb-item to='/dynamic-designer/matching-results'>Matching Results</el-breadcrumb-item>
-      <el-breadcrumb-item :to='`/dynamic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
-      <el-breadcrumb-item>Detailed Report</el-breadcrumb-item>
-    </el-breadcrumb>
+    <div class='detailed-container'>
+      <!--suppress TypeScriptValidateTypes-->
+      <el-breadcrumb :separator-icon='ArrowRight' class='breadcrumb'>
+        <el-breadcrumb-item to='/dynamic-designer/configuration'>Start Matching</el-breadcrumb-item>
+        <el-breadcrumb-item to='/dynamic-designer/matching-results'>Matching Results</el-breadcrumb-item>
+        <el-breadcrumb-item :to='`/dynamic-designer/result-details/${fpId}`'>/{{ fpId }}</el-breadcrumb-item>
+        <el-breadcrumb-item>Detailed Report</el-breadcrumb-item>
+      </el-breadcrumb>
 
-    <div class='title-container'>
-      <h1 class='title'>Detailed Report</h1>
-    </div>
+      <div class='title-container'>
+        <h1 class='title'>Detailed Report</h1>
+      </div>
 
-    <div class='subtitle-container'>
+      <div class='subtitle-container'>
       <span class='subtitle' style='margin-right: 30px'>
         <span class='sub-content'>SEQUNCE / FASTA: </span>{{ g_fastaFileName_dynamic }}
       </span>
-      <span class='subtitle' style='margin-right: 30px'>
+        <span class='subtitle' style='margin-right: 30px'>
         <span class='sub-content'>PDB: </span>{{ g_pdbFileName_dynamic }}
       </span>
-      <span class='subtitle'>
+        <span class='subtitle'>
         <span class='sub-content'>PHOTOINDUCIBLE DIMER: </span>{{ g_report_dynamic[0] }}-{{ g_report_dynamic[1] }}
       </span>
-    </div>
+      </div>
 
-    <div style='display: flex; flex-direction: row; gap: 7px'>
-      <div style='width: 488px'>
-        <p>Navigator Protein</p>
-        <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report_dynamic[2] }}</p>
+      <div style='display: flex; flex-direction: row; gap: 20px'>
+        <div style='width: 483px'>
+          <p>Navigator Protein</p>
+          <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report_dynamic[2] }}</p>
+        </div>
+        <div style='width: 483px'>
+          <p>Sensor Protein</p>
+          <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report_dynamic[3] }}</p>
+        </div>
       </div>
-      <div style='width: 488px'>
-        <p>Sensor Protein</p>
-        <p style='color: #5182F8; font-weight: 600; font-size: 24px'>{{ g_report_dynamic[3] }}</p>
-      </div>
-    </div>
 
-    <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>Navigator Protein Sequence</p>
-        <!--suppress TypeScriptValidateTypes-->
-        <TextArea width='509px'
-                  height='176px'
-                  :text='g_csvRecord.find(r => r.position == g_positioningDemand_dynamic && r.light == g_lightInduction_dynamic)?.navigator_seq'/>
+      <div style='display: flex; flex-direction: row; gap: 20px; margin-top: 23px'>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>Navigator Protein Sequence</p>
+          <!--suppress TypeScriptValidateTypes-->
+          <TextArea width='509px'
+                    height='176px'
+                    :text='g_csvRecord.find(r => r.position == g_positioningDemand_dynamic && r.light == g_lightInduction_dynamic)?.navigator_seq'/>
+        </div>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>Sensor Protein Sequence</p>
+          <TextArea :text='currentResult.fusionProtein' width='509px' height='176px'/>
+        </div>
       </div>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>Sensor Protein Sequence</p>
-        <TextArea :text='currentResult.fusionProtein' width='509px' height='176px'/>
-      </div>
-    </div>
 
-    <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>Signal Peptide Sequence</p>
-        <!--suppress TypeScriptValidateTypes-->
-        <TextArea width='509px'
-                  height='50px'
-                  :text='g_csvRecord.find(r => r.position == g_positioningDemand_dynamic && r.light == g_lightInduction_dynamic)?.signal_seq'/>
+      <div style='display: flex; flex-direction: row; gap: 20px; margin-top: 23px'>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>Signal Peptide Sequence</p>
+          <!--suppress TypeScriptValidateTypes-->
+          <TextArea width='509px'
+                    height='22px'
+                    :text='g_csvRecord.find(r => r.position == g_positioningDemand_dynamic && r.light == g_lightInduction_dynamic)?.signal_seq'/>
+        </div>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>Linker Sequence</p>
+          <TextArea :text='currentResult.linker' width='509px' height='22px'/>
+        </div>
       </div>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>Linker Sequence</p>
-        <TextArea :text='currentResult.linker' width='509px' height='50px'/>
-      </div>
-    </div>
 
-    <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>{{ g_report_dynamic[0] }} Sequence</p>
-        <TextArea width='509px'
-                  height='50px'
-                  :text='g_report_dynamic[4]'/>
+      <div style='display: flex; flex-direction: row; gap: 20px; margin-top: 23px'>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>{{ g_report_dynamic[0] }} Sequence</p>
+          <TextArea width='509px'
+                    height='50px'
+                    :text='g_report_dynamic[4]'/>
+        </div>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>{{ g_report_dynamic[1] }} Sequence</p>
+          <TextArea :text='g_report_dynamic[5]' width='509px' height='50px'/>
+        </div>
       </div>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>{{ g_report_dynamic[1] }} Sequence</p>
-        <TextArea :text='g_report_dynamic[5]' width='509px' height='50px'/>
-      </div>
-    </div>
 
-    <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>{{ g_report_dynamic[6] }} Sequence</p>
-        <TextArea width='509px'
-                  height='50px'
-                  :text='g_report_dynamic[7]'/>
+      <div style='display: flex; flex-direction: row; gap: 20px; margin-top: 23px'>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>{{ g_report_dynamic[6] }} Sequence</p>
+          <TextArea width='509px'
+                    height='70px'
+                    :text='g_report_dynamic[7]'/>
+        </div>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>{{ g_report_dynamic[8] }} Sequence</p>
+          <TextArea width='509px'
+                    height='70px'
+                    :text='g_report_dynamic[9]'/>
+        </div>
       </div>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>{{ g_report_dynamic[8] }} Sequence</p>
-        <TextArea width='509px'
-                  height='50px'
-                  :text='g_report_dynamic[9]'/>
-      </div>
-    </div>
 
-    <div style='display: flex; flex-direction: row; gap: 7px; margin-top: 23px'>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>Targeted Subcellular Location</p>
-        <p>{{ g_positioningDemand_dynamic }}</p>
-        <p style='margin-bottom: 4px'>Fluorescent Tag Color</p>
-        <p>{{ g_report_dynamic[10] }}</p>
-        <p style='margin-bottom: 4px'>Inducing Light</p>
-        <p>{{ g_report_dynamic[11] }}</p>
-        <p style='margin-bottom: 4px'>Fluorescent Tag Color</p>
-        <p>{{ g_report_dynamic[12] }}</p>
-      </div>
-      <div style='width: 488px'>
-        <p style='margin-bottom: 4px'>Target Protein Sequence</p>
-        <TextArea :text='currentResult.fusionProtein' width='509px' height='50px'/>
+      <div style='display: flex; flex-direction: row; gap: 20px; margin-top: 23px'>
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>Targeted Subcellular Location</p>
+          <p style='font-weight: 400; margin-bottom: 10px'>
+            {{
+              g_positioningDemand_dynamic === 'NLS' ? 'Cytoplasm -> Nucleus' :
+                g_positioningDemand_dynamic === 'NES' ? 'Nucleus -> Cytoplasm' :
+                  g_positioningDemand_dynamic === 'SP' ? 'Cytoplasm -> Endoplasmic Reticulum Lumen' :
+                    g_positioningDemand_dynamic === 'SP_TM' ? 'Anchored on the Endoplasmic Reticulum Membrane' :
+                      g_positioningDemand_dynamic === 'SP_GPI' ? 'Cytoplasm -> Endoplasmic Reticulum Lumen -> Cytoplasm -> Cell Surface' :
+                        g_positioningDemand_dynamic === 'GPI' ? 'Cell Surface' :
+                          g_positioningDemand_dynamic === 'TM' ? 'Embedded in Cell Membrane' :
+                            g_positioningDemand_dynamic === 'PTS' ? 'Peroxisome' :
+                              g_positioningDemand_dynamic === 'MT' ? 'Mitochondria' :
+                                g_positioningDemand_dynamic === 'LYS' ? 'Lysosome' : ''
+            }}
+          </p>
+          <p style='margin-bottom: 4px'>Fluorescent Tag Color</p>
+          <p style='font-weight: 400; margin-bottom: 10px'>{{ g_report_dynamic[10] }}</p>
+        </div>
+
+        <div style='width: 483px'>
+          <p style='margin-bottom: 4px'>Target Protein Sequence</p>
+          <TextArea :text='currentResult.fusionProtein' width='509px' height='70px'/>
+          <p style='margin-bottom: 4px; margin-top: 25px'>Inducing Light</p>
+          <p style='font-weight: 400; margin-bottom: 10px'>{{ g_report_dynamic[11] }}</p>
+          <p style='margin-bottom: 4px'>Fluorescent Tag Color</p>
+          <p style='font-weight: 400; margin-bottom: 10px'>{{ g_report_dynamic[12] }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -150,9 +166,22 @@ watch(() => route.params.id, (newId) => {
 .page-container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+
+.detailed-container {
+  display: flex;
+  width: 1100px;
+  margin: 0 auto;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  position: relative;
+  align-items: flex-start;
+  padding: 60px 30px;
 }
 
 p {
@@ -165,9 +194,8 @@ p {
 }
 
 .breadcrumb {
-  position: absolute;
-  top: 50px;
-  left: 104px;
+  position: relative;
+  margin-top: 0;
 }
 
 .title-container {
@@ -186,7 +214,7 @@ p {
 
 .subtitle-container {
   display: flex;
-  width: 1093px;
+  width: 990px;
   height: 28px;
   font-size: 16px;
   text-align: center;
