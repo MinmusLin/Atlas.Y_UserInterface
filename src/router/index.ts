@@ -100,6 +100,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/DynamicDesignerPages/DynamicDetailedReportPage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
+  {
+    path: '/dynamic-designer/stability-evaluation/:id',
+    component: () => import('@/pages/DynamicDesignerPages/DynamicStabilityEvaluationPage.vue'),
+    meta: {title: 'Atlas.Y - Dynamic Designer'}
+  },
   // Store Pages
   {
     path: '/algorithm-store',

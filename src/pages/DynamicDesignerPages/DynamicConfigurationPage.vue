@@ -402,8 +402,9 @@ async function submitQueryLog() {
     g_positioningDemand_dynamic.value = body.targetPosition
     g_targetProtein_dynamic.value = body.targetProSeq
     showMask.value = true
-    // const response = await axiosInstance.post('dynamic-prediction', body)
-    // g_matchingResults_dynamic.value = response.data
+    const response = await axiosInstance.post('dynamic-prediction', body)
+    g_matchingResults_dynamic.value = response.data
+    console.log(g_matchingResults_dynamic.value)
     await router.push('/dynamic-designer/matching-results')
   } catch (error) {
   }
