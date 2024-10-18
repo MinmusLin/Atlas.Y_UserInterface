@@ -105,6 +105,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/pages/DynamicDesignerPages/DynamicStabilityEvaluationPage.vue'),
     meta: {title: 'Atlas.Y - Dynamic Designer'}
   },
+  {
+    path: '/dynamic-designer/global-cad-score/:id',
+    component: () => import('@/pages/DynamicDesignerPages/DynamicGlobalCADScorePage.vue'),
+    meta: {title: 'Atlas.Y - Dynamic Designer'}
+  },
+  {
+    path: '/dynamic-designer/local-cad-score/:id',
+    component: () => import('@/pages/DynamicDesignerPages/DynamicLocalCADScorePage.vue'),
+    meta: {title: 'Atlas.Y - Dynamic Designer'}
+  },
   // Store Pages
   {
     path: '/algorithm-store',
