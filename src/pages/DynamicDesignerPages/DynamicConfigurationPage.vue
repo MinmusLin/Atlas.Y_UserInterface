@@ -404,7 +404,6 @@ async function submitQueryLog() {
     showMask.value = true
     const response = await axiosInstance.post('dynamic-prediction', body)
     g_matchingResults_dynamic.value = response.data
-    console.log(g_matchingResults_dynamic.value)
     await router.push('/dynamic-designer/matching-results')
   } catch (error) {
   }
