@@ -158,7 +158,7 @@ import DefaultButton from '@/components/DefaultButton.vue'
 import InfoTooltip from '@/components/InfoTooltip.vue'
 import {Stage} from 'ngl'
 import {useRoute, useRouter} from 'vue-router'
-import {g_matchingResults_dynamic, g_queryLogId_dynamic, g_report_dynamic} from '@/global'
+import {g_lightInduction_dynamic, g_matchingResults_dynamic, g_queryLogId_dynamic, g_report_dynamic} from '@/global'
 import axiosInstance from '@/plugins/axios'
 import {ArrowRight} from '@element-plus/icons-vue'
 
@@ -192,7 +192,7 @@ function findEntryByFpId(fpId): DynamicPredictionResult {
 
 const fetchScore = async () => {
   try {
-    const response = await axiosInstance.get(`/dynamic-prediction/get-local-cad-score/${g_queryLogId_dynamic.value}/${currentResult.value.dfpId}/${chainName.value}/${currentResidueIndex.value + 1}/${radiusValue.value}`)
+    const response = await axiosInstance.get(`/dynamic-prediction/get-local-cad-score/${g_queryLogId_dynamic.value}/${currentResult.value.dfpId}/${chainName.value}/${currentResidueIndex.value + 1}/${radiusValue.value}/${g_lightInduction_dynamic.value}`)
     cad_AScore.value = response.data[0]
     cad_SScore.value = response.data[1]
   } catch (error) {
