@@ -113,7 +113,7 @@ watch(() => route.params.id, (newId) => {
 
 // noinspection JSUnusedLocalSymbols
 function handleRowClick(row, column, event) {
-  router.push(`/basic-designer/variant-details/${fpId.value}/${row.variantId}`);
+  router.push(`/basic-designer/variant-details/${fpId.value}/${row.variantId}`)
 }
 
 const baseHeaderStyle = {

@@ -140,7 +140,7 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
 
 // noinspection JSUnusedLocalSymbols
 function handleRowClick(row, column, event) {
-  router.push(`/dynamic-designer/result-details/${row.dfpId}`);
+  router.push(`/dynamic-designer/result-details/${row.dfpId}`)
 }
 </script>
 
