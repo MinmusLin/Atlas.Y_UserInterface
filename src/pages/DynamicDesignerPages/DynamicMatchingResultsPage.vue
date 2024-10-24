@@ -304,8 +304,8 @@ const getCircleStyle = (row: any) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 40px;
-  padding-right: 38px;
+  padding-left: 53px;
+  padding-right: 51px;
 }
 
 .stability-score {
