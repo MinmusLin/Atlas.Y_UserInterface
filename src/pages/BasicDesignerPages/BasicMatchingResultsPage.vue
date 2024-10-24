@@ -43,9 +43,21 @@
       <el-table-column prop='linkerId'
                        label='Linker'
                        width='306'/>
-      <el-table-column prop='stabilityScore'
-                       label='Stability'
-                       width='200'/>
+      <el-table-column label='Stability'
+                       width='200'>
+        <template #default='scope'>
+          <div class='stability-cell'>
+            <span :style='getCircleStyle(scope.row)'>
+              <v-icon color='white' :size='16'>
+                {{ getIcon(scope.row) }}
+              </v-icon>
+            </span>
+            <span class='stability-score'>
+              {{ scope.row.stabilityScore.toFixed(2) }}
+            </span>
+          </div>
+        </template>
+      </el-table-column>
     </el-table>
 
     <div class='pagination-container'>
@@ -147,7 +159,45 @@ const cellStyle = ({columnIndex}: CellStyleParams) => {
 
 // noinspection JSUnusedLocalSymbols
 function handleRowClick(row, column, event) {
-  router.push(`/basic-designer/result-details/${row.fpId}`);
+  router.push(`/basic-designer/result-details/${row.fpId}`)
+}
+
+const getColor = (row: any) => {
+  const index = g_matchingResults.value.indexOf(row)
+  const totalItems = g_matchingResults.value.length
+  if (index + 1 <= Math.ceil(totalItems * 0.1)) {
+    return '#13986B'
+  } else if (index + 1 >= Math.ceil(totalItems * 0.9)) {
+    return '#DA2420'
+  } else {
+    return '#FFC931'
+  }
+}
+
+const getIcon = (row: any) => {
+  const index = g_matchingResults.value.indexOf(row)
+  const totalItems = g_matchingResults.value.length
+  if (index + 1 <= Math.ceil(totalItems * 0.1)) {
+    return 'mdi-check'
+  } else if (index + 1 >= Math.ceil(totalItems * 0.9)) {
+    return 'mdi-close'
+  } else {
+    return 'mdi-exclamation-thick'
+  }
+}
+
+const getCircleStyle = (row: any) => {
+  const color = getColor(row)
+  return {
+    width: '20px',
+    height: '20px',
+    borderRadius: '50%',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: color,
+    marginRight: '8px'
+  }
 }
 </script>
 
@@ -255,5 +305,18 @@ function handleRowClick(row, column, event) {
   position: absolute;
   top: 50px;
   left: 51px;
+}
+
+.stability-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 38px;
+}
+
+.stability-score {
+  text-align: right;
+  flex-shrink: 0;
 }
 </style>
