@@ -16,13 +16,15 @@ Our Wiki provides a comprehensive overview of Atlas.Y toolkit's development, cov
 
 我们的 Wiki 全面介绍了 Atlas.Y 工具包的开发过程，涵盖了从选题概念、设计原则、算法实现到实际构建的每一个环节。此外，倡导策略和人类实践也有详细记录。通过访问 Wiki，您可以深入了解整个开发过程，探索我们的技术细节和决策背后的思考，并获取丰富的背景信息和资源支持。
 
-[Click here](https://2024.igem.wiki/tongji-software) to visit our Wiki!
+> [!TIP]
+> [Click here](https://2024.igem.wiki/tongji-software) to visit our Wiki!
+>
+> [点击这里](https://2024.igem.wiki/tongji-software)访问我们的 Wiki！
 
-[点击这里](https://2024.igem.wiki/tongji-software)访问我们的 Wiki！
-
-[Click here](https://github.com/MinmusLin/Atlas.Y_Wiki/raw/refs/heads/main/SoftwareDemonstrationVideo.mp4) to view our software demonstration video!
-
-[点击这里](https://github.com/MinmusLin/Atlas.Y_Wiki/raw/refs/heads/main/SoftwareDemonstrationVideo.mp4)查看我们的软件演示视频！
+> [!TIP]
+> [Click here](https://github.com/MinmusLin/Atlas.Y_Wiki/raw/refs/heads/main/SoftwareDemonstrationVideo.mp4) to view our software demonstration video!
+>
+> [点击这里](https://github.com/MinmusLin/Atlas.Y_Wiki/raw/refs/heads/main/SoftwareDemonstrationVideo.mp4)查看我们的软件演示视频！
 
 ## 相关仓库
 
@@ -41,4 +43,4 @@ Email: tongji_china2019@163.com
 
 ## 文档更新日期
 
-2024年10月24日
+2024年10月25日
