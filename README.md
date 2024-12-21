@@ -69,6 +69,7 @@ We plan to commercialize Atlas.Y (see [Entrepreneurship](https://2024.igem.wiki/
 
 * [Atlas.Y Wiki](https://github.com/MinmusLin/Atlas.Y_Wiki)
 * [Atlas.Y DatabaseWebAPI](https://github.com/MinmusLin/Atlas.Y_DatabaseWebAPI)
+* [Atlas.Y iOS Application](https://github.com/MinmusLin/Atlas.Y_iOS_Application)
 * [Atlas.Y Dataset](https://github.com/MinmusLin/Atlas.Y_Dataset)
 
 ## Contact Us
